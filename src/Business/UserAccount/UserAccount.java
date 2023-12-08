@@ -6,7 +6,7 @@ package Business.UserAccount;
 
 import Business.Employee.Employee;
 import Business.Role.Role;
-
+import Business.WorkQueue.WorkQueue;
 
 public class UserAccount {
     
@@ -14,9 +14,10 @@ public class UserAccount {
     private String password;
     private Employee employee;
     private Role role;
+    private WorkQueue workQueue;
 
     public UserAccount() {
-        
+        workQueue = new WorkQueue();
     }
     
     
@@ -53,6 +54,11 @@ public class UserAccount {
         return employee;
     }
 
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    
     
     @Override
     public String toString() {
