@@ -7,10 +7,6 @@ package userinterface;
 import Business.Business;
 import Business.ConfigureABusiness;
 
-/**
- *
- * @author Administrator
- */
 public class MainJFrame extends javax.swing.JFrame {
 
     /**

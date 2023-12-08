@@ -6,10 +6,7 @@ package Business;
 
 import Business.Organization.AdminOrganization;
 
-/**
- *
- * @author neeraj
- */
+
 public class ConfigureABusiness {
     
     public static Business configure(){

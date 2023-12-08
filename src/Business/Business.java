@@ -4,11 +4,6 @@
  */
 package Business;
 
-
-/**
- *
- * @author Administrator
- */
 public class Business {
 
     private static Business business;
