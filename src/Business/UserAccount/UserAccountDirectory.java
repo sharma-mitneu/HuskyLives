@@ -4,17 +4,21 @@
  */
 package Business.UserAccount;
 
+import Business.Customer.Customer;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author srira
+ */
 public class UserAccountDirectory {
     
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
-        userAccountList = new ArrayList<>();
+        userAccountList = new ArrayList();
     }
 
     public ArrayList<UserAccount> getUserAccountList() {
@@ -29,7 +33,16 @@ public class UserAccountDirectory {
         return null;
     }
     
-    public UserAccount createUserAccount(String username, String password, Employee employee, Role role){
+    public UserAccount createUserAccount(String username, String password, Role role){
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        //userAccount.setEmployee(employee);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    public UserAccount createUserAccount(String username, String password,Employee employee, Role role){
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
@@ -37,5 +50,32 @@ public class UserAccountDirectory {
         userAccount.setRole(role);
         userAccountList.add(userAccount);
         return userAccount;
+    }
+    public UserAccount createCustomerAccount(String username, String password,Customer customer, Role role){
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        //userAccount.setEmployee(employee);
+        userAccount.setCustomer(customer);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    
+    public void removeUserAccount(UserAccount ua){
+        userAccountList.remove(ua);
+    }
+    // Update User Account
+    public UserAccount updateUserAccount(UserAccount userAccount, String password){
+        userAccount.setPassword(password);
+        return userAccount;
+    }
+    
+    public boolean checkIfUsernameIsUnique(String username){
+        for (UserAccount ua : userAccountList){
+            if (ua.getUsername().equals(username))
+                return false;
+        }
+        return true;
     }
 }
