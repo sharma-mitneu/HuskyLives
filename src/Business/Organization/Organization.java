@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  *
- * @author mittul.sharma
+ * @author omkar
  */
 public abstract class Organization {
 

@@ -7,12 +7,18 @@ package Business.UserAccount;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
+import Business.Customer.Customer;
 
+/**
+ *
+ * @author srira
+ */
 public class UserAccount {
     
     private String username;
     private String password;
     private Employee employee;
+    private Customer customer;
     private Role role;
     private WorkQueue workQueue;
 
@@ -58,13 +64,17 @@ public class UserAccount {
         return workQueue;
     }
 
-    
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
     
     @Override
     public String toString() {
         return username;
     }
-    
-    
     
 }

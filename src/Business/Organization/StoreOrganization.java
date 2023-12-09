@@ -4,25 +4,29 @@
  */
 package Business.Organization;
 
-import Business.Role.AdminRole;
+import Business.Role.DeliveryManRole;
 import Business.Role.Role;
+import Business.Role.StoreManagerRole;
 import java.util.ArrayList;
 
 /**
  *
  * @author omkar
  */
-public class AdminOrganization extends Organization{
+public class StoreOrganization extends Organization{
 
-    public AdminOrganization() {
-        super(Type.Admin.getValue());
+    public StoreOrganization() {
+        super(Organization.Type.Store.getValue());
     }
-    
+
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new AdminRole());
+        roles.add(new StoreManagerRole());
         return roles;
     }
      
+   
+    
+    
 }
