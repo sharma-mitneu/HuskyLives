@@ -11,16 +11,17 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 import javax.swing.JPanel;
+import userinterface.StoreManager.ManageStoreJPanel;
 
 /**
  *
  * @author omkar
  */
-public class AdminRole extends Role{
+public class StoreManagerRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business,Network network) {
-        return new AdminWorkAreaJPanel(userProcessContainer, enterprise, organization, account, business, network);
+    public JPanel createWorkArea(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business, Network network) {
+        return new ManageStoreJPanel(userProcessContainer, enterprise, organization, account, business, network);
     }
 
     
