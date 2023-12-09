@@ -6,7 +6,12 @@ package Business.WorkQueue;
 
 import Business.UserAccount.UserAccount;
 import java.util.Date;
+import java.util.Random;
 
+/**
+ *
+ * @author srira
+ */
 public abstract class WorkRequest {
 
     private String message;
@@ -15,9 +20,15 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    // ID Genereation
+    private int min = 1000;
+    private int max = 9999;
+    private int counter = 0;
     
     public WorkRequest(){
         requestDate = new Date();
+         Random r = new Random();
+        counter = r.nextInt(max-min) + min;
     }
 
     public String getMessage() {
@@ -68,10 +79,12 @@ public abstract class WorkRequest {
         this.resolveDate = resolveDate;
     }
     
-    @Override
-    
-    public String toString(){
-        return this.message;
+   public int getRequestID(){
+        return counter;
     }
-            
+    
+    @Override
+    public String toString() {
+        return message;
+    }
 }
