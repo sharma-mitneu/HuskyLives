@@ -5,7 +5,7 @@
 package userinterface;
 
 import Business.Business;
-import Business.ConfigureABusiness;
+import Business.ConfigureASystem;
 
 public class MainJFrame extends javax.swing.JFrame {
 
@@ -16,7 +16,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
-        business = ConfigureABusiness.configure();
+        business = ConfigureASystem.configure();
         setSize(800, 600);
 
         initLoginScreen();
