@@ -4,36 +4,45 @@
  */
 package Business.Organization;
 
+import Business.Customer.CustomerDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
+import java.util.Random;
 
+/**
+ *
+ * @author mittul.sharma
+ */
 public abstract class Organization {
 
-    private String name;
+    public String name;
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
+    private CustomerDirectory customerDirectory;
     private int organizationID;
-    private static int counter;
+   private int min = 1000;
+    private int max = 9999;
+    private static int count = 0;
+
     
     public enum Type{
-        Admin("Admin Organization") {
-//            //@Override
-//            public Organization createOrganization() {
-//                return new AdminOrganization();
-//            }
-        }, Doctor("Doctor Organization"){
-//            public Organization createOrganization() {
-//                return new DoctorOrganization();
-//            }
-        }, Lab("Lab Organization"){
-//            public Organization createOrganization() {
-//                return new LabOrganization();
-//            }
-        };
+        Admin("Admin Organization"), 
+        Nutrition("Nutrition Organization"), 
+        Dietitian("Dietitian Organization"),
+        WeightTraining("Weight Training"),
+        FitnessTraining("Fitness Training"),
+        Physiotherapist("Physiotherapist"),
+        GeneralPractitioner("General Practitioner"),
+        Orthopedic("Orthopedic Doctor"),
+        Store("Store"),
+        Delivery("DeliveryMan"),
+        Lab("Lab Organization"),
+        Doctor("Doctor Organisation");
+        
         private String value;
         private Type(String value) {
             this.value = value;
@@ -41,9 +50,6 @@ public abstract class Organization {
         public String getValue() {
             return value;
         }
-//        public Organization createOrganization(Type t) {
-//            return t.createOrganization();
-//        }
     }
 
     public Organization(String name) {
@@ -51,8 +57,10 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
-        organizationID = counter;
-        ++counter;
+        customerDirectory = new CustomerDirectory();
+          Random r = new Random();
+        count = r.nextInt(max-min) + min;
+        organizationID = count;
     }
 
     public abstract ArrayList<Role> getSupportedRole();
@@ -64,6 +72,15 @@ public abstract class Organization {
     public int getOrganizationID() {
         return organizationID;
     }
+
+    public CustomerDirectory getCustomerDirectory() {
+        return customerDirectory;
+    }
+
+    public void setCustomerDirectory(CustomerDirectory customerDirectory) {
+        this.customerDirectory = customerDirectory;
+    }
+    
 
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
