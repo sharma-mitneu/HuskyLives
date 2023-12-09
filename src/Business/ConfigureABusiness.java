@@ -4,8 +4,10 @@
  */
 package Business;
 
+import Business.Employee.Employee;
 import Business.Organization.AdminOrganization;
-
+import Business.Role.AdminRole;
+import Business.UserAccount.UserAccount;
 
 public class ConfigureABusiness {
     
@@ -14,6 +16,19 @@ public class ConfigureABusiness {
         Business business = Business.getInstance();
         
         AdminOrganization adminOrganization = new AdminOrganization();
+        business.getOrganizationDirectory().getOrganizationList().add(adminOrganization);
+        
+        Employee employee = new Employee();
+        employee.setName("Akeem of Zamunda");
+        
+        UserAccount account = new UserAccount();
+        account.setUsername("admin");
+        account.setPassword("admin");
+        account.setRole(new AdminRole());
+        account.setEmployee(employee);
+        
+        adminOrganization.getEmployeeDirectory().getEmployeeList().add(employee);
+        adminOrganization.getUserAccountDirectory().getUserAccountList().add(account);
         
         return business;
     }

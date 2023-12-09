@@ -4,7 +4,6 @@
  */
 package Business.Employee;
 
-
 public class Employee {
     
     private String name;
