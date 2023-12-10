@@ -6,6 +6,7 @@
 package userinterface.CustomerRole;
 
 import Business.Customer.Customer;
+import Business.DB4OUtil.DB4OUtil;
 import userinterface.SystemAdminWorkArea.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
@@ -662,6 +663,7 @@ private void populateNetworkComboBox() {
                 system.getUserAccountDirectory().createCustomerAccount(email, password,c, new CustomerRole());
                 JOptionPane.showMessageDialog(null, "Customer added successfully","Success",JOptionPane.INFORMATION_MESSAGE);
                 clearValues();
+                DB4OUtil.getInstance().storeSystem(system);
                 
         }else {
            JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);

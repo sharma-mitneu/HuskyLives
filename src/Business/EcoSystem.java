@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Business.Customer.CustomerDirectory;
 import Business.Enterprise.EnterpriseDirectory;
 import Business.Enterprise.Items;
 import Business.Network.Network;
@@ -24,6 +25,7 @@ public class EcoSystem extends Organization{
     private static EcoSystem business;
     private ArrayList<Network> networkList;
     private CustomerRequestDirectory customerRequestDirectory;
+//    private CustomerDirectory customerDirectory;
     private EnterpriseDirectory enterpriseDirectory;
     private DormInventory dormInventoryDirectory;
     
