@@ -14,6 +14,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 //import Business.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.MaintenanceWorkRequest;
 import Business.WorkQueue.NutritionistWorkRequest;
 import Business.WorkQueue.StoreWorkRequest;
 //import Business.WorkQueue.WorkOrderRequest;
@@ -30,19 +31,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sriram
  */
-public class DeliveryManAssignJPanel extends javax.swing.JPanel {
+public class ServiceManAssignJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private StudentRequestOrder order;
     private EcoSystem business;
     private Enterprise enterprise;
-    private StoreWorkRequest request;
+    private MaintenanceWorkRequest request;
 
     /**
      * Creates new form DeliveryManAssignJPanel
      */
 
-    DeliveryManAssignJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, StoreWorkRequest request) {
+    ServiceManAssignJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, MaintenanceWorkRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business=business;
@@ -73,7 +74,7 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(80, 80, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Assign Deliveryman");
+        jLabel1.setText("Assign Serviceman");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 11, 1104, 37));
 
         backBtn.setBackground(new java.awt.Color(255, 102, 0));
@@ -93,11 +94,16 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
 
         deliveryManCmbBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         deliveryManCmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        deliveryManCmbBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliveryManCmbBoxActionPerformed(evt);
+            }
+        });
         add(deliveryManCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 110, 150, 30));
 
         appointDelManBtn.setBackground(new java.awt.Color(255, 102, 0));
         appointDelManBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        appointDelManBtn.setText("Appoint");
+        appointDelManBtn.setText("Assign");
         appointDelManBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 appointDelManBtnActionPerformed(evt);
@@ -122,14 +128,18 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
         for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){
             for(UserAccount user: org.getUserAccountDirectory().getUserAccountList()){
             if(deliveryManCmbBox.getSelectedItem().equals(user.getEmployee().getName())){    
-                request.setReceiver(user);
-                request.setStatus("Deliverman Assigned");
-                user.getWorkQueue().getWorkRequestList().add(request);
-                JOptionPane.showMessageDialog(null, "Deliveryman assigned successfully!","Success",JOptionPane.INFORMATION_MESSAGE);
+                    request.setReceiver(user);
+                    request.setStatus("Serviceman Assigned");
+                    user.getWorkQueue().getWorkRequestList().add(request);
+                    JOptionPane.showMessageDialog(null, "Service Man assigned successfully!","Success",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         }
-        }
     }//GEN-LAST:event_appointDelManBtnActionPerformed
+
+    private void deliveryManCmbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryManCmbBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deliveryManCmbBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -145,7 +155,7 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
         DefaultComboBoxModel dm=new DefaultComboBoxModel();
            for(Organization o:enterprise.getOrganizationDirectory().getOrganizationList()){
                 for(UserAccount e : o.getUserAccountDirectory().getUserAccountList()){
-                    if(e.getRole().toString().equals("Business.Role.DeliveryManRole")){
+                    if(e.getRole().toString().equals("Business.Role.ServiceWorkerRole")){
                         dm.addElement(e.getEmployee().getName());
                         deliveryManCmbBox.setModel(dm);
                     }
