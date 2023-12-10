@@ -210,13 +210,14 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         passwordLbl = new javax.swing.JLabel();
         updateBtn1 = new javax.swing.JButton();
         btnAnalysis1 = new javax.swing.JButton();
-        placeOrderBtn = new javax.swing.JButton();
+        btnMaintainReq = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         greetLbl = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        placeOrderBtn1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -405,7 +406,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
         networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        networkJComboBox.setForeground(new java.awt.Color(0, 0, 0));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.setEnabled(false);
         networkJComboBox.setPreferredSize(new java.awt.Dimension(160, 25));
@@ -539,16 +539,16 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(btnAnalysis1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, -1, 51));
 
-        placeOrderBtn.setBackground(new java.awt.Color(204, 204, 204));
-        placeOrderBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        placeOrderBtn.setForeground(new java.awt.Color(51, 51, 51));
-        placeOrderBtn.setText("Place Order");
-        placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnMaintainReq.setBackground(new java.awt.Color(204, 204, 204));
+        btnMaintainReq.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        btnMaintainReq.setForeground(new java.awt.Color(51, 51, 51));
+        btnMaintainReq.setText("Maintenence Request");
+        btnMaintainReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeOrderBtnActionPerformed(evt);
+                btnMaintainReqActionPerformed(evt);
             }
         });
-        add(placeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 520, 106, 51));
+        add(btnMaintainReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 520, 170, 51));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -575,6 +575,17 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+
+        placeOrderBtn1.setBackground(new java.awt.Color(204, 204, 204));
+        placeOrderBtn1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        placeOrderBtn1.setForeground(new java.awt.Color(51, 51, 51));
+        placeOrderBtn1.setText("Place Order");
+        placeOrderBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeOrderBtn1ActionPerformed(evt);
+            }
+        });
+        add(placeOrderBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 106, 51));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
@@ -846,13 +857,20 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnalysis1ActionPerformed
 
-    private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
+    private void btnMaintainReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainReqActionPerformed
         // TODO add your handling code here:
-         PlaceOrderJPanel placeOrder =new PlaceOrderJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
+        RaiseRequestJPanel requestPanel = new RaiseRequestJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
+        userProcessContainer.add("StudentRequestJPanel",requestPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnMaintainReqActionPerformed
+
+    private void placeOrderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtn1ActionPerformed
+        PlaceOrderJPanel placeOrder =new PlaceOrderJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
         userProcessContainer.add("StudentAnalysisJPanel",placeOrder);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_placeOrderBtnActionPerformed
+    }//GEN-LAST:event_placeOrderBtn1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -862,6 +880,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel ageBandLbl;
     private javax.swing.JButton btnAnalysis;
     private javax.swing.JButton btnAnalysis1;
+    private javax.swing.JButton btnMaintainReq;
     private javax.swing.JLabel cityLbl;
     private javax.swing.JLabel citySuccessLbl;
     private javax.swing.JLabel greetLbl;
@@ -888,7 +907,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox networkJComboBox;
     private javax.swing.JLabel passwordLbl;
     private javax.swing.JLabel passwordSuccessLbl;
-    private javax.swing.JButton placeOrderBtn;
+    private javax.swing.JButton placeOrderBtn1;
     private javax.swing.JRadioButton radioFemale;
     private javax.swing.JRadioButton radioMale;
     private javax.swing.JButton saveBtn;
