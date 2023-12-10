@@ -7,7 +7,7 @@ package Business.Organization;
 
 import Business.Role.Role;
 import Business.Role.ServiceProviderRole;
-import Business.Role.StoreManagerRole;
+//import Business.Role.StoreManagerRole;
 import java.util.ArrayList;
 
 /**

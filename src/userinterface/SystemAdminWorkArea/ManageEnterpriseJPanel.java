@@ -102,8 +102,8 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         jLabel4 = new javax.swing.JLabel();
         citySuccessLbl = new javax.swing.JLabel();
         cityLbl = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -216,11 +216,11 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         cityLbl.setText("Only Alphabets are allowed");
         add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 220, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundLogo.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundFoot.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -305,11 +305,11 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
     private javax.swing.JTable enterpriseJTable;
     private javax.swing.JComboBox enterpriseTypeJComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DormInventoryManager;
+package userinterface.StoreManager;
 
 //import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
@@ -15,7 +15,7 @@ import Business.Organization.Organization.Type;
 //import Business.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.NutritionistWorkRequest;
-import Business.WorkQueue.DormInventoryWorkRequest;
+import Business.WorkQueue.StoreWorkRequest;
 //import Business.WorkQueue.WorkOrderRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author srira
+ * @author Sriram
  */
 public class DeliveryManAssignJPanel extends javax.swing.JPanel {
 
@@ -36,13 +36,13 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
     private CustomerRequestOrder order;
     private EcoSystem business;
     private Enterprise enterprise;
-    private DormInventoryWorkRequest request;
+    private StoreWorkRequest request;
 
     /**
      * Creates new form DeliveryManAssignJPanel
      */
 
-    DeliveryManAssignJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, DormInventoryWorkRequest request) {
+    DeliveryManAssignJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, StoreWorkRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business=business;
@@ -65,22 +65,19 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         deliveryManCmbBox = new javax.swing.JComboBox<>();
         appointDelManBtn = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(238, 137, 19));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setForeground(new java.awt.Color(80, 80, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Assign Deliveryman");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 310, 37));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 11, 1104, 37));
 
-        backBtn.setBackground(new java.awt.Color(204, 204, 204));
+        backBtn.setBackground(new java.awt.Color(255, 102, 0));
         backBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        backBtn.setForeground(new java.awt.Color(51, 51, 51));
         backBtn.setText("< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,34 +86,28 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 82, 37));
 
-        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Deliveryman:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 80, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 113, 151, -1));
 
-        deliveryManCmbBox.setBackground(new java.awt.Color(204, 204, 204));
         deliveryManCmbBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        deliveryManCmbBox.setForeground(new java.awt.Color(0, 0, 0));
         deliveryManCmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(deliveryManCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 150, 30));
+        add(deliveryManCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 110, 150, 30));
 
-        appointDelManBtn.setBackground(new java.awt.Color(204, 204, 204));
+        appointDelManBtn.setBackground(new java.awt.Color(255, 102, 0));
         appointDelManBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        appointDelManBtn.setForeground(new java.awt.Color(51, 51, 51));
         appointDelManBtn.setText("Appoint");
         appointDelManBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 appointDelManBtnActionPerformed(evt);
             }
         });
-        add(appointDelManBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 95, 36));
+        add(appointDelManBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 170, 95, 36));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/deliveryBg.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -146,9 +137,8 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backBtn;
     private javax.swing.JComboBox<String> deliveryManCmbBox;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 
     private void populateComboBox() {

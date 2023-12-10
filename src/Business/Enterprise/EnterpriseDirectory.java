@@ -53,7 +53,7 @@ public class EnterpriseDirectory {
         }
       
         if(type==Enterprise.EnterpriseType.ProctorOfficer){
-            enterprise=new StoreEnterprise(name);
+            enterprise=new ProctorEnterprise(name);
             enterpriseList.add(enterprise);
         }
 
