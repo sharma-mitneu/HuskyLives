@@ -4,7 +4,7 @@
  */
 package userinterface.AdministrativeRole;
 
-import Business.Customer.Customer;
+import Business.Student.Student;
 import Business.EcoSystem;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -136,8 +136,8 @@ public class ViewStudentsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        Customer studentResult = null;
-        for(Customer student: business.getCustomerDirectory().getCustomerList()){
+        Student studentResult = null;
+        for(Student student: business.getStudentDirectory().getStudentList()){
             if(student.getId() == nuId){
                 studentResult = student;
                 break;
@@ -179,7 +179,7 @@ public class ViewStudentsJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (Customer student : business.getCustomerDirectory().getCustomerList()){
+        for (Student student : business.getStudentDirectory().getStudentList()){
             Object[] row = new Object[5];
             row[0] = student.getId();
             row[1] = student.getName();

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CustomerRole;
+package userinterface.StudentRole;
 
-import Business.Customer.Customer;
+import Business.Student.Student;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Role.CustomerRole;
+import Business.Role.StudentRole;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DormInventoryWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -28,23 +28,23 @@ import javax.swing.JPanel;
  *
  * @author ashish
  */
-public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
+public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CustomerWorkAreaJPanel
+     * Creates new form StudentWorkAreaJPanel
      */
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     private Organization organization;
     private Enterprise enterprise;
     private EcoSystem system;
-    private Customer customer;
+    private Student student;
      Network network;
      private boolean ageValid = true;
      private boolean zipValid = true;
      private boolean heightValid = true;
      private boolean weightValid = true;
-    public CustomerWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business,  Network network) {
+    public StudentWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business,  Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
@@ -63,12 +63,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         txtZipcode.setEditable(false);
         txtHeight.setEditable(false);
         txtWeight.setEditable(false);
-        noneChkBox.setEnabled(false);
-        diabetesChkBox.setEnabled(false);
-        cholestrolChkBox.setEnabled(false);
-        hyperChkBox.setEnabled(false);
-        pcosChkBox.setEnabled(false);
-        thyroidChkBox.setEnabled(false);
         saveBtn.setEnabled(false);
         clearLabels();
         /*for(Network net: system.getNetworkList()){
@@ -85,30 +79,24 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             }
         }
     }*/
-                    txtName.setText(userAccount.getCustomer().getName());
-                    txtAge.setText(String.valueOf(userAccount.getCustomer().getAge()));
-                    greetLbl.setText(userAccount.getCustomer().getName()+ " !!");
-                    if(userAccount.getCustomer().getGender().toLowerCase().equals("male")){
+                    txtName.setText(userAccount.getStudent().getName());
+                    txtAge.setText(String.valueOf(userAccount.getStudent().getAge()));
+                    greetLbl.setText(userAccount.getStudent().getName()+ " !!");
+                    if(userAccount.getStudent().getGender().toLowerCase().equals("male")){
                         radioMale.setSelected(true);
                     }else{
                         radioFemale.setSelected(true);
                     }
                     txtPassword.setText(userAccount.getPassword());
-                    txtAdress.setText(userAccount.getCustomer().getAddress());
-                    txtCity.setText(userAccount.getCustomer().getCity());
+                    txtAdress.setText(userAccount.getStudent().getAddress());
+                    txtCity.setText(userAccount.getStudent().getCity());
                      DefaultComboBoxModel dm=new DefaultComboBoxModel();
-                     dm.addElement(userAccount.getCustomer().getNetwork());
+                     dm.addElement(userAccount.getStudent().getNetwork());
                     networkJComboBox.setModel(dm);
-                    txtZipcode.setText(String.valueOf(userAccount.getCustomer().getZipcode()));
-                    txtHeight.setText(String.valueOf(userAccount.getCustomer().getHeight()));
-                    txtWeight.setText(String.valueOf(userAccount.getCustomer().getWeight()));
-                    noneChkBox.setSelected(userAccount.getCustomer().getNone());
-                    diabetesChkBox.setSelected(userAccount.getCustomer().getDiabetes());
-                    cholestrolChkBox.setSelected(userAccount.getCustomer().getCholestrol());
-                    hyperChkBox.setSelected(userAccount.getCustomer().getHypertension());
-                    pcosChkBox.setSelected(userAccount.getCustomer().getPcos());
-                    thyroidChkBox.setSelected(userAccount.getCustomer().getThyroid());     
-                    customer = userAccount.getCustomer();
+                    txtZipcode.setText(String.valueOf(userAccount.getStudent().getZipcode()));
+                    txtHeight.setText(String.valueOf(userAccount.getStudent().getHeight()));
+                    txtWeight.setText(String.valueOf(userAccount.getStudent().getWeight()));    
+                    student = userAccount.getStudent();
                     return;
     }
     private void clearLabels(){
@@ -191,13 +179,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         radioMale = new javax.swing.JRadioButton();
         radioFemale = new javax.swing.JRadioButton();
-        jLabel16 = new javax.swing.JLabel();
-        thyroidChkBox = new javax.swing.JCheckBox();
-        noneChkBox = new javax.swing.JCheckBox();
-        diabetesChkBox = new javax.swing.JCheckBox();
-        cholestrolChkBox = new javax.swing.JCheckBox();
-        hyperChkBox = new javax.swing.JCheckBox();
-        pcosChkBox = new javax.swing.JCheckBox();
         updateBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -233,18 +214,24 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         greetLbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 80, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 80, 30));
 
         txtName.setEditable(false);
+        txtName.setBackground(new java.awt.Color(204, 204, 204));
         txtName.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtName.setForeground(new java.awt.Color(51, 51, 51));
         txtName.setEnabled(false);
         txtName.setPreferredSize(new java.awt.Dimension(160, 25));
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -252,15 +239,18 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 txtNameKeyReleased(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Age:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 80, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 80, 30));
 
         txtAge.setEditable(false);
+        txtAge.setBackground(new java.awt.Color(204, 204, 204));
         txtAge.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtAge.setForeground(new java.awt.Color(51, 51, 51));
         txtAge.setEnabled(false);
         txtAge.setPreferredSize(new java.awt.Dimension(160, 25));
         txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -268,15 +258,18 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 txtAgeKeyReleased(evt);
             }
         });
-        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Height(in cms):");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 90, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 90, -1));
 
         txtHeight.setEditable(false);
+        txtHeight.setBackground(new java.awt.Color(204, 204, 204));
         txtHeight.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtHeight.setForeground(new java.awt.Color(51, 51, 51));
         txtHeight.setEnabled(false);
         txtHeight.setPreferredSize(new java.awt.Dimension(160, 25));
         txtHeight.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -284,15 +277,18 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 txtHeightKeyReleased(evt);
             }
         });
-        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
+        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Weight (In Kgs):");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 100, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 100, 20));
 
         txtWeight.setEditable(false);
+        txtWeight.setBackground(new java.awt.Color(204, 204, 204));
         txtWeight.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtWeight.setForeground(new java.awt.Color(51, 51, 51));
         txtWeight.setEnabled(false);
         txtWeight.setPreferredSize(new java.awt.Dimension(160, 25));
         txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -300,10 +296,11 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 txtWeightKeyReleased(evt);
             }
         });
-        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
+        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, -1, -1));
 
-        btnAnalysis.setBackground(new java.awt.Color(255, 102, 0));
+        btnAnalysis.setBackground(new java.awt.Color(204, 204, 204));
         btnAnalysis.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        btnAnalysis.setForeground(new java.awt.Color(51, 51, 51));
         btnAnalysis.setText("View Analysis");
         btnAnalysis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,12 +310,14 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         add(btnAnalysis, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, -1, 51));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Gender:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 80, 40));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 80, 40));
 
-        radioMale.setBackground(new java.awt.Color(204, 204, 204));
+        radioMale.setBackground(new java.awt.Color(51, 51, 51));
         radioMale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        radioMale.setForeground(new java.awt.Color(204, 204, 204));
         radioMale.setText("Male");
         radioMale.setEnabled(false);
         radioMale.addActionListener(new java.awt.event.ActionListener() {
@@ -326,10 +325,11 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 radioMaleActionPerformed(evt);
             }
         });
-        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 64, -1));
+        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, 64, -1));
 
-        radioFemale.setBackground(new java.awt.Color(204, 204, 204));
+        radioFemale.setBackground(new java.awt.Color(51, 51, 51));
         radioFemale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        radioFemale.setForeground(new java.awt.Color(204, 204, 204));
         radioFemale.setText("Female");
         radioFemale.setEnabled(false);
         radioFemale.addActionListener(new java.awt.event.ActionListener() {
@@ -337,80 +337,11 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 radioFemaleActionPerformed(evt);
             }
         });
-        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
+        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Health Issues");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 310, -1));
-
-        thyroidChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        thyroidChkBox.setText("Thyroid");
-        thyroidChkBox.setEnabled(false);
-        thyroidChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                thyroidChkBoxMouseClicked(evt);
-            }
-        });
-        add(thyroidChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 90, -1));
-
-        noneChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        noneChkBox.setText("None");
-        noneChkBox.setEnabled(false);
-        noneChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                noneChkBoxMouseClicked(evt);
-            }
-        });
-        add(noneChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 90, -1));
-
-        diabetesChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        diabetesChkBox.setText("Diabetes");
-        diabetesChkBox.setEnabled(false);
-        diabetesChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                diabetesChkBoxMouseClicked(evt);
-            }
-        });
-        add(diabetesChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 90, -1));
-
-        cholestrolChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        cholestrolChkBox.setText("Cholestrol");
-        cholestrolChkBox.setEnabled(false);
-        cholestrolChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cholestrolChkBoxMouseClicked(evt);
-            }
-        });
-        add(cholestrolChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 90, -1));
-
-        hyperChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        hyperChkBox.setText("Hypertension");
-        hyperChkBox.setEnabled(false);
-        hyperChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hyperChkBoxMouseClicked(evt);
-            }
-        });
-        hyperChkBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hyperChkBoxActionPerformed(evt);
-            }
-        });
-        add(hyperChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
-
-        pcosChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        pcosChkBox.setText("PCOS");
-        pcosChkBox.setEnabled(false);
-        pcosChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pcosChkBoxMouseClicked(evt);
-            }
-        });
-        add(pcosChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 90, -1));
-
-        updateBtn.setBackground(new java.awt.Color(255, 102, 0));
+        updateBtn.setBackground(new java.awt.Color(204, 204, 204));
         updateBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(51, 51, 51));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,8 +350,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 106, 51));
 
-        saveBtn.setBackground(new java.awt.Color(255, 102, 0));
+        saveBtn.setBackground(new java.awt.Color(204, 204, 204));
         saveBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        saveBtn.setForeground(new java.awt.Color(51, 51, 51));
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -430,11 +362,14 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 106, 51));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Address:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 80, 40));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 80, 40));
 
+        txtAdress.setBackground(new java.awt.Color(204, 204, 204));
         txtAdress.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtAdress.setForeground(new java.awt.Color(51, 51, 51));
         txtAdress.setEnabled(false);
         txtAdress.setPreferredSize(new java.awt.Dimension(160, 25));
         txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -442,14 +377,17 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 txtAdressKeyReleased(evt);
             }
         });
-        add(txtAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 158, -1));
+        add(txtAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 158, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("City:");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 120, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 120, -1));
 
+        txtCity.setBackground(new java.awt.Color(204, 204, 204));
         txtCity.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtCity.setForeground(new java.awt.Color(51, 51, 51));
         txtCity.setEnabled(false);
         txtCity.setPreferredSize(new java.awt.Dimension(160, 25));
         txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -457,25 +395,31 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 txtCityKeyReleased(evt);
             }
         });
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 158, -1));
+        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 158, -1));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("State:");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 110, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 110, -1));
 
+        networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        networkJComboBox.setForeground(new java.awt.Color(0, 0, 0));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.setEnabled(false);
         networkJComboBox.setPreferredSize(new java.awt.Dimension(160, 25));
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 158, -1));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 158, -1));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Zip Code:");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 60, 20));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 60, 20));
 
+        txtZipcode.setBackground(new java.awt.Color(204, 204, 204));
         txtZipcode.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtZipcode.setForeground(new java.awt.Color(51, 51, 51));
         txtZipcode.setEnabled(false);
         txtZipcode.setPreferredSize(new java.awt.Dimension(160, 25));
         txtZipcode.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -483,96 +427,99 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 txtZipcodeKeyReleased(evt);
             }
         });
-        add(txtZipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 158, -1));
+        add(txtZipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 158, -1));
 
         nameLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         nameLbl.setForeground(new java.awt.Color(181, 7, 7));
         nameLbl.setText(" Only Alphabets are allowed.");
-        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 160, 20));
+        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 160, 20));
 
         invalidAgeLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         invalidAgeLbl.setForeground(new java.awt.Color(181, 7, 7));
         invalidAgeLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         invalidAgeLbl.setText("Invalid Age.");
-        add(invalidAgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 160, 20));
+        add(invalidAgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 160, 20));
 
         ageBandLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         ageBandLbl.setForeground(new java.awt.Color(181, 7, 7));
         ageBandLbl.setText("Age Should be between 15-85");
-        add(ageBandLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 180, 20));
+        add(ageBandLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 180, 20));
 
         heightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         heightLbl.setForeground(new java.awt.Color(181, 7, 7));
         heightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         heightLbl.setText("Invalid Height");
-        add(heightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 160, 20));
+        add(heightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 160, 20));
 
         weightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         weightLbl.setForeground(new java.awt.Color(181, 7, 7));
         weightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         weightLbl.setText("Invalid Weight");
-        add(weightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 160, 20));
+        add(weightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 160, 20));
 
         addressLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         addressLbl.setForeground(new java.awt.Color(181, 7, 7));
         addressLbl.setText("Only Alphabets, Numbers, '#/-' are allowed");
-        add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 250, 20));
+        add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 250, 20));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         cityLbl.setForeground(new java.awt.Color(181, 7, 7));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 160, 20));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, 160, 20));
 
         zipLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         zipLbl.setForeground(new java.awt.Color(181, 7, 7));
         zipLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         zipLbl.setText("Only Numbers Allowed");
-        add(zipLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 160, 20));
+        add(zipLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 160, 20));
 
         nameSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(nameSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 30, -1));
+        add(nameSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 30, -1));
 
         AgeSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(AgeSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 30, -1));
+        add(AgeSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 30, -1));
 
         heightSuccessLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         heightSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(heightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 30, -1));
+        add(heightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 30, -1));
 
         weightSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(weightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 40, -1));
+        add(weightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 40, -1));
 
         addressSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(addressSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, 40, -1));
+        add(addressSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 260, 40, -1));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 140, 30, -1));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 30, -1));
 
         zipSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(zipSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, 30, -1));
+        add(zipSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 380, 30, -1));
 
+        txtPassword.setBackground(new java.awt.Color(204, 204, 204));
         txtPassword.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(51, 51, 51));
         txtPassword.setEnabled(false);
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyReleased(evt);
             }
         });
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 158, 25));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 158, 25));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Password:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 107, 20));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 107, 20));
 
         passwordSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 30, -1));
+        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 30, -1));
 
         passwordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         passwordLbl.setForeground(new java.awt.Color(181, 7, 7));
         passwordLbl.setText("Sample format: Asdf@1");
-        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 160, 20));
+        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 160, 20));
 
         updateBtn1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         updateBtn1.setText("Update");
@@ -592,8 +539,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(btnAnalysis1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, -1, 51));
 
-        placeOrderBtn.setBackground(new java.awt.Color(255, 102, 0));
+        placeOrderBtn.setBackground(new java.awt.Color(204, 204, 204));
         placeOrderBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        placeOrderBtn.setForeground(new java.awt.Color(51, 51, 51));
         placeOrderBtn.setText("Place Order");
         placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -602,37 +550,41 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(placeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 520, 106, 51));
 
-        jPanel3.setBackground(new java.awt.Color(102, 153, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Welcome,");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, 120, 140));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 120, 40));
 
         greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel3.add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -50, 330, 160));
+        jPanel3.add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 330, 40));
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 60));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageEnterprise.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1200, 750));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Student");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 692, 36));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
         
-        CustomerAnalysisJPanel customerAnalysisJPanel=new CustomerAnalysisJPanel(userProcessContainer,customer,system,userAccount,enterprise, network);
-        userProcessContainer.add("CustomerAnalysisJPanel",customerAnalysisJPanel);
+        StudentAnalysisJPanel studentAnalysisJPanel=new StudentAnalysisJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
+        userProcessContainer.add("StudentAnalysisJPanel",studentAnalysisJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnalysisActionPerformed
-
-    private void hyperChkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hyperChkBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hyperChkBoxActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
@@ -655,12 +607,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         txtHeight.setEnabled(true);
         txtWeight.setEditable(true);
         txtWeight.setEnabled(true);
-        noneChkBox.setEnabled(true);
-        diabetesChkBox.setEnabled(true);
-        cholestrolChkBox.setEnabled(true);
-        hyperChkBox.setEnabled(true);
-        pcosChkBox.setEnabled(true);
-        thyroidChkBox.setEnabled(true);
         saveBtn.setEnabled(true);
         updateBtn.setEnabled(false);
     }//GEN-LAST:event_updateBtnActionPerformed
@@ -671,10 +617,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         if(txtName.getText().isEmpty() || txtAge.getText().isEmpty() || txtWeight.getText().isEmpty() || txtHeight.getText().isEmpty() || txtAdress.getText().isEmpty() || txtCity.getText().isEmpty() || txtZipcode.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Field(s) cannot be Empty!","Error",JOptionPane.ERROR_MESSAGE);
              return;
-          }else if(!noneChkBox.isSelected() && !diabetesChkBox.isSelected() && !cholestrolChkBox.isSelected() && !hyperChkBox.isSelected() && !pcosChkBox.isSelected() && !thyroidChkBox.isSelected()){
-              JOptionPane.showMessageDialog(null,"Please Fill the Health Issues! If you don't have any kindly Select None!","Error",JOptionPane.ERROR_MESSAGE);
-             return;
-          
           }else if(ageValid && zipValid && heightValid && weightValid){
               String name = txtName.getText();
               String password = txtPassword.getText();
@@ -691,16 +633,10 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             int age = Integer.parseInt(txtAge.getText());
             String address = txtAdress.getText();
             String zipcode = txtZipcode.getText();
-            Boolean none = noneChkBox.isSelected();
-            Boolean diabetes = diabetesChkBox.isSelected();
-            Boolean cholestrol = cholestrolChkBox.isSelected();
-            Boolean hyper= hyperChkBox.isSelected();
-            Boolean pcos = pcosChkBox.isSelected();
-            Boolean thyroid = thyroidChkBox.isSelected();
               
-                system.getCustomerDirectory().updateCustomer(customer, name, height, weight, gender, age, address, city, zipcode, none,diabetes,cholestrol,hyper, pcos, thyroid);
+                system.getStudentDirectory().updateStudent(student, name, height, weight, gender, age, address, city, zipcode);
                 system.getUserAccountDirectory().updateUserAccount(userAccount, password);
-                JOptionPane.showMessageDialog(null, "Customer has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Student has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
                 
          txtName.setEditable(false);
          txtName.setEnabled(false);
@@ -722,56 +658,12 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
          txtHeight.setEnabled(false);
         txtWeight.setEditable(false);
          txtWeight.setEnabled(false);
-        noneChkBox.setEnabled(false);
-        diabetesChkBox.setEnabled(false);
-        cholestrolChkBox.setEnabled(false);
-        hyperChkBox.setEnabled(false);
-        pcosChkBox.setEnabled(false);
-        thyroidChkBox.setEnabled(false);
         saveBtn.setEnabled(false);
         updateBtn.setEnabled(true);
         clearLabels();
         }else {
            JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        /*String name = txtName.getText();
-        String add = txtAdress.getText();
-        String city = txtCity.getText();
-        String gender="";
-            if(maleRadioBtn.isSelected()){
-                gender = "Male";
-            }else{
-                gender = "Female";
-            }
-            customer = new Customer();
-            customer.setName(name);
-            customer.setHeight(Integer.parseInt(txtHeight.getText()));
-            customer.setWeight(Integer.parseInt(txtWeight.getText()));
-            customer.setGender(gender);
-            customer.setAge(Integer.parseInt(txtAge.getText()));
-            customer.setAddress(add);
-            customer.setCity(city);
-            customer.setZipcode(Integer.parseInt(txtZipcode.getText()));
-            customer.setNone(noneChkBox.isSelected());
-            customer.setDiabetes(diabetesChkBox.isSelected());
-            customer.setCholestrol(cholestrolChkBox.isSelected());
-            customer.setHypertension(hyperChkBox.isSelected());
-            customer.setPcos(pcosChkBox.isSelected());
-            customer.setThyroid(thyroidChkBox.isSelected());
-            
-            // User Name Already Exists Validation    
-            if(system.getCustomerDirectory().checkIfUsernameIsUnique(customer.getEmail())){
-                system.getCustomerDirectory().createCustomer(customer);
-                //system.getUserAccountDirectory().createUserAccount(customer, new CustomerRole());
-                JOptionPane.showMessageDialog(null, "Customer added successfully");
-                //clearValues();
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Customer already exists");
-            }*/
-        // Disable Back 
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void radioFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFemaleActionPerformed
@@ -930,40 +822,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtZipcodeKeyReleased
 
-    private void noneChkBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noneChkBoxMouseClicked
-        // TODO add your handling code here:
-        diabetesChkBox.setSelected(false);
-        cholestrolChkBox.setSelected(false);
-        hyperChkBox.setSelected(false);
-        pcosChkBox.setSelected(false);
-        thyroidChkBox.setSelected(false);
-    }//GEN-LAST:event_noneChkBoxMouseClicked
-
-    private void diabetesChkBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diabetesChkBoxMouseClicked
-        // TODO add your handling code here:
-        noneChkBox.setSelected(false);
-    }//GEN-LAST:event_diabetesChkBoxMouseClicked
-
-    private void cholestrolChkBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cholestrolChkBoxMouseClicked
-        // TODO add your handling code here:
-        noneChkBox.setSelected(false);
-    }//GEN-LAST:event_cholestrolChkBoxMouseClicked
-
-    private void hyperChkBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hyperChkBoxMouseClicked
-        // TODO add your handling code here:
-        noneChkBox.setSelected(false);
-    }//GEN-LAST:event_hyperChkBoxMouseClicked
-
-    private void pcosChkBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcosChkBoxMouseClicked
-        // TODO add your handling code here:
-        noneChkBox.setSelected(false);
-    }//GEN-LAST:event_pcosChkBoxMouseClicked
-
-    private void thyroidChkBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thyroidChkBoxMouseClicked
-        // TODO add your handling code here:
-        noneChkBox.setSelected(false);
-    }//GEN-LAST:event_thyroidChkBoxMouseClicked
-
     private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
         // TODO add your handling code here:
         if(!passwordPatternCorrect(txtPassword.getText()) && !(txtPassword.getText().isEmpty())){
@@ -990,8 +848,8 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
         // TODO add your handling code here:
-         PlaceOrderJPanel placeOrder =new PlaceOrderJPanel(userProcessContainer,customer,system,userAccount,enterprise, network);
-        userProcessContainer.add("CustomerAnalysisJPanel",placeOrder);
+         PlaceOrderJPanel placeOrder =new PlaceOrderJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
+        userProcessContainer.add("StudentAnalysisJPanel",placeOrder);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_placeOrderBtnActionPerformed
@@ -1004,21 +862,18 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel ageBandLbl;
     private javax.swing.JButton btnAnalysis;
     private javax.swing.JButton btnAnalysis1;
-    private javax.swing.JCheckBox cholestrolChkBox;
     private javax.swing.JLabel cityLbl;
     private javax.swing.JLabel citySuccessLbl;
-    private javax.swing.JCheckBox diabetesChkBox;
     private javax.swing.JLabel greetLbl;
     private javax.swing.JLabel heightLbl;
     private javax.swing.JLabel heightSuccessLbl;
-    private javax.swing.JCheckBox hyperChkBox;
     private javax.swing.JLabel invalidAgeLbl;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1026,19 +881,17 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel nameLbl;
     private javax.swing.JLabel nameSuccessLbl;
     private javax.swing.JComboBox networkJComboBox;
-    private javax.swing.JCheckBox noneChkBox;
     private javax.swing.JLabel passwordLbl;
     private javax.swing.JLabel passwordSuccessLbl;
-    private javax.swing.JCheckBox pcosChkBox;
     private javax.swing.JButton placeOrderBtn;
     private javax.swing.JRadioButton radioFemale;
     private javax.swing.JRadioButton radioMale;
     private javax.swing.JButton saveBtn;
-    private javax.swing.JCheckBox thyroidChkBox;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtCity;

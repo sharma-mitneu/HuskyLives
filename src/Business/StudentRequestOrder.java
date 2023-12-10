@@ -15,19 +15,19 @@ import java.util.ArrayList;
  *
  * @author ashish
  */
-public class CustomerRequestOrder {
+public class StudentRequestOrder {
     private int reqId;
     private static int counter=1;
     private String status;
-    private String customerName;
-    private int customerId;
+    private String studentName;
+    private int studentId;
     private String goal;
-    private String  customerUserName;
+    private String  studentUserName;
     private ArrayList<Items> itemsList;
     private ArrayList<ServiceTypes> serviceList;
     private String feedback;
     
-    public CustomerRequestOrder() {
+    public StudentRequestOrder() {
         reqId = counter;
         ++counter;
         itemsList=new ArrayList<Items>();
@@ -74,28 +74,28 @@ public class CustomerRequestOrder {
         this.status = status;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public String getCustomerUserName() {
-        return customerUserName;
+    public String getStudentUserName() {
+        return studentUserName;
     }
 
-    public void setCustomerUserName(String customerUserName) {
-        this.customerUserName = customerUserName;
+    public void setStudentUserName(String studentUserName) {
+        this.studentUserName = studentUserName;
     }
 
     public String getFeedback() {

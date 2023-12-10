@@ -63,7 +63,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             if(request.getReceiver() != null && request.getReceiver().getEmployee().getName().equals(userAccount.getEmployee().getName())){
             Object row[] = new Object[4];
             row[0] = request.getRequestID();
-            row[1] = request.getSender().getCustomer().getName();
+            row[1] = request.getSender().getStudent().getName();
             row[2] = request;
             row[3] = request.getStatus();
             dtm.addRow(row);
@@ -100,7 +100,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Order ID", "Customer Name", "Message", "Status"
+                "Order ID", "Student Name", "Message", "Status"
             }
         ) {
             Class[] types = new Class [] {

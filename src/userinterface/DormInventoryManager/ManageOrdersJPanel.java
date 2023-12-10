@@ -8,7 +8,7 @@ package userinterface.DormInventoryManager;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Items;
-import Business.CustomerRequestOrder;
+import Business.StudentRequestOrder;
 import Business.Organization.Organization;
 //import Business.Organization;
 import Business.UserAccount.UserAccount;
@@ -87,7 +87,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Order ID", "Customer Name", "Message", "Status"
+                "Order ID", "Student Name", "Message", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -236,7 +236,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-       /*CustomerRequestOrder order1 = (CustomerRequestOrder)orderMgtTbl.getValueAt(selectedRow, 0);*/
+       /*StudentRequestOrder order1 = (StudentRequestOrder)orderMgtTbl.getValueAt(selectedRow, 0);*/
        DormInventoryWorkRequest request = (DormInventoryWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
             DefaultTableModel dtm = (DefaultTableModel) itemListTbl.getModel();
         dtm.setRowCount(0);
@@ -331,24 +331,12 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             Object[] row = new Object[4];
            int orderID = request.getRequestID();
             row[0] = orderID;
-            row[1] = request.getSender().getCustomer().getName();
+            row[1] = request.getSender().getStudent().getName();
             row[2] = request;
             row[3] = request.getStatus();
             
             dtm.addRow(row);
         }
         }
-        /*for(Order order:business.getOrderDirectory().getOrderList()) {
-   if(order.getRestaurantName()!=null && order.getRestaurantName().equals(enterprise.getName())){
-            Object row[] = new Object[6];
-            row[0] = order;
-            row[1] = order.getCustomerId();
-            row[2] = order.getCustomerName();
-            row[3] = order.getCustomerNotes();
-            row[4] = order.getStatus();
-            row[5] = order.getFeedback();
-            dtm.addRow(row);
-        }
-    }*/
     }
 }

@@ -4,7 +4,7 @@
  */
 package Business.Organization;
 
-import Business.Customer.CustomerDirectory;
+import Business.Student.StudentDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
@@ -22,7 +22,7 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
-    private CustomerDirectory customerDirectory;
+    private StudentDirectory studentDirectory;
     private int organizationID;
    private int min = 1000;
     private int max = 9999;
@@ -59,7 +59,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
-        customerDirectory = new CustomerDirectory();
+        studentDirectory = new StudentDirectory();
           Random r = new Random();
         count = r.nextInt(max-min) + min;
         organizationID = count;
@@ -75,12 +75,12 @@ public abstract class Organization {
         return organizationID;
     }
 
-    public CustomerDirectory getCustomerDirectory() {
-        return customerDirectory;
+    public StudentDirectory getStudentDirectory() {
+        return studentDirectory;
     }
 
-    public void setCustomerDirectory(CustomerDirectory customerDirectory) {
-        this.customerDirectory = customerDirectory;
+    public void setStudentDirectory(StudentDirectory studentDirectory) {
+        this.studentDirectory = studentDirectory;
     }
     
 

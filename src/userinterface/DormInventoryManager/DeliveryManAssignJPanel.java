@@ -7,7 +7,7 @@ package userinterface.DormInventoryManager;
 
 //import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
-import Business.CustomerRequestOrder;
+import Business.StudentRequestOrder;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -33,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
 public class DeliveryManAssignJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private CustomerRequestOrder order;
+    private StudentRequestOrder order;
     private EcoSystem business;
     private Enterprise enterprise;
     private DormInventoryWorkRequest request;

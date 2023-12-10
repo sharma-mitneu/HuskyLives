@@ -20,7 +20,7 @@ public abstract class Role {
     public enum RoleType{
         Admin("Admin"),
         MaintenanceAdmin("Maintenance Admin"),
-        Customer("Customer"),
+        Student("Student"),
         Doctor("Doctor"), /*TBR*/
         DoctorAdmin("Doctor Admin"),
         TrainerAdmin("Trainer Admin"),

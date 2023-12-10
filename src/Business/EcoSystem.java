@@ -5,7 +5,7 @@
  */
 package Business;
 
-import Business.Customer.CustomerDirectory;
+import Business.Student.StudentDirectory;
 import Business.Enterprise.EnterpriseDirectory;
 import Business.Enterprise.Items;
 import Business.Network.Network;
@@ -24,14 +24,13 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
-    private CustomerRequestDirectory customerRequestDirectory;
-//    private CustomerDirectory customerDirectory;
+    private StudentRequestDirectory studentRequestDirectory;
     private EnterpriseDirectory enterpriseDirectory;
     private DormInventory dormInventoryDirectory;
     
     private EcoSystem(){
         super(null);
-        customerRequestDirectory = new CustomerRequestDirectory();
+        studentRequestDirectory = new StudentRequestDirectory();
         enterpriseDirectory=new EnterpriseDirectory();
         networkList=new ArrayList<Network>();
     }
@@ -47,12 +46,12 @@ public class EcoSystem extends Organization{
     public static EcoSystem getBusiness() {
         return business;
     }
-    public CustomerRequestDirectory getCustomerRequestDirectory() {
-        return customerRequestDirectory;
+    public StudentRequestDirectory getStudentRequestDirectory() {
+        return studentRequestDirectory;
     }
 
-    public void setCustomerRequestDirectory(CustomerRequestDirectory customerRequestDirectory) {
-        this.customerRequestDirectory = customerRequestDirectory;
+    public void setStudentRequestDirectory(StudentRequestDirectory studentRequestDirectory) {
+        this.studentRequestDirectory = studentRequestDirectory;
     }
 
     public static void setBusiness(EcoSystem business) {

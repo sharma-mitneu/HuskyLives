@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CustomerRole;
+package userinterface.StudentRole;
 
-import Business.Customer.Customer;
-import Business.CustomerRequestOrder;
+import Business.Student.Student;
+import Business.StudentRequestOrder;
 import Business.EcoSystem;
 import Business.Enterprise.DietEnterprise;
 import Business.Enterprise.DoctorEnterprise;
@@ -31,42 +31,39 @@ import userinterface.SystemAdminWorkArea.ManageNetworkJPanel;
  *
  * @author ashish
  */
-public class CustomerAnalysisJPanel extends javax.swing.JPanel {
+public class StudentAnalysisJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CustomerAnalysisJPanel
+     * Creates new form StudentAnalysisJPanel
      */
-    private Customer customer;
+    private Student student;
     private JPanel userProcessContainer;
     private double bmi;
-    private CustomerRequestOrder order;
+    private StudentRequestOrder order;
     private UserAccount userAccount;
     private EcoSystem system;
     Enterprise e;
     private Network network;
-    public CustomerAnalysisJPanel(JPanel userProcessContainer,Customer customer, EcoSystem system, UserAccount userAccount, Enterprise enterprise, Network network) {
+    public StudentAnalysisJPanel(JPanel userProcessContainer,Student student, EcoSystem system, UserAccount userAccount, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.customer = customer;
+        this.student = student;
         this.userAccount = userAccount;
         this.system = system;
         this.network = network;
         dietStatusTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        //this.e = enterprise;
-       //this.order = system.getCustomerRequestDirectory().createOrder();
         calculateBMI();
         calculateWeightCategory();
         populateDietStatusTable();
     }
     
     public void calculateBMI(){
-       double heightMts = customer.getHeight()/100;
+       double heightMts = student.getHeight()/100;
        double heightSquare = heightMts*heightMts;
-       bmi = customer.getWeight()/heightSquare;
+       bmi = student.getWeight()/heightSquare;
        System.out.println("BMI  " + bmi);
        String bmiStr = String.format("%.2f", bmi);
        txtBMI.setText(String.valueOf(bmiStr));
-      // txtHealthIssue.setText(customer.getHealthIssue());
     }
     
     public void calculateWeightCategory(){
@@ -107,54 +104,62 @@ public class CustomerAnalysisJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         dietStatusTbl = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Your BMI:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 149, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 149, 30));
 
         txtBMI.setEditable(false);
+        txtBMI.setBackground(new java.awt.Color(204, 204, 204));
         txtBMI.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtBMI.setForeground(new java.awt.Color(51, 51, 51));
         txtBMI.setEnabled(false);
         txtBMI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBMIActionPerformed(evt);
             }
         });
-        add(txtBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 138, 32));
+        add(txtBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 138, 32));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Based on your BMI you are:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, 40));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, 40));
 
-        btnDocApp.setBackground(new java.awt.Color(255, 102, 0));
+        btnDocApp.setBackground(new java.awt.Color(204, 204, 204));
         btnDocApp.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        btnDocApp.setForeground(new java.awt.Color(51, 51, 51));
         btnDocApp.setText("Get Doctor Appointment");
         btnDocApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDocAppActionPerformed(evt);
             }
         });
-        add(btnDocApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 183, 40));
+        add(btnDocApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 183, 40));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Your Goal:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 160, 32));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 160, 32));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Your Analysis");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 11, 692, 36));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 692, 36));
 
-        backJButton.setBackground(new java.awt.Color(255, 102, 0));
+        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(51, 51, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,38 +169,44 @@ public class CustomerAnalysisJPanel extends javax.swing.JPanel {
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, 30));
 
         txtWtDec.setEditable(false);
+        txtWtDec.setBackground(new java.awt.Color(204, 204, 204));
         txtWtDec.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        txtWtDec.setForeground(new java.awt.Color(51, 51, 51));
         txtWtDec.setEnabled(false);
         txtWtDec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWtDecActionPerformed(evt);
             }
         });
-        add(txtWtDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 138, 32));
+        add(txtWtDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 138, 32));
 
+        goalComboBox.setBackground(new java.awt.Color(204, 204, 204));
         goalComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        goalComboBox.setForeground(new java.awt.Color(0, 0, 0));
         goalComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gain Weight", "Loose Weight" }));
-        add(goalComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 138, 32));
+        add(goalComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 138, 32));
 
-        trainerAptBtn.setBackground(new java.awt.Color(255, 102, 0));
+        trainerAptBtn.setBackground(new java.awt.Color(204, 204, 204));
         trainerAptBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        trainerAptBtn.setForeground(new java.awt.Color(51, 51, 51));
         trainerAptBtn.setText("Get Training Workouts");
         trainerAptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trainerAptBtnActionPerformed(evt);
             }
         });
-        add(trainerAptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 183, 40));
+        add(trainerAptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 183, 40));
 
-        submitRequest.setBackground(new java.awt.Color(255, 102, 0));
+        submitRequest.setBackground(new java.awt.Color(204, 204, 204));
         submitRequest.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        submitRequest.setForeground(new java.awt.Color(51, 51, 51));
         submitRequest.setText("Submit Request to Nutrition");
         submitRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitRequestActionPerformed(evt);
             }
         });
-        add(submitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 190, 45));
+        add(submitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 190, 45));
 
         dietStatusTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         dietStatusTbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -226,16 +237,19 @@ public class CustomerAnalysisJPanel extends javax.swing.JPanel {
             dietStatusTbl.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 420, 720, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 720, 92));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Diet Status");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 378, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 378, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/customerAnalysis.png"))); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-430, -70, 1620, 830));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMIActionPerformed
@@ -344,11 +358,12 @@ public class CustomerAnalysisJPanel extends javax.swing.JPanel {
     private javax.swing.JTable dietStatusTbl;
     private javax.swing.JComboBox<String> goalComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton submitRequest;
     private javax.swing.JButton trainerAptBtn;
