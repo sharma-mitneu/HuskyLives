@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CustomerRole;
+package userinterface.StudentRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.DoctorEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Organization.GenPracOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrthopedicOrganization;
+import Business.Organization.PhysioOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.GenPracWorkRequest;
-import Business.WorkQueue.OrthoWorkRequest;
+import Business.WorkQueue.PhysioWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
@@ -26,28 +24,27 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ashish
  */
-public class OrthopedicJPanel extends javax.swing.JPanel {
+public class PhysiotherapistJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form GeneralPractitionerJPanel
+     * Creates new form PhysioJPanel
      */
-     private JPanel userProcessContainer;
+ private JPanel userProcessContainer;
     private EcoSystem system;
     private Network network;
     private UserAccount userAccount;
     Enterprise e;
-
-    OrthopedicJPanel(JPanel userProcessContainer, EcoSystem system, Network network,UserAccount userAccount) {
+    PhysiotherapistJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system =system;
         this.network = network;
         this.userAccount = userAccount;
-        orthoTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        populateOrthoStatusTable();
+        physioTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
+        populatePhysioStatusTable();
     }
-    private void populateOrthoStatusTable() {
-        DefaultTableModel dtm = (DefaultTableModel) orthoTbl.getModel();
+    private void populatePhysioStatusTable() {
+         DefaultTableModel dtm = (DefaultTableModel) physioTbl.getModel();
         dtm.setRowCount(0);
         Organization org = null;
         for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
@@ -56,7 +53,7 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
             }
         }
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof OrthopedicOrganization){
+            if (organization instanceof PhysioOrganization){
                 org = organization;
                 break;
             }
@@ -68,7 +65,7 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
             row[0] = request.getRequestID();
             row[1] = request.getMessage();
             row[2] = request.getReceiver();
-            row[3] = ((OrthoWorkRequest)request).getOrthoResult();
+            row[3] = ((PhysioWorkRequest)request).getPhysioResult();
             row[4] = request.getStatus();
             dtm.addRow(row);
             }
@@ -85,35 +82,36 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         msgTxt = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        orthoTbl = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        physioTbl = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new java.awt.CardLayout());
 
-        jLabel6.setBackground(new java.awt.Color(80, 80, 82));
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(80, 80, 82));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("ORTHOPEDIC DOCTOR");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1160, 40));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        msgTxt.setBackground(new java.awt.Color(204, 204, 204));
         msgTxt.setColumns(20);
         msgTxt.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        msgTxt.setForeground(new java.awt.Color(51, 51, 51));
         msgTxt.setRows(5);
         jScrollPane1.setViewportView(msgTxt);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 107, 320, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Enter Your Message:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 107, 170, 80));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 180, 80));
 
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -123,10 +121,12 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 210, 155, 48));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 155, 48));
 
-        orthoTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        orthoTbl.setModel(new javax.swing.table.DefaultTableModel(
+        physioTbl.setBackground(new java.awt.Color(204, 204, 204));
+        physioTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        physioTbl.setForeground(new java.awt.Color(0, 0, 0));
+        physioTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -145,22 +145,30 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(orthoTbl);
+        jScrollPane2.setViewportView(physioTbl);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 347, 820, 90));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 820, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/orthoBg.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 1150, 610));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText("Manage Organization Employees");
+        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 410, 30));
+
+        add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
     if(userAccount.getWorkQueue().getWorkRequestList().size()== 0){
-        OrthoWorkRequest req = new OrthoWorkRequest();
+        PhysioWorkRequest req = new PhysioWorkRequest();
         req.setSender(userAccount);
         req.setMessage(msgTxt.getText());
-        req.setStatus("Request sent to Admin");
+        req.setStatus("Request sent to Physiotherapist");
         Organization org = null;
         
         for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
@@ -169,7 +177,7 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
             }
         }
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof OrthopedicOrganization){
+            if (organization instanceof PhysioOrganization){
                 org = organization;
                 break;
             }
@@ -179,16 +187,16 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
             userAccount.getWorkQueue().getWorkRequestList().add(req);
         }
         JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-        populateOrthoStatusTable();
+        populatePhysioStatusTable();
     }
     else{
             int x = userAccount.getWorkQueue().getWorkRequestList().size()-1;
             WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
             if(r.getStatus().toLowerCase().equals("result posted")){
-                OrthoWorkRequest req = new OrthoWorkRequest();
+                PhysioWorkRequest req = new PhysioWorkRequest();
                 req.setSender(userAccount);
                 req.setMessage(msgTxt.getText());
-                req.setStatus("Request sent to Admin");
+                req.setStatus("Request sent to Physiotherapist");
                 Organization org = null;
 
                 for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
@@ -197,7 +205,7 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
                     }
                 }
                 for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof OrthopedicOrganization){
+                    if (organization instanceof PhysioOrganization){
                         org = organization;
                         break;
                     }
@@ -207,22 +215,25 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
                     userAccount.getWorkQueue().getWorkRequestList().add(req);
                 }
                 JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-                populateOrthoStatusTable();
-            }else {
+                populatePhysioStatusTable();
+            } else {
                 JOptionPane.showMessageDialog(null,"Please wait until the previous request has been processed !","Alert",JOptionPane.WARNING_MESSAGE);
             }
         } 
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea msgTxt;
-    private javax.swing.JTable orthoTbl;
+    private javax.swing.JTable physioTbl;
     // End of variables declaration//GEN-END:variables
 }

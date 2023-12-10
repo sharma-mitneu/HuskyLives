@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CustomerRole;
+package userinterface.StudentRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.DoctorEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.GenPracOrganization;
 import Business.Organization.Organization;
-import Business.Organization.PhysioOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.PhysioWorkRequest;
+import Business.WorkQueue.GenPracWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
@@ -24,27 +24,28 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ashish
  */
-public class PhysiotherapistJPanel extends javax.swing.JPanel {
+public class GeneralPractitionerJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PhysioJPanel
+     * Creates new form GeneralPractitionerJPanel
      */
- private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private EcoSystem system;
     private Network network;
     private UserAccount userAccount;
     Enterprise e;
-    PhysiotherapistJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
+
+    GeneralPractitionerJPanel(JPanel userProcessContainer, EcoSystem system, Network network,UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system =system;
         this.network = network;
         this.userAccount = userAccount;
-        physioTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        populatePhysioStatusTable();
+        genPracTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
+        populateGenPracStatusTable();
     }
-    private void populatePhysioStatusTable() {
-         DefaultTableModel dtm = (DefaultTableModel) physioTbl.getModel();
+    private void populateGenPracStatusTable() {
+        DefaultTableModel dtm = (DefaultTableModel) genPracTbl.getModel();
         dtm.setRowCount(0);
         Organization org = null;
         for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
@@ -53,7 +54,7 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
             }
         }
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof PhysioOrganization){
+            if (organization instanceof GenPracOrganization){
                 org = organization;
                 break;
             }
@@ -65,12 +66,13 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
             row[0] = request.getRequestID();
             row[1] = request.getMessage();
             row[2] = request.getReceiver();
-            row[3] = ((PhysioWorkRequest)request).getPhysioResult();
+            row[3] = ((GenPracWorkRequest)request).getDoctorResult();
             row[4] = request.getStatus();
             dtm.addRow(row);
             }
     }
         }
+        
     }
 
     /**
@@ -82,51 +84,48 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         msgTxt = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        physioTbl = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        genPracTbl = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
 
-        setLayout(new java.awt.CardLayout());
+        setBackground(new java.awt.Color(51, 51, 51));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(238, 137, 19));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setBackground(new java.awt.Color(80, 80, 82));
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(80, 80, 82));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("PHYSIOTHERAPIST");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 40));
-
+        msgTxt.setBackground(new java.awt.Color(204, 204, 204));
         msgTxt.setColumns(20);
         msgTxt.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        msgTxt.setForeground(new java.awt.Color(51, 51, 51));
         msgTxt.setRows(5);
         jScrollPane1.setViewportView(msgTxt);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 107, 320, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Enter Your Message:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 180, 80));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 170, 80));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Book Appointment");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 211, 155, 48));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 155, 48));
 
-        physioTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        physioTbl.setModel(new javax.swing.table.DefaultTableModel(
+        genPracTbl.setBackground(new java.awt.Color(204, 204, 204));
+        genPracTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        genPracTbl.setForeground(new java.awt.Color(0, 0, 0));
+        genPracTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -145,22 +144,31 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(physioTbl);
+        jScrollPane2.setViewportView(genPracTbl);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 348, 820, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 820, 130));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/customerPhysio.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 610));
+        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
 
-        add(jPanel1, "card2");
+        jLabel10.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText("GENERAL PRACTITIONER");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 410, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
     if(userAccount.getWorkQueue().getWorkRequestList().size()== 0){
-        PhysioWorkRequest req = new PhysioWorkRequest();
+        GenPracWorkRequest req = new GenPracWorkRequest();
         req.setSender(userAccount);
         req.setMessage(msgTxt.getText());
-        req.setStatus("Request sent to Physiotherapist");
+        req.setStatus("Request sent to Admin");
         Organization org = null;
         
         for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
@@ -169,7 +177,7 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
             }
         }
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof PhysioOrganization){
+            if (organization instanceof GenPracOrganization){
                 org = organization;
                 break;
             }
@@ -179,16 +187,16 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
             userAccount.getWorkQueue().getWorkRequestList().add(req);
         }
         JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-        populatePhysioStatusTable();
+        populateGenPracStatusTable();
     }
     else{
             int x = userAccount.getWorkQueue().getWorkRequestList().size()-1;
             WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
             if(r.getStatus().toLowerCase().equals("result posted")){
-                PhysioWorkRequest req = new PhysioWorkRequest();
+                GenPracWorkRequest req = new GenPracWorkRequest();
                 req.setSender(userAccount);
                 req.setMessage(msgTxt.getText());
-                req.setStatus("Request sent to Physiotherapist");
+                req.setStatus("Request sent to Admin");
                 Organization org = null;
 
                 for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
@@ -197,7 +205,7 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
                     }
                 }
                 for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof PhysioOrganization){
+                    if (organization instanceof GenPracOrganization){
                         org = organization;
                         break;
                     }
@@ -207,24 +215,24 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
                     userAccount.getWorkQueue().getWorkRequestList().add(req);
                 }
                 JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-                populatePhysioStatusTable();
-            } else {
+                populateGenPracStatusTable();
+            }
+            else {
                 JOptionPane.showMessageDialog(null,"Please wait until the previous request has been processed !","Alert",JOptionPane.WARNING_MESSAGE);
             }
         } 
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JTable genPracTbl;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea msgTxt;
-    private javax.swing.JTable physioTbl;
     // End of variables declaration//GEN-END:variables
 }

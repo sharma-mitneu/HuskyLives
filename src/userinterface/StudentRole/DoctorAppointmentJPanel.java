@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CustomerRole;
+package userinterface.StudentRole;
 
 import Business.EcoSystem;
 import Business.Network.Network;
@@ -62,10 +62,12 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
         jSplitPane1.setDividerLocation(80);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel1.setBackground(new java.awt.Color(238, 137, 19));
+        jPanel1.setBackground(new java.awt.Color(255, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        generalBtn.setBackground(new java.awt.Color(204, 204, 204));
         generalBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        generalBtn.setForeground(new java.awt.Color(51, 51, 51));
         generalBtn.setText("General Practitioner");
         generalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +76,9 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(generalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 156, 35));
 
+        physioBtn.setBackground(new java.awt.Color(204, 204, 204));
         physioBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        physioBtn.setForeground(new java.awt.Color(51, 51, 51));
         physioBtn.setText("Physiotherapist");
         physioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +87,9 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(physioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 156, 35));
 
+        orthoBtn.setBackground(new java.awt.Color(204, 204, 204));
         orthoBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        orthoBtn.setForeground(new java.awt.Color(51, 51, 51));
         orthoBtn.setText("Orthopedic Doctor");
         orthoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,8 +107,9 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/physio.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, 40));
 
-        backJButton.setBackground(new java.awt.Color(255, 102, 0));
+        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(51, 51, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +120,7 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        rightJPanel.setBackground(new java.awt.Color(238, 137, 19));
+        rightJPanel.setBackground(new java.awt.Color(51, 51, 51));
         rightJPanel.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(rightJPanel);
 
@@ -123,7 +130,7 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
     private void generalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generalBtnActionPerformed
         // TODO add your handling code here:
          GeneralPractitionerJPanel panel = new GeneralPractitionerJPanel(userProcessContainer, system, network, userAccount);
-        rightJPanel.add("ManageCustomersJPanel", panel);
+        rightJPanel.add("ManageStudentsJPanel", panel);
         CardLayout layout = (CardLayout) rightJPanel.getLayout();
         layout.next(rightJPanel);
     }//GEN-LAST:event_generalBtnActionPerformed
@@ -137,7 +144,7 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
     private void physioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physioBtnActionPerformed
         // TODO add your handling code here:
          PhysiotherapistJPanel panel = new PhysiotherapistJPanel(userProcessContainer, system, network, userAccount);
-        rightJPanel.add("ManageCustomersJPanel", panel);
+        rightJPanel.add("ManageStudentsJPanel", panel);
         CardLayout layout = (CardLayout) rightJPanel.getLayout();
         layout.next(rightJPanel);
     }//GEN-LAST:event_physioBtnActionPerformed
@@ -145,7 +152,7 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
     private void orthoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orthoBtnActionPerformed
         // TODO add your handling code here:
         OrthopedicJPanel panel = new OrthopedicJPanel(userProcessContainer, system, network, userAccount);
-        rightJPanel.add("ManageCustomersJPanel", panel);
+        rightJPanel.add("ManageStudentsJPanel", panel);
         CardLayout layout = (CardLayout) rightJPanel.getLayout();
         layout.next(rightJPanel);
     }//GEN-LAST:event_orthoBtnActionPerformed

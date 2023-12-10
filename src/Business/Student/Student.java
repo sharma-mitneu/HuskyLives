@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Customer;
+package Business.Student;
 
 import Business.Network.Network;
 import java.util.Random;
@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author ashish
  */
-public class Customer {
+public class Student {
     
     private String name;
     private int id;
@@ -24,12 +24,6 @@ public class Customer {
     private static int count = 0;
     private Network network;
     private String enterprise;
-     private Boolean none;
-    private Boolean diabetes;
-    private Boolean cholestrol;
-    private Boolean hypertension;
-    private Boolean pcos;
-    private Boolean thyroid;
     private String goal;
     private String email;
     private String address;
@@ -39,7 +33,7 @@ public class Customer {
     private int max = 9999;
     private int roomNumber;
 
-    public Customer() {
+    public Student() {
         Random r = new Random();
         count = r.nextInt(max-min) + min;
         id = count;
@@ -120,54 +114,6 @@ public class Customer {
     
     public String getName() {
         return name;
-    }
-
-    public Boolean getNone() {
-        return none;
-    }
-
-    public void setNone(Boolean none) {
-        this.none = none;
-    }
-
-    public Boolean getDiabetes() {
-        return diabetes;
-    }
-
-    public void setDiabetes(Boolean diabetes) {
-        this.diabetes = diabetes;
-    }
-
-    public Boolean getCholestrol() {
-        return cholestrol;
-    }
-
-    public void setCholestrol(Boolean cholestrol) {
-        this.cholestrol = cholestrol;
-    }
-
-    public Boolean getHypertension() {
-        return hypertension;
-    }
-
-    public void setHypertension(Boolean hypertension) {
-        this.hypertension = hypertension;
-    }
-
-    public Boolean getPcos() {
-        return pcos;
-    }
-
-    public void setPcos(Boolean pcos) {
-        this.pcos = pcos;
-    }
-
-    public Boolean getThyroid() {
-        return thyroid;
-    }
-
-    public void setThyroid(Boolean thyroid) {
-        this.thyroid = thyroid;
     }
 
     public String getGoal() {

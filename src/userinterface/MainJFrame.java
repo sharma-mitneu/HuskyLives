@@ -13,7 +13,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.CustomerRole.CreateNewCustomerJPanel;
+import userinterface.StudentRole.CreateNewStudentJPanel;
 import userinterface.SystemAdminWorkArea.ManageNetworkJPanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 /**
@@ -194,8 +194,8 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
                 }
             }
         }
-        if(userAccount !=null && userAccount.getCustomer() != null){
-            network = userAccount.getCustomer().getNetwork();
+        if(userAccount !=null && userAccount.getStudent() != null){
+            network = userAccount.getStudent().getNetwork();
         
         }
         if(userAccount==null){
@@ -254,7 +254,7 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         System.out.println("user list  " + system.getUserAccountDirectory().getUserAccountList());
-        CreateNewCustomerJPanel createCus =new CreateNewCustomerJPanel(container, system);
+        CreateNewStudentJPanel createCus =new CreateNewStudentJPanel(container, system);
         container.add("SignUpJPanel",createCus);
         CardLayout layout=(CardLayout)container.getLayout();
         layout.next(container);

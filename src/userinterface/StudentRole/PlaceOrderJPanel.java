@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CustomerRole;
+package userinterface.StudentRole;
 
-import Business.Customer.Customer;
+import Business.Student.Student;
 import Business.EcoSystem;
 import Business.Enterprise.DietEnterprise;
 import Business.Enterprise.Enterprise;
@@ -42,7 +42,7 @@ public class PlaceOrderJPanel extends javax.swing.JPanel {
     private int itemCount = 0;
     private ArrayList<Items> cusList;
     private ArrayList<Items> histList;
-    private Customer customer;
+    private Student student;
     private Network network;
     
 
@@ -51,11 +51,11 @@ public class PlaceOrderJPanel extends javax.swing.JPanel {
      */
   
 
-    PlaceOrderJPanel(JPanel userProcessContainer, Customer customer, EcoSystem system, UserAccount userAccount, Enterprise enterprise, Network network) {
+    PlaceOrderJPanel(JPanel userProcessContainer, Student student, EcoSystem system, UserAccount userAccount, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
-        this.customer = customer;
+        this.student = student;
         this.business=system;
         this.enterprise=enterprise;
         this.network = network;
@@ -131,7 +131,7 @@ private void populateDormInventoryItems(){
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        customerNotes = new javax.swing.JTextArea();
+        studentNotes = new javax.swing.JTextArea();
         addToCartBtn = new javax.swing.JButton();
         delCartBtn = new javax.swing.JButton();
         placeOrderBtn = new javax.swing.JButton();
@@ -206,10 +206,10 @@ private void populateDormInventoryItems(){
         jLabel3.setText("Message:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 99, 40));
 
-        customerNotes.setColumns(20);
-        customerNotes.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        customerNotes.setRows(5);
-        jScrollPane2.setViewportView(customerNotes);
+        studentNotes.setColumns(20);
+        studentNotes.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        studentNotes.setRows(5);
+        jScrollPane2.setViewportView(studentNotes);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 260, 58));
 
@@ -378,7 +378,7 @@ private void populateDormInventoryItems(){
             request.setSender(userAccount);
             request.setStatus("Order Placed");
             request.setTotalBill(Integer.parseInt(totBillTxt.getText()));
-            request.setMessage(customerNotes.getText());
+            request.setMessage(studentNotes.getText());
             Organization org = null;
         for(Network net: business.getNetworkList()){
             for(Enterprise enter : net.getEnterpriseDirectory().getEnterpriseList()){
@@ -469,7 +469,6 @@ private void populateDormInventoryItems(){
     private javax.swing.JButton addToCartBtn;
     private javax.swing.JButton addToCartHistBtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextArea customerNotes;
     private javax.swing.JButton delCartBtn;
     private javax.swing.JTable dormInventoryTbl;
     private javax.swing.JTable histItemTbl;
@@ -492,6 +491,7 @@ private void populateDormInventoryItems(){
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton placeOrderBtn;
+    private javax.swing.JTextArea studentNotes;
     private javax.swing.JTextField totBillTxt;
     // End of variables declaration//GEN-END:variables
 

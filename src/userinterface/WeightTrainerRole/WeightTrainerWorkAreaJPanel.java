@@ -7,7 +7,7 @@ package userinterface.WeightTrainerRole;
 
 import userinterface.FitnessTrainerRole.*;
 import userinterface.GeneralPractitionerRole.*;
-import Business.Customer.Customer;
+import Business.Student.Student;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -60,19 +60,19 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
          this.ecosystem = business;
          this.network = network;
          greetLbl.setText(account.getEmployee().getName() + "!!");
-         tblCustomerList.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-         populateCustomer();
+         tblStudentList.getTableHeader().setDefaultRenderer(new tableHeaderColors());
+         populateStudent();
     }
 
-    public void populateCustomer(){
-        DefaultTableModel dtm = (DefaultTableModel) tblCustomerList.getModel();
+    public void populateStudent(){
+        DefaultTableModel dtm = (DefaultTableModel) tblStudentList.getModel();
         dtm.setRowCount(0);
         
         for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){
         for(Employee emp : org.getEmployeeDirectory().getEmployeeList()){
             if(emp.toString().equals(account.getEmployee().toString())){
                 for( WorkRequest request: account.getWorkQueue().getWorkRequestList()){
-                Customer cust = request.getSender().getCustomer();
+                Student cust = request.getSender().getStudent();
             
             Object[] row = new Object[4];
             row[0] = cust.getId();
@@ -97,7 +97,7 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCustomerList = new javax.swing.JTable();
+        tblStudentList = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nameTxt = new javax.swing.JTextField();
@@ -110,13 +110,6 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         txtHeight = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtWeight = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        noneCheckBox = new javax.swing.JCheckBox();
-        hyperCheckBox = new javax.swing.JCheckBox();
-        diabCheckBox = new javax.swing.JCheckBox();
-        pcosCheckBox = new javax.swing.JCheckBox();
-        cholestrolCheckBox = new javax.swing.JCheckBox();
-        thyroidCheckBox = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         greetLbl = new javax.swing.JLabel();
@@ -133,11 +126,11 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(80, 80, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CUSTOMER DETAILS");
+        jLabel1.setText("STUDENT DETAILS");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1200, 39));
 
-        tblCustomerList.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        tblCustomerList.setModel(new javax.swing.table.DefaultTableModel(
+        tblStudentList.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        tblStudentList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -145,7 +138,7 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Customer ID", "Customer Name", "Message", "Status"
+                "NUID", "Student Name", "Message", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -156,7 +149,7 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblCustomerList);
+        jScrollPane1.setViewportView(tblStudentList);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 675, 91));
 
@@ -230,46 +223,6 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         txtWeight.setEditable(false);
         add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 150, 30));
 
-        jLabel16.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Health Issues");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 310, -1));
-
-        noneCheckBox.setBackground(new java.awt.Color(102, 153, 255));
-        noneCheckBox.setText("None");
-        noneCheckBox.setEnabled(false);
-        add(noneCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 90, -1));
-
-        hyperCheckBox.setBackground(new java.awt.Color(102, 153, 255));
-        hyperCheckBox.setText("Hypertension");
-        hyperCheckBox.setEnabled(false);
-        hyperCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hyperCheckBoxActionPerformed(evt);
-            }
-        });
-        add(hyperCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
-
-        diabCheckBox.setBackground(new java.awt.Color(102, 153, 255));
-        diabCheckBox.setText("Diabetes");
-        diabCheckBox.setEnabled(false);
-        add(diabCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 90, -1));
-
-        pcosCheckBox.setBackground(new java.awt.Color(102, 153, 255));
-        pcosCheckBox.setText("PCOS");
-        pcosCheckBox.setEnabled(false);
-        add(pcosCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 90, -1));
-
-        cholestrolCheckBox.setBackground(new java.awt.Color(102, 153, 255));
-        cholestrolCheckBox.setText("Cholestrol");
-        cholestrolCheckBox.setEnabled(false);
-        add(cholestrolCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 90, -1));
-
-        thyroidCheckBox.setBackground(new java.awt.Color(102, 153, 255));
-        thyroidCheckBox.setText("Thyroid");
-        thyroidCheckBox.setEnabled(false);
-        add(thyroidCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 90, -1));
-
         jPanel3.setBackground(new java.awt.Color(102, 153, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -328,21 +281,17 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_radioFemaleActionPerformed
 
-    private void hyperCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hyperCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hyperCheckBoxActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int selectedRow = tblCustomerList.getSelectedRow();
+        int selectedRow = tblStudentList.getSelectedRow();
         if(selectedRow >=0){
-            WeightTrainerWorkRequest request = (WeightTrainerWorkRequest) tblCustomerList.getValueAt(selectedRow, 2);
+            WeightTrainerWorkRequest request = (WeightTrainerWorkRequest) tblStudentList.getValueAt(selectedRow, 2);
             if(!"Result Posted".equals(request.getStatus())){
                 request.setStatus("Result Posted");
                 request.setWeightTrainerResult(weightMsgTxt.getText());
                 String email = request.getSender().getUsername();
-                populateCustomer();
+                populateStudent();
                 sendEmail(email,(String) weightChartComboBox.getSelectedItem());
-                JOptionPane.showMessageDialog(null,"Email has been sent to Customer!","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Email has been sent to Student!","Success",JOptionPane.INFORMATION_MESSAGE);
                 weightMsgTxt.setText("");
             }else{
                 JOptionPane.showMessageDialog(null,"Result has been already Processed","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
@@ -412,24 +361,18 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
     
     private void viewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsBtnActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblCustomerList.getSelectedRow();
+        int selectedRow = tblStudentList.getSelectedRow();
         if(selectedRow >=0){
-            Customer customer = (Customer) tblCustomerList.getValueAt(selectedRow, 1);
-            nameTxt.setText(customer.getName());
-            txtAge.setText(String.valueOf(customer.getAge()));
-            if(customer.getGender().toLowerCase().equals("male")){
+            Student student = (Student) tblStudentList.getValueAt(selectedRow, 1);
+            nameTxt.setText(student.getName());
+            txtAge.setText(String.valueOf(student.getAge()));
+            if(student.getGender().toLowerCase().equals("male")){
                 radioMale.setSelected(true);
             }else{
                 radioFemale.setSelected(false);
             }
-            txtHeight.setText(String.valueOf(customer.getHeight()));
-            txtWeight.setText(String.valueOf(customer.getWeight()));
-            noneCheckBox.setSelected(customer.getNone());
-            diabCheckBox.setSelected(customer.getDiabetes());
-            cholestrolCheckBox.setSelected(customer.getCholestrol());
-            hyperCheckBox.setSelected(customer.getHypertension());
-            pcosCheckBox.setSelected(customer.getPcos());
-            thyroidCheckBox.setSelected(customer.getThyroid());
+            txtHeight.setText(String.valueOf(student.getHeight()));
+            txtWeight.setText(String.valueOf(student.getWeight()));
         }else{
             JOptionPane.showMessageDialog(null,"Please Select a row","Error",JOptionPane.ERROR_MESSAGE);
         }
@@ -438,14 +381,10 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox cholestrolCheckBox;
-    private javax.swing.JCheckBox diabCheckBox;
     private javax.swing.JLabel greetLbl;
-    private javax.swing.JCheckBox hyperCheckBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -458,12 +397,9 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameTxt;
-    private javax.swing.JCheckBox noneCheckBox;
-    private javax.swing.JCheckBox pcosCheckBox;
     private javax.swing.JRadioButton radioFemale;
     private javax.swing.JRadioButton radioMale;
-    private javax.swing.JTable tblCustomerList;
-    private javax.swing.JCheckBox thyroidCheckBox;
+    private javax.swing.JTable tblStudentList;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtWeight;

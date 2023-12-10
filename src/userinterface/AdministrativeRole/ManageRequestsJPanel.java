@@ -69,7 +69,7 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
                 for(WorkRequest request : org.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[4];
            
-            row[0] = request.getSender().getCustomer().getName();
+            row[0] = request.getSender().getStudent().getName();
             row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[2] = request;
             row[3] = request.getStatus();

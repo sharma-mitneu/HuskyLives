@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CustomerRole;
+package userinterface.StudentRole;
 
-import Business.Customer.Customer;
+import Business.Student.Student;
 import Business.DB4OUtil.DB4OUtil;
 import userinterface.SystemAdminWorkArea.*;
 import Business.EcoSystem;
@@ -13,7 +13,7 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Role.CustomerRole;
+import Business.Role.StudentRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -30,22 +30,22 @@ import javax.swing.JPanel;
  *
  * @author ashish
  */
-public class CreateNewCustomerJPanel extends javax.swing.JPanel {
+public class CreateNewStudentJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreateNewCustomerJPanel
+     * Creates new form CreateNewStudentJPanel
      */
     JPanel userProcessContainer;
     EcoSystem system;
     Organization organization;
-     private Customer c;
+     private Student c;
      private boolean ageValid;
      private boolean emailValid;
      private boolean zipValid;
      private boolean heightValid;
      private boolean weightValid;
      private boolean cityValid;
-    public CreateNewCustomerJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public CreateNewStudentJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.system=system;
@@ -165,13 +165,6 @@ private void populateNetworkComboBox() {
         jLabel13 = new javax.swing.JLabel();
         txtZipcode = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel16 = new javax.swing.JLabel();
-        thyroidChkBox = new javax.swing.JCheckBox();
-        noneChkBox = new javax.swing.JCheckBox();
-        diabetesChkBox = new javax.swing.JCheckBox();
-        cholestrolChkBox = new javax.swing.JCheckBox();
-        hyperChkBox = new javax.swing.JCheckBox();
-        pcosChkBox = new javax.swing.JCheckBox();
         jLabel17 = new javax.swing.JLabel();
         AgeSuccessLbl = new javax.swing.JLabel();
         nameLbl = new javax.swing.JLabel();
@@ -195,9 +188,10 @@ private void populateNetworkComboBox() {
         weightLbl = new javax.swing.JLabel();
         heightLbl = new javax.swing.JLabel();
         emailIDAlreadyLbl = new javax.swing.JLabel();
-        bgLbl = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtName.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -206,7 +200,7 @@ private void populateNetworkComboBox() {
                 txtNameKeyReleased(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 190, 30));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 190, 30));
 
         confirmPasswordTxt.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         confirmPasswordTxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -214,12 +208,13 @@ private void populateNetworkComboBox() {
                 confirmPasswordTxtKeyReleased(evt);
             }
         });
-        add(confirmPasswordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 190, 30));
+        add(confirmPasswordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 190, 30));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Email ID:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 107, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 107, 30));
 
         txtPassword.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -227,7 +222,7 @@ private void populateNetworkComboBox() {
                 txtPasswordKeyReleased(evt);
             }
         });
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 190, 30));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 190, 30));
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -240,9 +235,11 @@ private void populateNetworkComboBox() {
                 txtEmailKeyReleased(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 190, 30));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 190, 30));
 
+        submitBtn.setBackground(new java.awt.Color(204, 204, 204));
         submitBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        submitBtn.setForeground(new java.awt.Color(51, 51, 51));
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,17 +249,20 @@ private void populateNetworkComboBox() {
         add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 530, 100, 50));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Password:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 107, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 107, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CUSTOMER REGISTRATION");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 10, 1210, 50));
+        jLabel1.setText("STUDENT REGISTRATION");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 60, 1210, 50));
 
+        resetBtn.setBackground(new java.awt.Color(204, 204, 204));
         resetBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        resetBtn.setForeground(new java.awt.Color(51, 51, 51));
         resetBtn.setText("Reset");
         resetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,38 +272,43 @@ private void populateNetworkComboBox() {
         add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 100, 50));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 107, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 107, 30));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Confirm Password:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Age:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 90, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 90, 30));
 
         txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAgeKeyReleased(evt);
             }
         });
-        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 190, 30));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 190, 30));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Gender:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 107, 20));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 107, 20));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Height(in cms):");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 86, 30));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 86, 30));
 
-        radioMale.setBackground(new java.awt.Color(255, 255, 255));
+        radioMale.setBackground(new java.awt.Color(51, 51, 51));
         radioMale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         radioMale.setSelected(true);
         radioMale.setText("Male");
@@ -312,16 +317,16 @@ private void populateNetworkComboBox() {
                 radioMaleActionPerformed(evt);
             }
         });
-        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 68, -1));
+        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 68, -1));
 
         txtHeight.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtHeightKeyReleased(evt);
             }
         });
-        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 190, 30));
+        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 190, 30));
 
-        radioFemale.setBackground(new java.awt.Color(255, 255, 255));
+        radioFemale.setBackground(new java.awt.Color(51, 51, 51));
         radioFemale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         radioFemale.setText("Female");
         radioFemale.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +334,7 @@ private void populateNetworkComboBox() {
                 radioFemaleActionPerformed(evt);
             }
         });
-        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 72, -1));
+        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 72, -1));
 
         txtWeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,12 +346,13 @@ private void populateNetworkComboBox() {
                 txtWeightKeyReleased(evt);
             }
         });
-        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 190, 30));
+        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 470, 190, 30));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Address:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 110, 30));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 110, 30));
 
         txtAdress.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -354,12 +360,13 @@ private void populateNetworkComboBox() {
                 txtAdressKeyReleased(evt);
             }
         });
-        add(txtAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 190, 30));
+        add(txtAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 190, 30));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("City:");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 90, 30));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 90, 30));
 
         txtCity.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -370,209 +377,141 @@ private void populateNetworkComboBox() {
                 txtCityKeyReleased(evt);
             }
         });
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 190, 30));
+        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 190, 30));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("State:");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 80, 30));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 80, 30));
 
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 190, 30));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 190, 30));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Zip Code:");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 110, 30));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 110, 30));
 
         txtZipcode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtZipcodeKeyReleased(evt);
             }
         });
-        add(txtZipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 190, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 1190, 10));
-
-        jLabel16.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(80, 80, 82));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Health Issues");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 310, -1));
-
-        thyroidChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        thyroidChkBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        thyroidChkBox.setText("Thyroid");
-        thyroidChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                thyroidChkBoxMousePressed(evt);
-            }
-        });
-        add(thyroidChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 90, -1));
-
-        noneChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        noneChkBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        noneChkBox.setText("None");
-        noneChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                noneChkBoxMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                noneChkBoxMousePressed(evt);
-            }
-        });
-        add(noneChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 90, -1));
-
-        diabetesChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        diabetesChkBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        diabetesChkBox.setText("Diabetes");
-        diabetesChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                diabetesChkBoxMousePressed(evt);
-            }
-        });
-        add(diabetesChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 90, -1));
-
-        cholestrolChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        cholestrolChkBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        cholestrolChkBox.setText("Cholestrol");
-        cholestrolChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cholestrolChkBoxMousePressed(evt);
-            }
-        });
-        add(cholestrolChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 90, -1));
-
-        hyperChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        hyperChkBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        hyperChkBox.setText("Hypertension");
-        hyperChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                hyperChkBoxMousePressed(evt);
-            }
-        });
-        hyperChkBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hyperChkBoxActionPerformed(evt);
-            }
-        });
-        add(hyperChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 100, -1));
-
-        pcosChkBox.setBackground(new java.awt.Color(204, 204, 204));
-        pcosChkBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        pcosChkBox.setText("PCOS");
-        pcosChkBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pcosChkBoxMousePressed(evt);
-            }
-        });
-        add(pcosChkBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 90, -1));
+        add(txtZipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 190, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 1190, 10));
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(204, 204, 204));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Weight (in Kgs):");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 465, -1, 20));
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, -1, 20));
 
         AgeSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(AgeSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 104, 50, 40));
+        add(AgeSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 50, 40));
 
         nameLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         nameLbl.setForeground(new java.awt.Color(255, 0, 0));
         nameLbl.setText(" Only Alphabets are allowed.");
-        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 190, 20));
+        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 190, 20));
 
         invalidAgeLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         invalidAgeLbl.setForeground(new java.awt.Color(255, 0, 0));
         invalidAgeLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         invalidAgeLbl.setText("Invalid Age.");
-        add(invalidAgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 190, 20));
+        add(invalidAgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 190, 20));
 
         ageBandLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         ageBandLbl.setForeground(new java.awt.Color(255, 0, 0));
         ageBandLbl.setText("Age Should be between 15-85");
-        add(ageBandLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, -1, 20));
+        add(ageBandLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, -1, 20));
 
         confirmPasswordSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(confirmPasswordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 40, -1));
+        add(confirmPasswordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 40, -1));
 
         confirmPasswordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         confirmPasswordLbl.setForeground(new java.awt.Color(255, 0, 0));
         confirmPasswordLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         confirmPasswordLbl.setText("Password Not Matching");
-        add(confirmPasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 160, 20));
+        add(confirmPasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 160, 20));
 
         nameSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(nameSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 104, 30, 40));
+        add(nameSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 30, 40));
 
         emailLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         emailLbl.setForeground(new java.awt.Color(255, 0, 0));
         emailLbl.setText("Valid Format - 'xx@xx.xx'");
-        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 150, 20));
+        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 150, 20));
 
         emailSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 40, 30));
+        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 40, 30));
 
         passwordSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 30, -1));
+        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 30, -1));
 
         passwordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         passwordLbl.setForeground(new java.awt.Color(255, 0, 0));
         passwordLbl.setText("Sample format: Asdf@1");
-        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 160, 20));
+        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 160, 20));
 
         addressLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         addressLbl.setForeground(new java.awt.Color(255, 0, 0));
         addressLbl.setText("Only Alphabets, Numbers, '#/-' are allowed");
-        add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 250, 20));
+        add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 250, 20));
 
         addressSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(addressSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 50, -1));
+        add(addressSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 50, -1));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 30, -1));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, 30, -1));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         cityLbl.setForeground(new java.awt.Color(255, 0, 0));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 160, 20));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 160, 20));
 
         zipSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(zipSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 310, 30, -1));
+        add(zipSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 30, -1));
 
         zipLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         zipLbl.setForeground(new java.awt.Color(255, 0, 0));
         zipLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         zipLbl.setText("Only Numbers Allowed");
-        add(zipLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, 160, 20));
+        add(zipLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 160, 20));
 
         weightSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(weightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 40, 30));
+        add(weightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, 40, 30));
 
         heightSuccessLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         heightSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(heightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 60, 30));
+        add(heightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, 60, 30));
 
         weightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         weightLbl.setForeground(new java.awt.Color(255, 0, 0));
         weightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         weightLbl.setText("Invalid Weight");
-        add(weightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 160, 20));
+        add(weightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 500, 160, 20));
 
         heightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         heightLbl.setForeground(new java.awt.Color(255, 0, 0));
         heightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         heightLbl.setText("Invalid Height");
-        add(heightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 160, 20));
+        add(heightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 160, 20));
 
         emailIDAlreadyLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         emailIDAlreadyLbl.setForeground(new java.awt.Color(255, 0, 0));
         emailIDAlreadyLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailIDAlreadyLbl.setText("EmailID already Exists");
-        add(emailIDAlreadyLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 160, 20));
+        add(emailIDAlreadyLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 160, 20));
 
-        bgLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/customerRegistration.png"))); // NOI18N
-        add(bgLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 1240, 790));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 100, 100));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
@@ -596,12 +535,6 @@ private void populateNetworkComboBox() {
                 txtZipcode.setText("");
                 txtHeight.setText("");
                 txtWeight.setText("");
-                 diabetesChkBox.setSelected(false);
-                cholestrolChkBox.setSelected(false);
-                hyperChkBox.setSelected(false);
-                pcosChkBox.setSelected(false);
-                thyroidChkBox.setSelected(false);
-                noneChkBox.setSelected(false);
                 nameSuccessLbl.setVisible(false);
                 emailSuccessLbl.setVisible(false);
                 passwordSuccessLbl.setVisible(false);
@@ -622,10 +555,6 @@ private void populateNetworkComboBox() {
          if(txtName.getText().isEmpty() || txtAge.getText().isEmpty() || txtWeight.getText().isEmpty() || txtHeight.getText().isEmpty() || txtEmail.getText().isEmpty() || txtAdress.getText().isEmpty() || txtCity.getText().isEmpty() ||  txtZipcode.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Field(s) cannot be Empty!","Error",JOptionPane.ERROR_MESSAGE);
              return;
-          }else if(!noneChkBox.isSelected() && !diabetesChkBox.isSelected() && !cholestrolChkBox.isSelected() && !hyperChkBox.isSelected() && !pcosChkBox.isSelected() && !thyroidChkBox.isSelected()){
-              JOptionPane.showMessageDialog(null,"Please Fill the Health Issues! If you don't have any kindly Select None!","Error",JOptionPane.ERROR_MESSAGE);
-             return;
-          
           }else if(ageValid && zipValid && heightValid && weightValid && emailValid){
             String name = txtName.getText();
             String password = txtPassword.getText();
@@ -639,7 +568,7 @@ private void populateNetworkComboBox() {
                 gender = "Female";
             }
 
-            c = new Customer();
+            c = new Student();
             c.setName(name);
             c.setEmail(email);
             c.setHeight(Integer.parseInt(txtHeight.getText()));
@@ -649,19 +578,13 @@ private void populateNetworkComboBox() {
             c.setAddress(add);
             c.setCity(city);
             c.setZipcode(txtZipcode.getText());
-            c.setNone(noneChkBox.isSelected());
-            c.setDiabetes(diabetesChkBox.isSelected());
-            c.setCholestrol(cholestrolChkBox.isSelected());
-            c.setHypertension(hyperChkBox.isSelected());
-            c.setPcos(pcosChkBox.isSelected());
-            c.setThyroid(thyroidChkBox.isSelected());
             c.setNetwork(network);
             
             // User Name Already Exists Validation 
             
-                system.getCustomerDirectory().createCustomer(c);
-                system.getUserAccountDirectory().createCustomerAccount(email, password,c, new CustomerRole());
-                JOptionPane.showMessageDialog(null, "Customer added successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+                system.getStudentDirectory().createStudent(c);
+                system.getUserAccountDirectory().createStudentAccount(email, password,c, new StudentRole());
+                JOptionPane.showMessageDialog(null, "Student added successfully","Success",JOptionPane.INFORMATION_MESSAGE);
                 clearValues();
                 DB4OUtil.getInstance().storeSystem(system);
                 
@@ -682,49 +605,6 @@ private void populateNetworkComboBox() {
         radioMale.setSelected(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_radioFemaleActionPerformed
-
-    private void hyperChkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hyperChkBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hyperChkBoxActionPerformed
-
-    private void noneChkBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noneChkBoxMousePressed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_noneChkBoxMousePressed
-
-    private void diabetesChkBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diabetesChkBoxMousePressed
-        // TODO add your handling code here:
-        noneChkBox.setSelected(false);
-    }//GEN-LAST:event_diabetesChkBoxMousePressed
-
-    private void noneChkBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noneChkBoxMouseClicked
-        // TODO add your handling code here:
-        diabetesChkBox.setSelected(false);
-        cholestrolChkBox.setSelected(false);
-        hyperChkBox.setSelected(false);
-        pcosChkBox.setSelected(false);
-        thyroidChkBox.setSelected(false);
-    }//GEN-LAST:event_noneChkBoxMouseClicked
-
-    private void cholestrolChkBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cholestrolChkBoxMousePressed
-        // TODO add your handling code here:
-         noneChkBox.setSelected(false);
-    }//GEN-LAST:event_cholestrolChkBoxMousePressed
-
-    private void hyperChkBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hyperChkBoxMousePressed
-        // TODO add your handling code here:
-         noneChkBox.setSelected(false);
-    }//GEN-LAST:event_hyperChkBoxMousePressed
-
-    private void pcosChkBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcosChkBoxMousePressed
-        // TODO add your handling code here:
-         noneChkBox.setSelected(false);
-    }//GEN-LAST:event_pcosChkBoxMousePressed
-
-    private void thyroidChkBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thyroidChkBoxMousePressed
-        // TODO add your handling code here:
-         noneChkBox.setSelected(false);
-    }//GEN-LAST:event_thyroidChkBoxMousePressed
 
     private void confirmPasswordTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_confirmPasswordTxtKeyReleased
         // TODO add your handling code here:
@@ -790,7 +670,7 @@ private void populateNetworkComboBox() {
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
         // TODO add your handling code here:
-        if (!usernamePatternCorrect(txtEmail.getText()) && !(txtEmail.getText().isEmpty()) && system.getCustomerDirectory().checkIfUsernameIsUnique(txtEmail.getText())){
+        if (!usernamePatternCorrect(txtEmail.getText()) && !(txtEmail.getText().isEmpty()) && system.getStudentDirectory().checkIfUsernameIsUnique(txtEmail.getText())){
               emailLbl.setVisible(true);
               emailIDAlreadyLbl.setVisible(false);
               emailSuccessLbl.setVisible(false);
@@ -800,7 +680,7 @@ private void populateNetworkComboBox() {
             emailIDAlreadyLbl.setVisible(false);
             emailValid =false;
              emailSuccessLbl.setVisible(false);
-        }else if(!system.getCustomerDirectory().checkIfUsernameIsUnique(txtEmail.getText())){
+        }else if(!system.getStudentDirectory().checkIfUsernameIsUnique(txtEmail.getText())){
             emailIDAlreadyLbl.setVisible(true);
             emailSuccessLbl.setVisible(false);
             emailValid =false;
@@ -971,20 +851,16 @@ private void populateNetworkComboBox() {
     private javax.swing.JLabel addressLbl;
     private javax.swing.JLabel addressSuccessLbl;
     private javax.swing.JLabel ageBandLbl;
-    private javax.swing.JLabel bgLbl;
-    private javax.swing.JCheckBox cholestrolChkBox;
     private javax.swing.JLabel cityLbl;
     private javax.swing.JLabel citySuccessLbl;
     private javax.swing.JLabel confirmPasswordLbl;
     private javax.swing.JLabel confirmPasswordSuccessLbl;
     private javax.swing.JPasswordField confirmPasswordTxt;
-    private javax.swing.JCheckBox diabetesChkBox;
     private javax.swing.JLabel emailIDAlreadyLbl;
     private javax.swing.JLabel emailLbl;
     private javax.swing.JLabel emailSuccessLbl;
     private javax.swing.JLabel heightLbl;
     private javax.swing.JLabel heightSuccessLbl;
-    private javax.swing.JCheckBox hyperChkBox;
     private javax.swing.JLabel invalidAgeLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -999,20 +875,18 @@ private void populateNetworkComboBox() {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nameLbl;
     private javax.swing.JLabel nameSuccessLbl;
     private javax.swing.JComboBox networkJComboBox;
-    private javax.swing.JCheckBox noneChkBox;
     private javax.swing.JLabel passwordLbl;
     private javax.swing.JLabel passwordSuccessLbl;
-    private javax.swing.JCheckBox pcosChkBox;
     private javax.swing.JRadioButton radioFemale;
     private javax.swing.JRadioButton radioMale;
     private javax.swing.JButton resetBtn;
     private javax.swing.JButton submitBtn;
-    private javax.swing.JCheckBox thyroidChkBox;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtCity;
