@@ -37,11 +37,13 @@ public class Customer {
     private String zipcode;
     private int min = 1000;
     private int max = 9999;
+    private int roomNumber;
 
     public Customer() {
         Random r = new Random();
         count = r.nextInt(max-min) + min;
         id = count;
+        roomNumber = r.nextInt(max-min)+min;
     }
 
     public int getId() {
@@ -207,7 +209,10 @@ public class Customer {
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-   
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
     
     @Override
     public String toString() {
