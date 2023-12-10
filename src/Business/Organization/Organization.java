@@ -40,6 +40,8 @@ public abstract class Organization {
         Orthopedic("Orthopedic Doctor"),
         Store("Store"),
         Delivery("DeliveryMan"),
+        Service("Service"),
+        ServiceWorker("Service Worker"),
         Lab("Lab Organization"),
         Doctor("Doctor Organisation");
         

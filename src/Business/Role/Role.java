@@ -19,6 +19,7 @@ public abstract class Role {
     
     public enum RoleType{
         Admin("Admin"),
+        MaintenanceAdmin("Maintenance Admin"),
         Customer("Customer"),
         Doctor("Doctor"), /*TBR*/
         DoctorAdmin("Doctor Admin"),
@@ -30,6 +31,8 @@ public abstract class Role {
         Physiotherapist("Physiotherapist"),
         StoreManager("Store Manager"),
         DeliveryMan("Delivery Man"),
+        ServiceProvider("Service Provider"),
+        ServiceWorker("Service Worker"),
         FitnessTrainer("Fitness Trainer"),
         WeightTrainer("Weight Trainer");
                

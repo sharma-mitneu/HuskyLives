@@ -56,9 +56,10 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
         menuTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         priceSuccessLbl.setVisible(false);
         this.userProcessContainer=userProcessContainer;
-                populateTable();
+        populateTable();
     }
-      private boolean cityPatternCorrect(String val3){
+    
+    private boolean cityPatternCorrect(String val3){
         Pattern p=Pattern.compile("^[a-zA-Z ]+$");
         Matcher m=p.matcher(val3);
         boolean b=m.matches();

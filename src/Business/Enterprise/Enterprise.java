@@ -20,6 +20,15 @@ public abstract class Enterprise extends Organization{
     private OrganizationDirectory organizationDirectory;
     private StoreDirectory storeDirectory;
     private ArrayList<Items> itemsList;
+    private ArrayList<ServiceTypes> serviceTypeList;
+    
+    public Enterprise(String name,EnterpriseType type){
+        super(name);
+        this.enterpriseType=type;
+        this.itemsList =new ArrayList<>();
+        this.serviceTypeList = new ArrayList<>();
+        organizationDirectory=new OrganizationDirectory();
+    }
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
@@ -31,7 +40,8 @@ public abstract class Enterprise extends Organization{
         DietUnit("Diet Unit"),
         TrainerUnit("Trainer Unit"),
         DoctorUnit("Doctor Unit"),
-        StoreUnit("Store Unit");
+        StoreUnit("Store Unit"),
+        MaintenanceUnit("Maintenance Unit");
         
         private String value;
         
@@ -54,6 +64,25 @@ public abstract class Enterprise extends Organization{
     public void setItemsList(ArrayList<Items> itemsList) {
         this.itemsList = itemsList;
     }
+    
+    public ArrayList<ServiceTypes> getServiceTypeList() {
+        return serviceTypeList;
+    }
+
+    public void getServiceTypeList(ArrayList<ServiceTypes> serviceTypeList) {
+        this.serviceTypeList = serviceTypeList;
+    }
+    
+    public ServiceTypes createServiceType(){
+        ServiceTypes service = new ServiceTypes(); 
+        this.serviceTypeList.add(service);
+        return service;
+    }
+      
+    
+    public void deleteService(ServiceTypes service){
+         this.serviceTypeList.remove(service); 
+    }
 
     public EnterpriseType getEnterpriseType() {
         return enterpriseType;
@@ -63,21 +92,15 @@ public abstract class Enterprise extends Organization{
         this.enterpriseType = enterpriseType;
     }
     
-    public Enterprise(String name,EnterpriseType type){
-        super(name);
-        this.enterpriseType=type;
-        this.itemsList =new ArrayList<>();
-        organizationDirectory=new OrganizationDirectory();
-    }
     public Items createMenuItem(){
         Items item = new Items(); 
         this.itemsList.add(item);
         return item;
-}
+    }
       
     
-     public void deleteItem(Items item){
-        itemsList.remove(item); 
+    public void deleteItem(Items item){
+       itemsList.remove(item); 
     }
       
 }

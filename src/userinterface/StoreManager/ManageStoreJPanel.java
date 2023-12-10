@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author srira
+ * @author  srira
  */
 public class ManageStoreJPanel extends javax.swing.JPanel {
     
@@ -43,6 +43,12 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.business=business;
         greetLbl.setText(account.getEmployee().getName() + "!!");
+      
+        if(organization.toString().equals("Service")){
+            manageInventoryBtn.setText("Create Services");
+            manageOrdersBtn.setText("Manage Service Request");
+            jLabel1.setText("Manage Maintenance Services");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -73,7 +79,7 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                 manageInventoryBtnActionPerformed(evt);
             }
         });
-        add(manageInventoryBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 170, 50));
+        add(manageInventoryBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 50));
 
         manageOrdersBtn.setBackground(new java.awt.Color(255, 102, 0));
         manageOrdersBtn.setText("Manage Orders");
@@ -82,7 +88,7 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
                 manageOrdersBtnActionPerformed(evt);
             }
         });
-        add(manageOrdersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 170, 50));
+        add(manageOrdersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 240, 50));
 
         jPanel3.setBackground(new java.awt.Color(102, 153, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,10 +110,18 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageInventoryBtnActionPerformed
+       
        ManageInventoryJPanel panel = new ManageInventoryJPanel(userProcessContainer,organization,business,enterprise,account);
-        userProcessContainer.add("ManageMenuJPanel", panel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+       CreateServicesJPanel createPanel = new CreateServicesJPanel(userProcessContainer,organization,business,enterprise,account);
+       
+       if(organization.toString().equals("Service")){
+           userProcessContainer.add("CreateServicesJPanel", createPanel);
+       }else{
+           userProcessContainer.add("ManageMenuJPanel", panel);
+       }
+       
+       CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
     }//GEN-LAST:event_manageInventoryBtnActionPerformed
 
     private void manageOrdersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersBtnActionPerformed

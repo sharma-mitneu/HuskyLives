@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Sriram
+ * @author ashish
  */
 public class OrthopedicJPanel extends javax.swing.JPanel {
 
