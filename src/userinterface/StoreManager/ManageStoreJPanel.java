@@ -11,10 +11,11 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.DormInventoryManager.CreateServicesJPanel;
 
 /**
  *
- * @author  risha
+ * @author  ashish
  */
 public class ManageStoreJPanel extends javax.swing.JPanel {
     
@@ -67,7 +68,7 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1200, -1));
 
         manageInventoryBtn.setBackground(new java.awt.Color(255, 102, 0));
-        manageInventoryBtn.setText("Manage Inventory");
+        manageInventoryBtn.setText("Manage Services");
         manageInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageInventoryBtnActionPerformed(evt);
@@ -76,7 +77,7 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
         add(manageInventoryBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 170, 50));
 
         manageOrdersBtn.setBackground(new java.awt.Color(255, 102, 0));
-        manageOrdersBtn.setText("Manage Orders");
+        manageOrdersBtn.setText("Manage Requests");
         manageOrdersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageOrdersBtnActionPerformed(evt);
@@ -104,15 +105,15 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageInventoryBtnActionPerformed
-       ManageInventoryJPanel panel = new ManageInventoryJPanel(userProcessContainer,organization,business,enterprise,account);
-        userProcessContainer.add("ManageMenuJPanel", panel);
+        CreateServicesJPanel panel = new CreateServicesJPanel(userProcessContainer,organization,business,enterprise,account);
+        userProcessContainer.add("CreateServicesJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageInventoryBtnActionPerformed
 
     private void manageOrdersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersBtnActionPerformed
-        ManageOrdersJPanel panel = new ManageOrdersJPanel(userProcessContainer,organization, business,enterprise,account);
-        userProcessContainer.add("ManageOrdersJPanel", panel);
+        ManageServiceJPanel panel = new ManageServiceJPanel(userProcessContainer,organization, business,enterprise,account);
+        userProcessContainer.add("ManageServiceJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrdersBtnActionPerformed

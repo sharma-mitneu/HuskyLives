@@ -475,9 +475,9 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                  txtName.setText("");
                  clearLabels();
             }
-        }   
+        }
     }//GEN-LAST:event_createUserJButtonActionPerformed
-
+    
     private void organizationEmpJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmpJComboBoxActionPerformed
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         if (organization != null){

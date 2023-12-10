@@ -8,10 +8,12 @@ package userinterface.StoreManager;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Items;
+import Business.Enterprise.ServiceTypes;
 import Business.StudentRequestOrder;
 import Business.Organization.Organization;
 //import Business.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.MaintenanceWorkRequest;
 import Business.WorkQueue.StoreWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
@@ -24,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sriram
  */
-public class ManageOrdersJPanel extends javax.swing.JPanel {
+public class ManageServiceJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private UserAccount userAcc;
@@ -37,7 +39,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
      * Creates new form ManageOrderJPanel
      */
 
-    ManageOrdersJPanel(JPanel userProcessContainer, Organization organization, EcoSystem business, Enterprise enterprise, UserAccount account) {
+    ManageServiceJPanel(JPanel userProcessContainer, Organization organization, EcoSystem business, Enterprise enterprise, UserAccount account) {
          initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -108,7 +110,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(80, 80, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Store Order Management");
+        jLabel1.setText("Maintenance Request Management");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 1200, 37));
 
         backBtn.setBackground(new java.awt.Color(255, 102, 0));
@@ -123,7 +125,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         viewOrderBtn.setBackground(new java.awt.Color(255, 102, 0));
         viewOrderBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        viewOrderBtn.setText("View Order");
+        viewOrderBtn.setText("View Request");
         viewOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewOrderBtnActionPerformed(evt);
@@ -143,7 +145,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         placeOrderBtn.setBackground(new java.awt.Color(255, 102, 0));
         placeOrderBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        placeOrderBtn.setText("Take Order");
+        placeOrderBtn.setText("Accept Request");
         placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 placeOrderBtnActionPerformed(evt);
@@ -153,7 +155,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         assignDelManBtn.setBackground(new java.awt.Color(255, 102, 0));
         assignDelManBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        assignDelManBtn.setText("Assign Deliveryman");
+        assignDelManBtn.setText("Assign Service Man");
         assignDelManBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignDelManBtnActionPerformed(evt);
@@ -167,7 +169,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Item Name", "Price"
+                "Service Name", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -219,14 +221,14 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             return;
         }
        /*StudentRequestOrder order1 = (StudentRequestOrder)orderMgtTbl.getValueAt(selectedRow, 0);*/
-       StoreWorkRequest request = (StoreWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
-            DefaultTableModel dtm = (DefaultTableModel) itemListTbl.getModel();
-        dtm.setRowCount(0);
+       MaintenanceWorkRequest request = (MaintenanceWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
+       DefaultTableModel dtm = (DefaultTableModel) itemListTbl.getModel();
+       dtm.setRowCount(0);
         
-        for(Items i: request.getCusList()) {
+        for(ServiceTypes s: request.getCusList()) {
             Object row[] = new Object[2];
-            row[0] = i;
-            row[1] = i.getPrice();
+            row[0] = s;
+            row[1] = s.getPrice();
             dtm.addRow(row);
         }
         totBillTxt.setText(String.valueOf(request.getTotalBill()));
@@ -241,15 +243,20 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             return;
         }
         
-        StoreWorkRequest request = (StoreWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
-         if(!(request.getStatus().equals("Order Placed"))){
-            JOptionPane.showMessageDialog(null, "Order already Accepted.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-         return ; }
+        MaintenanceWorkRequest request = (MaintenanceWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
+        if((request.getStatus().equals("Request pending"))){
+           JOptionPane.showMessageDialog(null, "Can't accept request until admin assigns you","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+           return ; 
+        }
+        if((!request.getStatus().equals("Assigned"))){
+           JOptionPane.showMessageDialog(null, "Request already accepted","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+           return ; 
+        }
          
-         request.setStatus("Accepted");
+        request.setStatus("Accepted");
          
-            JOptionPane.showMessageDialog(null, "Order accepted successfully.","Success",JOptionPane.INFORMATION_MESSAGE);
-             populateTable();
+        JOptionPane.showMessageDialog(null, "Request accepted successfully.","Success",JOptionPane.INFORMATION_MESSAGE);
+        populateTable();
     }//GEN-LAST:event_placeOrderBtnActionPerformed
 
     private void assignDelManBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDelManBtnActionPerformed
@@ -261,20 +268,22 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             return;
         }
         
-        StoreWorkRequest order1 = (StoreWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
-         if(order1.getStatus().equalsIgnoreCase("Delivered")){
-            JOptionPane.showMessageDialog(null, "Order has been already Delivered.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-         return ; }
-         if(order1.getStatus().equalsIgnoreCase("Out for Delivery")){
-            JOptionPane.showMessageDialog(null, "Deliveryman has been already assigned.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+        MaintenanceWorkRequest order1 = (MaintenanceWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
+        if(order1.getStatus().equalsIgnoreCase("Completed")){
+            JOptionPane.showMessageDialog(null, "Request has been already completed.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
             return ; 
-         }
-         if(!order1.getStatus().equalsIgnoreCase("Accepted")){
-            JOptionPane.showMessageDialog(null, "Order is not accepted. Kindly accept the order first to proceed.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(order1.getStatus().equalsIgnoreCase("Serviceman Assigned")){
+            JOptionPane.showMessageDialog(null, "Service man has already been assigned. ","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
             return ; 
-         }
-         DeliveryManAssignJPanel panel = new DeliveryManAssignJPanel(userProcessContainer,business, enterprise, order1);
-        userProcessContainer.add("AssignDeliveryManJPanel", panel);
+        }
+        if(!order1.getStatus().equalsIgnoreCase("Accepted")){
+            JOptionPane.showMessageDialog(null, "Request is not accepted. Kindly accept the request first to proceed.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+            return ; 
+        }
+        
+        ServiceManAssignJPanel panel = new ServiceManAssignJPanel(userProcessContainer,business, enterprise, order1);
+        userProcessContainer.add("AssignServiceManJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_assignDelManBtnActionPerformed
