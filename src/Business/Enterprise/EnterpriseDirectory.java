@@ -51,6 +51,10 @@ public class EnterpriseDirectory {
             enterprise=new StoreEnterprise(name);
             enterpriseList.add(enterprise);
         }
+        if(type==Enterprise.EnterpriseType.ProctorOfficer){
+            enterprise=new StoreEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
         return enterprise;
     }
 }
