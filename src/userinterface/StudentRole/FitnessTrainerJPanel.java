@@ -13,7 +13,6 @@ import Business.Organization.FitnessTrainingOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.FitnessTrainerWorkRequest;
-import Business.WorkQueue.GenPracWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import javax.swing.JOptionPane;
@@ -29,47 +28,49 @@ public class FitnessTrainerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form FitnessTrainerJPanel
      */
- private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private EcoSystem system;
     private Network network;
     private UserAccount userAccount;
     Enterprise e;
+
     FitnessTrainerJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
-       initComponents();
+        initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system =system;
+        this.system = system;
         this.network = network;
         this.userAccount = userAccount;
         fitnessTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         populateFitnessStatusTable();
     }
+
     private void populateFitnessStatusTable() {
-         DefaultTableModel dtm = (DefaultTableModel) fitnessTbl.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) fitnessTbl.getModel();
         dtm.setRowCount(0);
         Organization org = null;
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof TrainerEnterprise){
+        for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enter instanceof TrainerEnterprise) {
                 e = enter;
             }
         }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof FitnessTrainingOrganization){
+        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof FitnessTrainingOrganization) {
                 org = organization;
                 break;
             }
         }
-        if (org!=null){
-            for(WorkRequest request: org.getWorkQueue().getWorkRequestList()) {
-            if(request.getSender().equals(userAccount)){
-            Object row[] = new Object[5];
-            row[0] = request.getRequestID();
-            row[1] = request.getMessage();
-            row[2] = request.getReceiver();
-            row[3] = ((FitnessTrainerWorkRequest)request).getFitnessTrainerResult();
-            row[4] = request.getStatus();
-            dtm.addRow(row);
+        if (org != null) {
+            for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+                if (request.getSender().equals(userAccount)) {
+                    Object row[] = new Object[5];
+                    row[0] = request.getRequestID();
+                    row[1] = request.getMessage();
+                    row[2] = request.getReceiver();
+                    row[3] = ((FitnessTrainerWorkRequest) request).getFitnessTrainerResult();
+                    row[4] = request.getStatus();
+                    dtm.addRow(row);
+                }
             }
-    }
         }
     }
 
@@ -101,12 +102,12 @@ public class FitnessTrainerJPanel extends javax.swing.JPanel {
         msgTxt.setRows(5);
         jScrollPane1.setViewportView(msgTxt);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 320, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Enter Your Message:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 170, 80));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 170, 80));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -117,7 +118,7 @@ public class FitnessTrainerJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 155, 48));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 155, 48));
 
         fitnessTbl.setBackground(new java.awt.Color(204, 204, 204));
         fitnessTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -143,7 +144,7 @@ public class FitnessTrainerJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(fitnessTbl);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 820, 150));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 820, 150));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -158,63 +159,63 @@ public class FitnessTrainerJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    if(userAccount.getWorkQueue().getWorkRequestList().size()== 0){
-        FitnessTrainerWorkRequest req = new FitnessTrainerWorkRequest();
-        req.setSender(userAccount);
-        req.setMessage(msgTxt.getText());
-        req.setStatus("Request sent to Admin");
-        Organization org = null;
-        
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof TrainerEnterprise){
-                e = enter;
+        if (userAccount.getWorkQueue().getWorkRequestList().size() == 0) {
+            FitnessTrainerWorkRequest req = new FitnessTrainerWorkRequest();
+            req.setSender(userAccount);
+            req.setMessage(msgTxt.getText());
+            req.setStatus("Request sent to Admin");
+            Organization org = null;
+
+            for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enter instanceof TrainerEnterprise) {
+                    e = enter;
+                }
             }
-        }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof FitnessTrainingOrganization){
-                org = organization;
-                break;
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof FitnessTrainingOrganization) {
+                    org = organization;
+                    break;
+                }
             }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(req);
-            userAccount.getWorkQueue().getWorkRequestList().add(req);
-        }
-        JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-        populateFitnessStatusTable();
-    } else{
-            int x = userAccount.getWorkQueue().getWorkRequestList().size()-1;
+            if (org != null) {
+                org.getWorkQueue().getWorkRequestList().add(req);
+                userAccount.getWorkQueue().getWorkRequestList().add(req);
+            }
+            JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            populateFitnessStatusTable();
+        } else {
+            int x = userAccount.getWorkQueue().getWorkRequestList().size() - 1;
             WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
-            if(r.getStatus().toLowerCase().equals("result posted")){
+            if (r.getStatus().toLowerCase().equals("result posted")) {
                 FitnessTrainerWorkRequest req = new FitnessTrainerWorkRequest();
                 req.setSender(userAccount);
                 req.setMessage(msgTxt.getText());
                 req.setStatus("Request sent to Admin");
                 Organization org = null;
 
-                for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-                    if(enter instanceof TrainerEnterprise){
+                for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (enter instanceof TrainerEnterprise) {
                         e = enter;
                     }
                 }
-                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof FitnessTrainingOrganization){
+                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof FitnessTrainingOrganization) {
                         org = organization;
                         break;
                     }
                 }
-                if (org!=null){
+                if (org != null) {
                     org.getWorkQueue().getWorkRequestList().add(req);
                     userAccount.getWorkQueue().getWorkRequestList().add(req);
                 }
-                JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 populateFitnessStatusTable();
-            }else {
-                JOptionPane.showMessageDialog(null,"Please wait until the previous request has been processed !","Alert",JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please wait until the previous request has been processed !", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-        } 
+        }
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

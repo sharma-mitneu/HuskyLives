@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import userinterface.GeneralProctor.GeneralProctorJPanel;
-import userinterface.AdministrativeRole.ViewStudentsJPanel;
 
 /**
  *
@@ -124,6 +122,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel1.setMinimumSize(new java.awt.Dimension(565, 25));
+        jPanel1.setPreferredSize(new java.awt.Dimension(565, 25));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N

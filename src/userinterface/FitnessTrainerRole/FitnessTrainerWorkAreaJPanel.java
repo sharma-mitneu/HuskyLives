@@ -5,18 +5,15 @@
  */
 package userinterface.FitnessTrainerRole;
 
-import userinterface.GeneralPractitionerRole.*;
 import Business.Student.Student;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Organization.GenPracOrganization;
 import Business.Organization.NutritionOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.FitnessTrainerWorkRequest;
-import Business.WorkQueue.GenPracWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import java.io.IOException;
@@ -43,47 +40,48 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form FitnessTrainerWorkAreaJPanel
-     */   
+     */
     JPanel userProcessContainer;
     UserAccount account;
     NutritionOrganization nutritionOrganisation;
     Enterprise enterprise;
     EcoSystem ecosystem;
     Network network;
+
     public FitnessTrainerWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-         this.account = account;
-         this.enterprise = enterprise;
-         this.ecosystem = business;
-         this.network = network;
-         greetLbl.setText(account.getEmployee().getName() + "!!");
-         tblStudentList.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-         populateStudent();
+        this.account = account;
+        this.enterprise = enterprise;
+        this.ecosystem = business;
+        this.network = network;
+        greetLbl.setText(account.getEmployee().getName() + "!!");
+        tblStudentList.getTableHeader().setDefaultRenderer(new tableHeaderColors());
+        populateStudent();
     }
-    
-    public void populateStudent(){
+
+    public void populateStudent() {
         DefaultTableModel dtm = (DefaultTableModel) tblStudentList.getModel();
         dtm.setRowCount(0);
-        
-        for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){
-        for(Employee emp : org.getEmployeeDirectory().getEmployeeList()){
-            if(emp.toString().equals(account.getEmployee().toString())){
-                for( WorkRequest request: account.getWorkQueue().getWorkRequestList()){
-                Student cust = request.getSender().getStudent();
-            
-            Object[] row = new Object[4];
-            row[0] = cust.getId();
-            row[1] = cust;
-            row[2] = request;
-            row[3] = request.getStatus();
-            dtm.addRow(row);
-           }
+
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (Employee emp : org.getEmployeeDirectory().getEmployeeList()) {
+                if (emp.toString().equals(account.getEmployee().toString())) {
+                    for (WorkRequest request : account.getWorkQueue().getWorkRequestList()) {
+                        Student cust = request.getSender().getStudent();
+
+                        Object[] row = new Object[4];
+                        row[0] = cust.getId();
+                        row[1] = cust;
+                        row[2] = request;
+                        row[3] = request.getStatus();
+                        dtm.addRow(row);
+                    }
+                }
             }
         }
-        }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,7 +108,6 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         viewDetailsBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         fitnessMsgTxt = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
@@ -120,13 +117,14 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         greetLbl = new javax.swing.JLabel();
         viewMessageBtn = new javax.swing.JButton();
+        enterpriseLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblStudentList.setBackground(new java.awt.Color(204, 204, 204));
         tblStudentList.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        tblStudentList.setForeground(new java.awt.Color(0, 0, 0));
+        tblStudentList.setForeground(new java.awt.Color(51, 51, 51));
         tblStudentList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -148,7 +146,7 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblStudentList);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 675, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 675, 91));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -159,36 +157,35 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 620, -1, 40));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, -1, 40));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 107, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 107, 30));
 
         nameTxt.setEditable(false);
         nameTxt.setBackground(new java.awt.Color(204, 204, 204));
         nameTxt.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         nameTxt.setForeground(new java.awt.Color(51, 51, 51));
-        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 150, 30));
+        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 150, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Age:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 90, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 90, 30));
 
         txtAge.setEditable(false);
         txtAge.setBackground(new java.awt.Color(204, 204, 204));
         txtAge.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         txtAge.setForeground(new java.awt.Color(51, 51, 51));
-        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 150, 30));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 150, 30));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Gender:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 107, 20));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 107, 20));
 
-        radioMale.setBackground(new java.awt.Color(51, 51, 51));
         radioMale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         radioMale.setText("Male");
         radioMale.setEnabled(false);
@@ -197,9 +194,8 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
                 radioMaleActionPerformed(evt);
             }
         });
-        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 68, -1));
+        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 68, -1));
 
-        radioFemale.setBackground(new java.awt.Color(51, 51, 51));
         radioFemale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         radioFemale.setText("Female");
         radioFemale.setEnabled(false);
@@ -208,29 +204,29 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
                 radioFemaleActionPerformed(evt);
             }
         });
-        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 72, -1));
+        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 72, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Height(in cms):");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 86, 30));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 86, 30));
 
         txtHeight.setEditable(false);
         txtHeight.setBackground(new java.awt.Color(204, 204, 204));
         txtHeight.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         txtHeight.setForeground(new java.awt.Color(51, 51, 51));
-        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, 150, 30));
+        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 150, 30));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Weight (in Kgs):");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, 30));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, -1, 30));
 
         txtWeight.setEditable(false);
         txtWeight.setBackground(new java.awt.Color(204, 204, 204));
         txtWeight.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         txtWeight.setForeground(new java.awt.Color(51, 51, 51));
-        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 150, 30));
+        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 150, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -253,13 +249,7 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
                 viewDetailsBtnActionPerformed(evt);
             }
         });
-        add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 138, 45));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("STUDENT DETAILS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1200, 39));
+        add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 138, 45));
 
         fitnessMsgTxt.setBackground(new java.awt.Color(204, 204, 204));
         fitnessMsgTxt.setColumns(20);
@@ -268,23 +258,23 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
         fitnessMsgTxt.setRows(5);
         jScrollPane2.setViewportView(fitnessMsgTxt);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, -1, -1));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Message:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, 80, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 80, 30));
 
         fitnessChartComboBox.setBackground(new java.awt.Color(204, 204, 204));
         fitnessChartComboBox.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        fitnessChartComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        fitnessChartComboBox.setForeground(new java.awt.Color(51, 51, 51));
         fitnessChartComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fitness Chart-1", "Fitness Chart-2" }));
-        add(fitnessChartComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 150, 30));
+        add(fitnessChartComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 550, 150, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Fitness Chart:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, 80, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 80, 30));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -296,121 +286,118 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
         greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 320, 50));
 
+        viewMessageBtn.setBackground(new java.awt.Color(204, 204, 204));
         viewMessageBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        viewMessageBtn.setForeground(new java.awt.Color(51, 51, 51));
         viewMessageBtn.setText("View Message");
         viewMessageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewMessageBtnActionPerformed(evt);
             }
         });
-        add(viewMessageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 138, 45));
+        add(viewMessageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 138, 45));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText("STUDENT DETAILS");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 270, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMaleActionPerformed
         radioFemale.setEnabled(false);
-        // TODO add your handling code here:
     }//GEN-LAST:event_radioMaleActionPerformed
 
     private void radioFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFemaleActionPerformed
         radioMale.setEnabled(false);
-        // TODO add your handling code here:
     }//GEN-LAST:event_radioFemaleActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       int selectedRow = tblStudentList.getSelectedRow();
-        if(selectedRow >=0){
+        int selectedRow = tblStudentList.getSelectedRow();
+        if (selectedRow >= 0) {
             FitnessTrainerWorkRequest request = (FitnessTrainerWorkRequest) tblStudentList.getValueAt(selectedRow, 2);
-            if(!"Result Posted".equals(request.getStatus())){
+            if (!"Result Posted".equals(request.getStatus())) {
                 request.setStatus("Result Posted");
                 request.setFitnessTrainerResult(fitnessMsgTxt.getText());
                 String email = request.getSender().getUsername();
                 populateStudent();
-                sendEmail(email,(String) fitnessChartComboBox.getSelectedItem());
-                JOptionPane.showMessageDialog(null,"Email has been sent to Student!","Success",JOptionPane.INFORMATION_MESSAGE);
+                sendEmail(email, (String) fitnessChartComboBox.getSelectedItem());
+                JOptionPane.showMessageDialog(null, "Email has been sent to Student!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 fitnessMsgTxt.setText("");
-            }else{
-                JOptionPane.showMessageDialog(null,"Result has been already Processed","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Result has been already Processed", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             }
-            
-        }else{
-            JOptionPane.showMessageDialog(null,"Please Select a row","Error",JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please Select a row", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-     public void sendEmail(String email, String chart){
-                //final String username = "";
-		final String password = "uhugcrgdragopyzz";
-		String fromEmail = "huskylives23@gmail.com";
-		String toEmail = email;
-		Properties properties = new Properties();
-		properties.put("mail.smtp.auth", "true");
-                properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.port", "587");
-		
-		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(fromEmail,password);
-			}
-		});
-		//Start our mail message
-		MimeMessage msg = new MimeMessage(session);
-		try {
-			msg.setFrom(new InternetAddress(fromEmail));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-			msg.setSubject("Fitness Chart");
-			
-			Multipart emailContent = new MimeMultipart();
-			
-			//Text body part
-			MimeBodyPart textBodyPart = new MimeBodyPart();
-			textBodyPart.setText("Please find attached your fitness chart");
-			
-			//Attachment body part.
-			MimeBodyPart pdfAttachment = new MimeBodyPart();
-			pdfAttachment.attachFile("src/Business/WorkoutCharts/"+ chart+".pdf");
-//			
-			//Attach body parts
-			emailContent.addBodyPart(textBodyPart);
-			emailContent.addBodyPart(pdfAttachment);
-			
-			//Attach multipart to message
-			msg.setContent(emailContent);
-			
-			Transport.send(msg);
-			System.out.println("Sent message");
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		} 
-                catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void sendEmail(String email, String chart) {
+        final String password = "uhugcrgdragopyzz";
+        String fromEmail = "huskylives23@gmail.com";
+        String toEmail = email;
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        });
+        MimeMessage msg = new MimeMessage(session);
+        try {
+            msg.setFrom(new InternetAddress(fromEmail));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            msg.setSubject("Fitness Chart");
+
+            Multipart emailContent = new MimeMultipart();
+
+            //Text body part
+            MimeBodyPart textBodyPart = new MimeBodyPart();
+            textBodyPart.setText("Please find attached your fitness chart");
+
+            //Attachment body part.
+            MimeBodyPart pdfAttachment = new MimeBodyPart();
+            pdfAttachment.attachFile("src/Business/WorkoutCharts/" + chart + ".pdf");
+
+            //Attach body parts
+            emailContent.addBodyPart(textBodyPart);
+            emailContent.addBodyPart(pdfAttachment);
+
+            //Attach multipart to message
+            msg.setContent(emailContent);
+
+            Transport.send(msg);
+            System.out.println("Sent message");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-    
-    
-    
+
+
     private void viewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsBtnActionPerformed
-        // TODO add your handling code here:
         int selectedRow = tblStudentList.getSelectedRow();
-        if(selectedRow >=0){
+        if (selectedRow >= 0) {
             Student student = (Student) tblStudentList.getValueAt(selectedRow, 1);
             nameTxt.setText(student.getName());
             txtAge.setText(String.valueOf(student.getAge()));
-            if(student.getGender().toLowerCase().equals("male")){
+            if (student.getGender().toLowerCase().equals("male")) {
                 radioMale.setSelected(true);
-            }else{
+            } else {
                 radioFemale.setSelected(false);
             }
             txtHeight.setText(String.valueOf(student.getHeight()));
             txtWeight.setText(String.valueOf(student.getWeight()));
-        }else{
-            JOptionPane.showMessageDialog(null,"Please Select a row","Error",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please Select a row", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_viewDetailsBtnActionPerformed
 
     private void viewMessageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMessageBtnActionPerformed
@@ -435,20 +422,19 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
             }
         }
 
-        // Display the value of row[2] in a JOptionPane message
         if (dtm.getRowCount() > 0) {
-            viewMessage = "Request: " + dtm.getValueAt(0, 2); // Assuming you want the first row's request value
+            viewMessage = "Request: " + dtm.getValueAt(0, 2);
             JOptionPane.showMessageDialog(null, viewMessage, "Information", JOptionPane.INFORMATION_MESSAGE);
-    }
+        }
     }//GEN-LAST:event_viewMessageBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JComboBox<String> fitnessChartComboBox;
     private javax.swing.JTextArea fitnessMsgTxt;
     private javax.swing.JLabel greetLbl;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -473,5 +459,4 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton viewMessageBtn;
     // End of variables declaration//GEN-END:variables
 
-    
 }

@@ -8,7 +8,6 @@ package userinterface.StudentRole;
 import Business.EcoSystem;
 import Business.Network.Network;
 import Business.UserAccount.UserAccount;
-import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -27,9 +26,9 @@ public class TrainerAppointmentJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
 
     TrainerAppointmentJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
-     initComponents();
+        initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system =system;
+        this.system = system;
         this.network = network;
         this.userAccount = userAccount;
     }
@@ -57,76 +56,51 @@ public class TrainerAppointmentJPanel extends javax.swing.JPanel {
         jSplitPane1.setDividerLocation(80);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel1.setBackground(new java.awt.Color(238, 137, 19));
+        jPanel1.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backJButton.setBackground(new java.awt.Color(255, 102, 0));
+        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(51, 51, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 40));
 
+        weightBtn.setBackground(new java.awt.Color(204, 204, 204));
         weightBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        weightBtn.setForeground(new java.awt.Color(51, 51, 51));
         weightBtn.setText("Weight Trainer");
         weightBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 weightBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(weightBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(615, 25, 156, 35));
 
+        fitnessBtn.setBackground(new java.awt.Color(204, 204, 204));
         fitnessBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        fitnessBtn.setForeground(new java.awt.Color(51, 51, 51));
         fitnessBtn.setText("Fitness Trainer");
         fitnessBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fitnessBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(fitnessBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 25, 156, 35));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/fitnessTrainer.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 25, -1, 39));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/weightTrainer.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backJButton)
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(fitnessBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(weightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(weightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fitnessBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 25, -1, 39));
 
         jSplitPane1.setTopComponent(jPanel1);
 
-        rightJPanel.setBackground(new java.awt.Color(238, 137, 19));
+        rightJPanel.setBackground(new java.awt.Color(51, 51, 51));
         rightJPanel.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(rightJPanel);
 

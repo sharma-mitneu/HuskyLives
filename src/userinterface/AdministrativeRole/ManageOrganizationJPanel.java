@@ -5,14 +5,10 @@
 package userinterface.AdministrativeRole;
 
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
-import Business.Organization.OrganizationDirectory;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
-import java.time.Clock;
-import static java.time.Clock.system;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -25,11 +21,11 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
+
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageOrganizationJPanel(JPanel userProcessContainer,Enterprise enterprise) {
+    public ManageOrganizationJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -37,69 +33,66 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         populateTable();
         populateCombo();
     }
-    
-    private void populateCombo(){
+
+    private void populateCombo() {
         organizationJComboBox.removeAllItems();
         String ent = enterprise.getEnterpriseType().toString();
-         for (Type type : Organization.Type.values()){
-            if(ent.equals("Diet Unit")){
-                 if (type.getValue().equals(Type.Nutrition.getValue())){
+        for (Type type : Organization.Type.values()) {
+            if (ent.equals("Diet Unit")) {
+                if (type.getValue().equals(Type.Nutrition.getValue())) {
                     organizationJComboBox.addItem(type);
                 }
-            }else if(ent.equals("Trainer Unit")){
-                 if (type.getValue().equals(Type.FitnessTraining.getValue())){
+            } else if (ent.equals("Trainer Unit")) {
+                if (type.getValue().equals(Type.FitnessTraining.getValue())) {
                     organizationJComboBox.addItem(type);
                 }
-                if (type.getValue().equals(Type.WeightTraining.getValue())){
+                if (type.getValue().equals(Type.WeightTraining.getValue())) {
                     organizationJComboBox.addItem(type);
                 }
-                 
+
+            } else if (ent.equals("Doctor Unit")) {
+                if (type.getValue().equals(Type.GeneralPractitioner.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+                if (type.getValue().equals(Type.Physiotherapist.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+                if (type.getValue().equals(Type.Orthopedic.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+
+            } else if (ent.equals("Dorm Inventory Unit")) {
+                if (type.getValue().equals(Type.DormInventory.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+                if (type.getValue().equals(Type.Delivery.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+            } else if (ent.equals("Maintenance Unit")) {
+                if (type.getValue().equals(Type.Service.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
+                if (type.getValue().equals(Type.ServiceWorker.getValue())) {
+                    organizationJComboBox.addItem(type);
+                }
             }
-            else if(ent.equals("Doctor Unit")){
-                 if (type.getValue().equals(Type.GeneralPractitioner.getValue())){
-                    organizationJComboBox.addItem(type);
-                }
-                if (type.getValue().equals(Type.Physiotherapist.getValue())){
-                    organizationJComboBox.addItem(type);
-                }
-                if (type.getValue().equals(Type.Orthopedic.getValue())){
-                    organizationJComboBox.addItem(type);
-                }
-                 
-            }
-            else if(ent.equals("Dorm Inventory Unit")){
-                 if (type.getValue().equals(Type.DormInventory.getValue())){
-                    organizationJComboBox.addItem(type);
-                }
-                if (type.getValue().equals(Type.Delivery.getValue())){
-                    organizationJComboBox.addItem(type);
-                } 
-            }
-            else if(ent.equals("Maintenance Unit")){
-                 if (type.getValue().equals(Type.Service.getValue())){
-                    organizationJComboBox.addItem(type);
-                }
-                if (type.getValue().equals(Type.ServiceWorker.getValue())){
-                    organizationJComboBox.addItem(type);
-                } 
-            }
-         }
+        }
     }
 
-    private void populateTable(){
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
+
         model.setRowCount(0);
-        //System.out.println(Network);
-        
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
             Object[] row = new Object[2];
             row[0] = organization.getOrganizationID();
             row[1] = organization.getName();
-            
+
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,7 +117,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         organizationJTable.setBackground(new java.awt.Color(204, 204, 204));
         organizationJTable.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        organizationJTable.setForeground(new java.awt.Color(0, 0, 0));
+        organizationJTable.setForeground(new java.awt.Color(51, 51, 51));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -169,7 +162,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         organizationJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        organizationJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        organizationJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,43 +202,16 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
-        String t = String.valueOf(type)+" Organization";
+        String t = String.valueOf(type) + " Organization";
         System.out.println("TTTTT" + t);
-        for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){   
-            if(org.getName().equals(t)){
-                JOptionPane.showMessageDialog(null, "Organization is already added !","Alert",JOptionPane.INFORMATION_MESSAGE);
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getName().equals(t)) {
+                JOptionPane.showMessageDialog(null, "Organization is already added !", "Alert", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
         }
         enterprise.getOrganizationDirectory().createOrganization(type);
         populateTable();
-        
-        
-        // COMMENTED TO CHECK ORG
-         /*Type type = (Type) organizationJComboBox.getSelectedItem();
-       Object[] columnData = new Object[organizationJTable.getRowCount()];
-            Object[] rowData = new Object [organizationJTable.getRowCount()];
-            if(organizationJTable.getRowCount() > 0){
-            for (int i = 0; i < organizationJTable.getRowCount(); i++) {  
-                columnData[i] = organizationJTable.getValueAt(i, 1);
-                if(!columnData[i].equals(type.getValue())){
-                     enterprise.getOrganizationDirectory().createOrganization(type);
-                     orgPresent = 1;
-                     populateTable();
-                }else {
-                    orgPresent = 0;
-                }
-             }
-            }else{
-                    enterprise.getOrganizationDirectory().createOrganization(type);
-                     populateTable();
-                     orgPresent = 1;
-            }
-            
-            if(orgPresent == 0){
-                JOptionPane.showMessageDialog(null,"Organization is already Present","Alert",JOptionPane.WARNING_MESSAGE);
-                return;
-            }*/
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

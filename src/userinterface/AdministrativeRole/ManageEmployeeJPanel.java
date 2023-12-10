@@ -30,13 +30,13 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private boolean emailValid;
     private boolean userNameValid;
-     private boolean nameValid;
-     private boolean  passwordValid;
-    
+    private boolean nameValid;
+    private boolean passwordValid;
+
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageEmployeeJPanel(JPanel userProcessContainer,OrganizationDirectory organizationDir,EcoSystem system) {
+    public ManageEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
@@ -47,8 +47,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         populateOrganizationEmpComboBox();
 
     }
-    
-    public void clearLabels(){
+
+    public void clearLabels() {
         passwordSuccessLbl.setVisible(false);
         passwordLbl.setVisible(false);
         emailSuccessLbl.setVisible(false);
@@ -57,71 +57,77 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         citySuccessLbl.setVisible(false);
         cityLbl.setVisible(false);
     }
-    public void populateOrganizationComboBox(){
+
+    public void populateOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrganizationList()){
+
+        for (Organization organization : organizationDir.getOrganizationList()) {
             organizationJComboBox.addItem(organization);
         }
     }
-     private boolean cityPatternCorrect(String val3){
-        Pattern p=Pattern.compile("^[a-zA-Z ]+$");
-        Matcher m=p.matcher(val3);
-        boolean b=m.matches();
+
+    private boolean cityPatternCorrect(String val3) {
+        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher m = p.matcher(val3);
+        boolean b = m.matches();
         return b;
     }
-    
-    public void populateOrganizationEmpComboBox(){
+
+    public void populateOrganizationEmpComboBox() {
         organizationEmpJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrganizationList()){
+
+        for (Organization organization : organizationDir.getOrganizationList()) {
             organizationEmpJComboBox.addItem(organization);
         }
     }
-    
-    private void populateRoleComboBox(Organization organization){
+
+    private void populateRoleComboBox(Organization organization) {
         roleJComboBox.removeAllItems();
-        for (Role role : organization.getSupportedRole()){
+        for (Role role : organization.getSupportedRole()) {
 
             String r = role.toString();
             roleJComboBox.addItem(role);
         }
     }
 
-    private void populateTable(Organization organization){
+    private void populateTable(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (UserAccount acc : organization.getUserAccountDirectory().getUserAccountList()){
+
+        for (UserAccount acc : organization.getUserAccountDirectory().getUserAccountList()) {
             Employee employee = acc.getEmployee();
             Object[] row = new Object[3];
             row[0] = employee.getId();
             row[1] = employee;
             row[2] = acc;
             model.addRow(row);
-        
+
         }
     }
-    private boolean usernamePatternCorrect(String val){
-        Pattern p=Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
-        Matcher m=p.matcher(val);
-        boolean b=m.matches();
+
+    private boolean usernamePatternCorrect(String val) {
+        Pattern p = Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
+        Matcher m = p.matcher(val);
+        boolean b = m.matches();
         return b;
     }
-    private boolean namePatternCorrect(String val1){
-        Pattern p=Pattern.compile("^[a-zA-Z]+$");
-        Matcher m=p.matcher(val1);
-        boolean b=m.matches();
+
+    private boolean namePatternCorrect(String val1) {
+        Pattern p = Pattern.compile("^[a-zA-Z]+$");
+        Matcher m = p.matcher(val1);
+        boolean b = m.matches();
         return b;
     }
-    private boolean passwordPatternCorrect(String val4){
+
+    private boolean passwordPatternCorrect(String val4) {
         Pattern p1;
         p1 = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
-        Matcher m1=p1.matcher(String.valueOf(val4));
-        boolean b1=m1.matches();
+        Matcher m1 = p1.matcher(String.valueOf(val4));
+        boolean b1 = m1.matches();
         return b1;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,7 +173,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         organizationJTable.setBackground(new java.awt.Color(204, 204, 204));
-        organizationJTable.setForeground(new java.awt.Color(0, 0, 0));
+        organizationJTable.setForeground(new java.awt.Color(51, 51, 51));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -206,7 +212,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         organizationJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        organizationJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        organizationJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +239,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         organizationEmpJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         organizationEmpJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        organizationEmpJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        organizationEmpJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +262,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         roleJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         roleJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        roleJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        roleJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 190, 30));
 
@@ -267,7 +273,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 70, 30));
 
         txtUserName.setBackground(new java.awt.Color(204, 204, 204));
-        txtUserName.setForeground(new java.awt.Color(0, 0, 0));
+        txtUserName.setForeground(new java.awt.Color(51, 51, 51));
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
@@ -298,13 +304,13 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 87, 44));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Add Employees");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 302, 30));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("View Employees");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 390, 31));
@@ -327,7 +333,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 72, 30));
 
         txtName.setBackground(new java.awt.Color(204, 204, 204));
-        txtName.setForeground(new java.awt.Color(0, 0, 0));
+        txtName.setForeground(new java.awt.Color(51, 51, 51));
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -376,7 +382,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 810, 10));
 
         passwordJTextField.setBackground(new java.awt.Color(204, 204, 204));
-        passwordJTextField.setForeground(new java.awt.Color(0, 0, 0));
+        passwordJTextField.setForeground(new java.awt.Color(51, 51, 51));
         passwordJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 passwordJTextFieldKeyReleased(evt);
@@ -405,7 +411,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         org = (Organization) organizationJComboBox.getSelectedItem();
-        if (org != null){
+        if (org != null) {
             populateTable(org);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
@@ -414,73 +420,68 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         String userName = txtUserName.getText();
         String password = passwordJTextField.getText();
         //String name = txtName.getText();
-        
+
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
-        
+
         Employee employee = new Employee();
         employee.setName(txtName.getText());
-        
-        Role role = (Role) roleJComboBox.getSelectedItem();
-        
 
-        if(!txtUserName.getText().isEmpty() && !passwordJTextField.getText().isEmpty() && !txtName.getText().isEmpty()){
-            if(organization.getEmployeeDirectory().checkIfUsernameIsUnique(userName)){
-                if(usernamePatternCorrect(userName)){
-                    if(organization.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
+        Role role = (Role) roleJComboBox.getSelectedItem();
+
+        if (!txtUserName.getText().isEmpty() && !passwordJTextField.getText().isEmpty() && !txtName.getText().isEmpty()) {
+            if (organization.getEmployeeDirectory().checkIfUsernameIsUnique(userName)) {
+                if (usernamePatternCorrect(userName)) {
+                    if (organization.getUserAccountDirectory().checkIfUsernameIsUnique(userName)) {
                         organization.getEmployeeDirectory().createEmployee(txtName.getText());
-                         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                         // organization.getUserAccountDirectory().createUserAccount(userName, password, role);
-                         JOptionPane.showMessageDialog(null,"Employee created successfully");
-                         //nd@nd.com    populateTable(organization);
-                         txtUserName.setText("");
-                         passwordJTextField.setText("");
-                         txtName.setText("");
-                         citySuccessLbl.setVisible(false);
-                         emailSuccessLbl.setVisible(false);
-                         passwordSuccessLbl.setVisible(false);
-                    }
-                    else{
+                        JOptionPane.showMessageDialog(null, "Employee created successfully");
+                        //nd@nd.com    populateTable(organization);
+                        txtUserName.setText("");
+                        passwordJTextField.setText("");
+                        txtName.setText("");
+                        citySuccessLbl.setVisible(false);
+                        emailSuccessLbl.setVisible(false);
+                        passwordSuccessLbl.setVisible(false);
+                    } else {
                         JOptionPane.showMessageDialog(null, "Username already exists", "Warning", JOptionPane.WARNING_MESSAGE);
                         txtUserName.setText("");
                         return;
                     }
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Email format emp@domain.com", "Warning", JOptionPane.WARNING_MESSAGE);
                     txtUserName.setText("");
                     return;
                 }
-            }
-            else{
-                    JOptionPane.showMessageDialog(null, "Employee already exists", "Warning", JOptionPane.WARNING_MESSAGE);
-                    txtName.setText("");
-                    return;
-            } 
-        }
-        else{
-                JOptionPane.showMessageDialog(null, "All fields must be entered", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Employee already exists", "Warning", JOptionPane.WARNING_MESSAGE);
                 txtName.setText("");
-        if(txtUserName.getText().isEmpty() && passwordJTextField.getText().isEmpty() && txtName.getText().isEmpty()){
+                return;
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "All fields must be entered", "Warning", JOptionPane.WARNING_MESSAGE);
+            txtName.setText("");
+            if (txtUserName.getText().isEmpty() && passwordJTextField.getText().isEmpty() && txtName.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "All fields must be entered", "Warning", JOptionPane.WARNING_MESSAGE);
 
                 return;
-        }
-            if(userNameValid && nameValid && passwordValid){
+            }
+            if (userNameValid && nameValid && passwordValid) {
                 organization.getEmployeeDirectory().createEmployee(txtUserName.getText());
-                 organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-                 JOptionPane.showMessageDialog(null,"Employee created successfully","Success",JOptionPane.INFORMATION_MESSAGE);
-                 //populateTable(organization);
-                 txtUserName.setText("");
-                 passwordJTextField.setText("");
-                 txtName.setText("");
-                 clearLabels();
+                organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                JOptionPane.showMessageDialog(null, "Employee created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                //populateTable(organization);
+                txtUserName.setText("");
+                passwordJTextField.setText("");
+                txtName.setText("");
+                clearLabels();
             }
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
-    
+
     private void organizationEmpJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmpJComboBoxActionPerformed
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             //populateEmployeeComboBox(organization);
             populateRoleComboBox(organization);
         }
@@ -491,23 +492,23 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         // TODO add your handling code here:
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
-        if(!usernamePatternCorrect(txtUserName.getText()) && !(txtUserName.getText().isEmpty())){
+        if (!usernamePatternCorrect(txtUserName.getText()) && !(txtUserName.getText().isEmpty())) {
             emailSuccessLbl.setVisible(false);
             emailIDAlreadyLbl.setVisible(false);
             emailLbl.setVisible(true);
             userNameValid = false;
-        }else if(!organization.getUserAccountDirectory().checkIfUsernameIsUnique(txtUserName.getText())){
+        } else if (!organization.getUserAccountDirectory().checkIfUsernameIsUnique(txtUserName.getText())) {
             emailSuccessLbl.setVisible(false);
             emailIDAlreadyLbl.setVisible(true);
             emailLbl.setVisible(false);
             userNameValid = false;
 
-        }else if(txtUserName.getText().isEmpty()){
+        } else if (txtUserName.getText().isEmpty()) {
             emailSuccessLbl.setVisible(false);
             emailIDAlreadyLbl.setVisible(false);
             emailLbl.setVisible(false);
             userNameValid = false;
-        }else {
+        } else {
             emailSuccessLbl.setVisible(true);
             emailIDAlreadyLbl.setVisible(false);
             emailLbl.setVisible(false);
@@ -522,12 +523,12 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         int row = organizationJTable.getSelectedRow();
 
-        if(row<0) {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Employee e1 = (Employee)organizationJTable.getValueAt(row, 1);
-        UserAccount ua = (UserAccount)organizationJTable.getValueAt(row, 2);
+        Employee e1 = (Employee) organizationJTable.getValueAt(row, 1);
+        UserAccount ua = (UserAccount) organizationJTable.getValueAt(row, 2);
         org.getEmployeeDirectory().removeEmployee(e1);
         org.getUserAccountDirectory().removeUserAccount(ua);
         populateTable(org);
@@ -536,15 +537,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
-        if(!cityPatternCorrect(txtName.getText()) && !(txtName.getText().isEmpty())){
+        if (!cityPatternCorrect(txtName.getText()) && !(txtName.getText().isEmpty())) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(true);
             nameValid = false;
-        }else if(txtName.getText().isEmpty()){
+        } else if (txtName.getText().isEmpty()) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(false);
             nameValid = false;
-        }else{
+        } else {
             nameValid = true;
             cityLbl.setVisible(false);
             citySuccessLbl.setVisible(true);
@@ -557,18 +558,18 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     private void passwordJTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordJTextFieldKeyReleased
         // TODO add your handling code here:
-         if(!passwordPatternCorrect(passwordJTextField.getText()) && !(passwordJTextField.getText().isEmpty())){
+        if (!passwordPatternCorrect(passwordJTextField.getText()) && !(passwordJTextField.getText().isEmpty())) {
             passwordSuccessLbl.setVisible(false);
             passwordLbl.setVisible(true);
-        }else if(passwordJTextField.getText().isEmpty()){
+        } else if (passwordJTextField.getText().isEmpty()) {
             passwordLbl.setVisible(false);
-             passwordSuccessLbl.setVisible(false);
-        }else{
+            passwordSuccessLbl.setVisible(false);
+        } else {
             passwordLbl.setVisible(false);
             passwordSuccessLbl.setVisible(true);
         }
     }//GEN-LAST:event_passwordJTextFieldKeyReleased
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnRemove;

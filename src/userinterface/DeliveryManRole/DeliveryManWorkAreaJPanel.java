@@ -13,9 +13,6 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DormInventoryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
-import java.awt.CardLayout;
-import java.util.Date;
-import java.util.Objects;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -31,47 +28,43 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private EcoSystem business;
     private Enterprise enterprise;
-    
-    
+
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-
     public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business, Network network) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
         this.enterprise = enterprise;
         greetLbl.setText(account.getEmployee().getName() + "!!");
         delManTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        
-        if(enterprise.getEnterpriseType().equals("Maintenance Unit")){
+
+        if (enterprise.getEnterpriseType().equals("Maintenance Unit")) {
             processJButton.setText("Mark as completed");
         }
-      
-        
+
         populateTable();
     }
-    
-    public void populateTable(){
+
+    public void populateTable() {
         DefaultTableModel dtm = (DefaultTableModel) delManTbl.getModel();
         dtm.setRowCount(0);
-        for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
-            for(WorkRequest request: o.getWorkQueue().getWorkRequestList() ) {
-            if(request.getReceiver() != null && request.getReceiver().getEmployee().getName().equals(userAccount.getEmployee().getName())){
-            Object row[] = new Object[4];
-            row[0] = request.getRequestID();
-            row[1] = request.getSender().getStudent().getName();
-            row[2] = request;
-            row[3] = request.getStatus();
-            dtm.addRow(row);
+        for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (WorkRequest request : o.getWorkQueue().getWorkRequestList()) {
+                if (request.getReceiver() != null && request.getReceiver().getEmployee().getName().equals(userAccount.getEmployee().getName())) {
+                    Object row[] = new Object[4];
+                    row[0] = request.getRequestID();
+                    row[1] = request.getSender().getStudent().getName();
+                    row[2] = request;
+                    row[3] = request.getStatus();
+                    dtm.addRow(row);
+                }
+            }
         }
-    }
-        }
-        
-        
+
     }
 
     /**
@@ -130,7 +123,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             delManTbl.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 730, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 730, 96));
 
         processJButton.setBackground(new java.awt.Color(204, 204, 204));
         processJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -141,7 +134,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 150, 50));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 150, 50));
 
         refreshJButton.setBackground(new java.awt.Color(204, 204, 204));
         refreshJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -152,7 +145,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 refreshJButtonActionPerformed(evt);
             }
         });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 120, 30));
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 120, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -182,23 +175,23 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
-        
+
         int selectedRow = delManTbl.getSelectedRow();
-        
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","Error",JOptionPane.ERROR_MESSAGE);
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         DormInventoryWorkRequest request = (DormInventoryWorkRequest) delManTbl.getValueAt(selectedRow, 2);
-        if(request.getStatus() == "Delivered"){
-            JOptionPane.showMessageDialog(null, "The order has been already Delivered.","Error",JOptionPane.ERROR_MESSAGE);
+        if (request.getStatus() == "Delivered") {
+            JOptionPane.showMessageDialog(null, "The order has been already Delivered.", "Error", JOptionPane.ERROR_MESSAGE);
             populateTable();
-        }else{
-             request.setStatus("Delivered");
-            JOptionPane.showMessageDialog(null, "The order has been delivered successfully.","Success",JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            request.setStatus("Delivered");
+            JOptionPane.showMessageDialog(null, "The order has been delivered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             populateTable();
         }
-        
+
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed

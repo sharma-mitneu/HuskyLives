@@ -6,18 +6,15 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.EnterpriseDirectory;
 import Business.Network.Network;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -30,6 +27,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private Network n;
     private boolean nameValid;
     private int entAvail = 0;
+
     /**
      * Creates new form ManageEnterpriseJPanel
      */
@@ -37,9 +35,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-citySuccessLbl.setVisible(false);
-enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-            cityLbl.setVisible(false);
+        citySuccessLbl.setVisible(false);
+        enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
+        cityLbl.setVisible(false);
         populateTable();
         populateComboBox();
     }
@@ -59,24 +57,24 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
             }
         }
     }
- private boolean cityPatternCorrect(String val3){
-        Pattern p=Pattern.compile("^[a-zA-Z ]+$");
-        Matcher m=p.matcher(val3);
-        boolean b=m.matches();
+
+    private boolean cityPatternCorrect(String val3) {
+        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher m = p.matcher(val3);
+        boolean b = m.matches();
         return b;
     }
+
     private void populateComboBox() {
         networkJComboBox.removeAllItems();
         enterpriseTypeJComboBox.removeAllItems();
 
         for (Network network : system.getNetworkList()) {
-            networkJComboBox.addItem(network); 
+            networkJComboBox.addItem(network);
         }
-         for (Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()) {
-                enterpriseTypeJComboBox.addItem(type); 
+        for (Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()) {
+            enterpriseTypeJComboBox.addItem(type);
         }
-
-        
 
     }
 
@@ -109,7 +107,7 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseJTable.setBackground(new java.awt.Color(204, 204, 204));
-        enterpriseJTable.setForeground(new java.awt.Color(0, 0, 0));
+        enterpriseJTable.setForeground(new java.awt.Color(51, 51, 51));
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -131,53 +129,56 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 74, 523, 95));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 523, 95));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Network:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 215, 88, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 88, -1));
 
         networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        networkJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        networkJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 211, 190, 30));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Enterprise Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 301, 130, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 130, -1));
 
         nameJTextField.setBackground(new java.awt.Color(204, 204, 204));
-        nameJTextField.setForeground(new java.awt.Color(0, 0, 0));
+        nameJTextField.setForeground(new java.awt.Color(51, 51, 51));
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 nameJTextFieldKeyReleased(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 297, 190, 30));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 190, 30));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Enterprise Type:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 258, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, -1, -1));
 
         enterpriseTypeJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         enterpriseTypeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        enterpriseTypeJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        enterpriseTypeJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         enterpriseTypeJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpriseTypeJComboBoxActionPerformed(evt);
             }
         });
-        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 254, 190, 30));
+        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 190, 30));
 
         submitJButton.setBackground(new java.awt.Color(204, 204, 204));
         submitJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -188,7 +189,7 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 101, 41));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 101, 41));
 
         backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -205,16 +206,16 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("MANAGE ENTERPRISE");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 723, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 723, 30));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 30, 60));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 30, 60));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 220, 30));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 220, 30));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -225,14 +226,13 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         Network network = (Network) networkJComboBox.getSelectedItem();
-                    for(Enterprise e: network.getEnterpriseDirectory().getEnterpriseList() ){
-                       if(e.getEnterpriseType().equals(enterpriseTypeJComboBox.getSelectedItem())){
-                           entAvail = 1;
-                       }
-               }
-       
-        if(nameValid && entAvail != 1){
-            //Network network = (Network) networkJComboBox.getSelectedItem();
+        for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (e.getEnterpriseType().equals(enterpriseTypeJComboBox.getSelectedItem())) {
+                entAvail = 1;
+            }
+        }
+
+        if (nameValid && entAvail != 1) {
             Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseTypeJComboBox.getSelectedItem();
 
             if (network == null || type == null) {
@@ -241,22 +241,21 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
             }
 
             String name = nameJTextField.getText();
-            Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);   
+            Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
 
-            //Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
             n = network;
             citySuccessLbl.setVisible(false);
             populateTable();
             nameJTextField.setText("");
-        }else {
-            if(entAvail == 1){
-                JOptionPane.showMessageDialog(null, "Enterprise is already added !","Alert",JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            if (entAvail == 1) {
+                JOptionPane.showMessageDialog(null, "Enterprise is already added !", "Alert", JOptionPane.INFORMATION_MESSAGE);
                 citySuccessLbl.setVisible(false);
                 nameJTextField.setText("");
-            }else{
-                JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
             }
-           
+
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed
@@ -278,20 +277,20 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
 
     private void enterpriseTypeJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseTypeJComboBoxActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_enterpriseTypeJComboBoxActionPerformed
 
     private void nameJTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyReleased
         // TODO add your handling code here:
-        if(!cityPatternCorrect(nameJTextField.getText()) && !(nameJTextField.getText().isEmpty())){
+        if (!cityPatternCorrect(nameJTextField.getText()) && !(nameJTextField.getText().isEmpty())) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(true);
             nameValid = false;
-        }else if(nameJTextField.getText().isEmpty()){
+        } else if (nameJTextField.getText().isEmpty()) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(false);
             nameValid = false;
-        }else{
+        } else {
             cityLbl.setVisible(false);
             nameValid = true;
             citySuccessLbl.setVisible(true);

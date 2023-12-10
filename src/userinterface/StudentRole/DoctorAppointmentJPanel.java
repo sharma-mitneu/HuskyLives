@@ -26,13 +26,13 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
      * Creates new form DoctorAppointmentJPanel
      */
     public DoctorAppointmentJPanel() {
-        
+
     }
 
     DoctorAppointmentJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system =system;
+        this.system = system;
         this.network = network;
         this.userAccount = userAccount;
     }
@@ -129,7 +129,7 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
 
     private void generalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generalBtnActionPerformed
         // TODO add your handling code here:
-         GeneralPractitionerJPanel panel = new GeneralPractitionerJPanel(userProcessContainer, system, network, userAccount);
+        GeneralPractitionerJPanel panel = new GeneralPractitionerJPanel(userProcessContainer, system, network, userAccount);
         rightJPanel.add("ManageStudentsJPanel", panel);
         CardLayout layout = (CardLayout) rightJPanel.getLayout();
         layout.next(rightJPanel);
@@ -143,7 +143,7 @@ public class DoctorAppointmentJPanel extends javax.swing.JPanel {
 
     private void physioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physioBtnActionPerformed
         // TODO add your handling code here:
-         PhysiotherapistJPanel panel = new PhysiotherapistJPanel(userProcessContainer, system, network, userAccount);
+        PhysiotherapistJPanel panel = new PhysiotherapistJPanel(userProcessContainer, system, network, userAccount);
         rightJPanel.add("ManageStudentsJPanel", panel);
         CardLayout layout = (CardLayout) rightJPanel.getLayout();
         layout.next(rightJPanel);

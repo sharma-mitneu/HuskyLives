@@ -10,16 +10,10 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Role.StudentRole;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DormInventoryWorkRequest;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -39,12 +33,13 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem system;
     private Student student;
-     Network network;
-     private boolean ageValid = true;
-     private boolean zipValid = true;
-     private boolean heightValid = true;
-     private boolean weightValid = true;
-    public StudentWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business,  Network network) {
+    Network network;
+    private boolean ageValid = true;
+    private boolean zipValid = true;
+    private boolean heightValid = true;
+    private boolean weightValid = true;
+
+    public StudentWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
@@ -57,7 +52,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         radioMale.setEnabled(false);
         radioFemale.setEnabled(false);
         txtAdress.setEditable(false);
-         txtPassword.setEditable(false);
+        txtPassword.setEditable(false);
         txtCity.setEditable(false);
         networkJComboBox.setEditable(false);
         txtZipcode.setEditable(false);
@@ -65,42 +60,29 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         txtWeight.setEditable(false);
         saveBtn.setEnabled(false);
         clearLabels();
-        /*for(Network net: system.getNetworkList()){
-        for(Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()){
-            for(Organization o: e.getOrganizationDirectory().getOrganizationList()){
-                for(WorkRequest request : o.getWorkQueue().getWorkRequestList()){
-                       if(request.getReceiver() != null && request.getReceiver().getRole().toString().equals("Business.Role.DeliveryManRole")){
-                           if(request.getStatus().toLowerCase().equals("delivered")){
-                               int ord = request.getRequestID();
-                               JOptionPane.showMessageDialog(null,"Your order with orderID" + ord + " has been delivered","Success",JOptionPane.INFORMATION_MESSAGE);
-                           }
-                       }
-                }
-            }
+
+        txtName.setText(userAccount.getStudent().getName());
+        txtAge.setText(String.valueOf(userAccount.getStudent().getAge()));
+        greetLbl.setText(userAccount.getStudent().getName() + " !!");
+        if (userAccount.getStudent().getGender().toLowerCase().equals("male")) {
+            radioMale.setSelected(true);
+        } else {
+            radioFemale.setSelected(true);
         }
-    }*/
-                    txtName.setText(userAccount.getStudent().getName());
-                    txtAge.setText(String.valueOf(userAccount.getStudent().getAge()));
-                    greetLbl.setText(userAccount.getStudent().getName()+ " !!");
-                    if(userAccount.getStudent().getGender().toLowerCase().equals("male")){
-                        radioMale.setSelected(true);
-                    }else{
-                        radioFemale.setSelected(true);
-                    }
-                    txtPassword.setText(userAccount.getPassword());
-                    txtAdress.setText(userAccount.getStudent().getAddress());
-                    txtCity.setText(userAccount.getStudent().getCity());
-                     DefaultComboBoxModel dm=new DefaultComboBoxModel();
-                     dm.addElement(userAccount.getStudent().getNetwork());
-                    networkJComboBox.setModel(dm);
-                    txtZipcode.setText(String.valueOf(userAccount.getStudent().getZipcode()));
-                    txtHeight.setText(String.valueOf(userAccount.getStudent().getHeight()));
-                    txtWeight.setText(String.valueOf(userAccount.getStudent().getWeight()));    
-                    student = userAccount.getStudent();
-                    return;
+        txtPassword.setText(userAccount.getPassword());
+        txtAdress.setText(userAccount.getStudent().getAddress());
+        txtCity.setText(userAccount.getStudent().getCity());
+        DefaultComboBoxModel dm = new DefaultComboBoxModel();
+        dm.addElement(userAccount.getStudent().getNetwork());
+        networkJComboBox.setModel(dm);
+        txtZipcode.setText(String.valueOf(userAccount.getStudent().getZipcode()));
+        txtHeight.setText(String.valueOf(userAccount.getStudent().getHeight()));
+        txtWeight.setText(String.valueOf(userAccount.getStudent().getWeight()));
+        student = userAccount.getStudent();
+        return;
     }
-    private void clearLabels(){
-    // Labels initialzed to false
+
+    private void clearLabels() {
         nameLbl.setVisible(false);
         nameSuccessLbl.setVisible(false);
         AgeSuccessLbl.setVisible(false);
@@ -119,42 +101,47 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         weightLbl.setVisible(false);
         weightSuccessLbl.setVisible(false);
     }
-     private boolean usernamePatternCorrect(String val){
-        Pattern p=Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
-        Matcher m=p.matcher(val);
-        boolean b=m.matches();
+
+    private boolean usernamePatternCorrect(String val) {
+        Pattern p = Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
+        Matcher m = p.matcher(val);
+        boolean b = m.matches();
         return b;
     }
-    private boolean namePatternCorrect(String val1){
-        Pattern p=Pattern.compile("^[a-zA-Z ]+$");
-        Matcher m=p.matcher(val1);
-        boolean b=m.matches();
+
+    private boolean namePatternCorrect(String val1) {
+        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher m = p.matcher(val1);
+        boolean b = m.matches();
         return b;
     }
-    private boolean addressPatternCorrect(String val2){
-        Pattern p=Pattern.compile("^[a-z A-Z 0-9 #/-]+$");
-        Matcher m=p.matcher(val2);
-        boolean b=m.matches();
+
+    private boolean addressPatternCorrect(String val2) {
+        Pattern p = Pattern.compile("^[a-z A-Z 0-9 #/-]+$");
+        Matcher m = p.matcher(val2);
+        boolean b = m.matches();
         return b;
     }
-    private boolean cityPatternCorrect(String val3){
-        Pattern p=Pattern.compile("^[a-zA-Z ]+$");
-        Matcher m=p.matcher(val3);
-        boolean b=m.matches();
+
+    private boolean cityPatternCorrect(String val3) {
+        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher m = p.matcher(val3);
+        boolean b = m.matches();
         return b;
     }
-    
-    private boolean passwordPatternCorrect(String val4){
+
+    private boolean passwordPatternCorrect(String val4) {
         Pattern p1;
         p1 = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
-        Matcher m1=p1.matcher(String.valueOf(val4));
-        boolean b1=m1.matches();
+        Matcher m1 = p1.matcher(String.valueOf(val4));
+        boolean b1 = m1.matches();
         return b1;
     }
-    private boolean numberPatternCorrect(String val5){
-        Pattern p=Pattern.compile("^[0-9]$");
-        Matcher m=p.matcher(val5);
-        boolean b=m.matches();
+
+    private boolean numberPatternCorrect(String val5) {
+        Pattern p = Pattern.compile("^[0-9]$");
+        Matcher m = p.matcher(val5);
+        boolean b = m.matches();
         return b;
     }
 
@@ -227,7 +214,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 80, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 80, 30));
 
         txtName.setEditable(false);
         txtName.setBackground(new java.awt.Color(204, 204, 204));
@@ -240,13 +227,13 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtNameKeyReleased(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Age:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 80, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 80, 30));
 
         txtAge.setEditable(false);
         txtAge.setBackground(new java.awt.Color(204, 204, 204));
@@ -259,13 +246,13 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtAgeKeyReleased(evt);
             }
         });
-        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Height(in cms):");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 90, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 90, -1));
 
         txtHeight.setEditable(false);
         txtHeight.setBackground(new java.awt.Color(204, 204, 204));
@@ -278,13 +265,13 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtHeightKeyReleased(evt);
             }
         });
-        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+        add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Weight (In Kgs):");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 100, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 100, 20));
 
         txtWeight.setEditable(false);
         txtWeight.setBackground(new java.awt.Color(204, 204, 204));
@@ -297,7 +284,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtWeightKeyReleased(evt);
             }
         });
-        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, -1, -1));
+        add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
 
         btnAnalysis.setBackground(new java.awt.Color(204, 204, 204));
         btnAnalysis.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -308,15 +295,14 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 btnAnalysisActionPerformed(evt);
             }
         });
-        add(btnAnalysis, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, -1, 51));
+        add(btnAnalysis, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, 51));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Gender:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 80, 40));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 80, 40));
 
-        radioMale.setBackground(new java.awt.Color(51, 51, 51));
         radioMale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         radioMale.setForeground(new java.awt.Color(204, 204, 204));
         radioMale.setText("Male");
@@ -326,9 +312,8 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 radioMaleActionPerformed(evt);
             }
         });
-        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, 64, -1));
+        add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 64, -1));
 
-        radioFemale.setBackground(new java.awt.Color(51, 51, 51));
         radioFemale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         radioFemale.setForeground(new java.awt.Color(204, 204, 204));
         radioFemale.setText("Female");
@@ -338,7 +323,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 radioFemaleActionPerformed(evt);
             }
         });
-        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
+        add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
 
         updateBtn.setBackground(new java.awt.Color(204, 204, 204));
         updateBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -349,7 +334,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 updateBtnActionPerformed(evt);
             }
         });
-        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 106, 51));
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 106, 51));
 
         saveBtn.setBackground(new java.awt.Color(204, 204, 204));
         saveBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -360,13 +345,13 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 saveBtnActionPerformed(evt);
             }
         });
-        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 106, 51));
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, 106, 51));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Address:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 80, 40));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 80, 40));
 
         txtAdress.setBackground(new java.awt.Color(204, 204, 204));
         txtAdress.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -378,13 +363,13 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtAdressKeyReleased(evt);
             }
         });
-        add(txtAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 158, -1));
+        add(txtAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 158, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("City:");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 120, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 120, -1));
 
         txtCity.setBackground(new java.awt.Color(204, 204, 204));
         txtCity.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -396,26 +381,27 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtCityKeyReleased(evt);
             }
         });
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 158, -1));
+        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 158, -1));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("State:");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 110, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 110, -1));
 
         networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        networkJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.setEnabled(false);
         networkJComboBox.setPreferredSize(new java.awt.Dimension(160, 25));
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 158, -1));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 158, -1));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Zip Code:");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 60, 20));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 60, 20));
 
         txtZipcode.setBackground(new java.awt.Color(204, 204, 204));
         txtZipcode.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -427,74 +413,74 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtZipcodeKeyReleased(evt);
             }
         });
-        add(txtZipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 158, -1));
+        add(txtZipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 158, -1));
 
         nameLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        nameLbl.setForeground(new java.awt.Color(181, 7, 7));
+        nameLbl.setForeground(new java.awt.Color(255, 51, 51));
         nameLbl.setText(" Only Alphabets are allowed.");
-        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 160, 20));
+        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 160, 20));
 
         invalidAgeLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        invalidAgeLbl.setForeground(new java.awt.Color(181, 7, 7));
+        invalidAgeLbl.setForeground(new java.awt.Color(255, 51, 51));
         invalidAgeLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         invalidAgeLbl.setText("Invalid Age.");
-        add(invalidAgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 160, 20));
+        add(invalidAgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 160, 20));
 
         ageBandLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        ageBandLbl.setForeground(new java.awt.Color(181, 7, 7));
+        ageBandLbl.setForeground(new java.awt.Color(255, 51, 51));
         ageBandLbl.setText("Age Should be between 15-85");
-        add(ageBandLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 180, 20));
+        add(ageBandLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 180, 20));
 
         heightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        heightLbl.setForeground(new java.awt.Color(181, 7, 7));
+        heightLbl.setForeground(new java.awt.Color(255, 51, 51));
         heightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         heightLbl.setText("Invalid Height");
-        add(heightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 160, 20));
+        add(heightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 160, 20));
 
         weightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        weightLbl.setForeground(new java.awt.Color(181, 7, 7));
+        weightLbl.setForeground(new java.awt.Color(255, 51, 51));
         weightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         weightLbl.setText("Invalid Weight");
-        add(weightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 160, 20));
+        add(weightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 160, 20));
 
         addressLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        addressLbl.setForeground(new java.awt.Color(181, 7, 7));
+        addressLbl.setForeground(new java.awt.Color(255, 51, 51));
         addressLbl.setText("Only Alphabets, Numbers, '#/-' are allowed");
-        add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 250, 20));
+        add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 250, 20));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        cityLbl.setForeground(new java.awt.Color(181, 7, 7));
+        cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, 160, 20));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 160, 20));
 
         zipLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        zipLbl.setForeground(new java.awt.Color(181, 7, 7));
+        zipLbl.setForeground(new java.awt.Color(255, 51, 51));
         zipLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         zipLbl.setText("Only Numbers Allowed");
-        add(zipLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 160, 20));
+        add(zipLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 160, 20));
 
         nameSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(nameSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 30, -1));
+        add(nameSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 30, -1));
 
         AgeSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(AgeSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 30, -1));
+        add(AgeSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 30, -1));
 
         heightSuccessLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         heightSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(heightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 30, -1));
+        add(heightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 30, -1));
 
         weightSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(weightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 40, -1));
+        add(weightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 40, -1));
 
         addressSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(addressSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 260, 40, -1));
+        add(addressSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, 40, -1));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 30, -1));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 270, 30, -1));
 
         zipSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(zipSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 380, 30, -1));
+        add(zipSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 30, -1));
 
         txtPassword.setBackground(new java.awt.Color(204, 204, 204));
         txtPassword.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -505,21 +491,21 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 txtPasswordKeyReleased(evt);
             }
         });
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 158, 25));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 158, 25));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Password:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 107, 20));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 107, 20));
 
         passwordSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 30, -1));
+        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 30, -1));
 
         passwordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        passwordLbl.setForeground(new java.awt.Color(181, 7, 7));
+        passwordLbl.setForeground(new java.awt.Color(255, 51, 51));
         passwordLbl.setText("Sample format: Asdf@1");
-        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 160, 20));
+        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 160, 20));
 
         updateBtn1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         updateBtn1.setText("Update");
@@ -528,7 +514,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 updateBtn1ActionPerformed(evt);
             }
         });
-        add(updateBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 106, 51));
+        add(updateBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 106, 51));
 
         btnAnalysis1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         btnAnalysis1.setText("View Analysis");
@@ -537,7 +523,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 btnAnalysis1ActionPerformed(evt);
             }
         });
-        add(btnAnalysis1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, -1, 51));
+        add(btnAnalysis1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, 51));
 
         btnMaintainReq.setBackground(new java.awt.Color(204, 204, 204));
         btnMaintainReq.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -548,7 +534,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 btnMaintainReqActionPerformed(evt);
             }
         });
-        add(btnMaintainReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 520, 170, 51));
+        add(btnMaintainReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 170, 51));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -585,14 +571,14 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                 placeOrderBtn1ActionPerformed(evt);
             }
         });
-        add(placeOrderBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 106, 51));
+        add(placeOrderBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 106, 51));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
-        
-        StudentAnalysisJPanel studentAnalysisJPanel=new StudentAnalysisJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
-        userProcessContainer.add("StudentAnalysisJPanel",studentAnalysisJPanel);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+
+        StudentAnalysisJPanel studentAnalysisJPanel = new StudentAnalysisJPanel(userProcessContainer, student, system, userAccount, enterprise, network);
+        userProcessContainer.add("StudentAnalysisJPanel", studentAnalysisJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnalysisActionPerformed
@@ -607,8 +593,8 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         radioFemale.setEnabled(true);
         txtAdress.setEditable(true);
         txtAdress.setEnabled(true);
-         txtPassword.setEditable(true);
-         txtPassword.setEnabled(true);
+        txtPassword.setEditable(true);
+        txtPassword.setEnabled(true);
         txtCity.setEditable(true);
         txtCity.setEnabled(true);
         networkJComboBox.setEditable(true);
@@ -625,18 +611,18 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
         Network network = (Network) networkJComboBox.getSelectedItem();
-        if(txtName.getText().isEmpty() || txtAge.getText().isEmpty() || txtWeight.getText().isEmpty() || txtHeight.getText().isEmpty() || txtAdress.getText().isEmpty() || txtCity.getText().isEmpty() || txtZipcode.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Field(s) cannot be Empty!","Error",JOptionPane.ERROR_MESSAGE);
-             return;
-          }else if(ageValid && zipValid && heightValid && weightValid){
-              String name = txtName.getText();
-              String password = txtPassword.getText();
+        if (txtName.getText().isEmpty() || txtAge.getText().isEmpty() || txtWeight.getText().isEmpty() || txtHeight.getText().isEmpty() || txtAdress.getText().isEmpty() || txtCity.getText().isEmpty() || txtZipcode.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Field(s) cannot be Empty!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (ageValid && zipValid && heightValid && weightValid) {
+            String name = txtName.getText();
+            String password = txtPassword.getText();
             String add = txtAdress.getText();
             String city = txtCity.getText();
-            String gender="";
-            if(radioMale.isSelected()){
+            String gender = "";
+            if (radioMale.isSelected()) {
                 gender = "Male";
-            }else{
+            } else {
                 gender = "Female";
             }
             double height = Double.parseDouble(txtHeight.getText());
@@ -644,84 +630,84 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
             int age = Integer.parseInt(txtAge.getText());
             String address = txtAdress.getText();
             String zipcode = txtZipcode.getText();
-              
-                system.getStudentDirectory().updateStudent(student, name, height, weight, gender, age, address, city, zipcode);
-                system.getUserAccountDirectory().updateUserAccount(userAccount, password);
-                JOptionPane.showMessageDialog(null, "Student has been updated successfully","Success",JOptionPane.INFORMATION_MESSAGE);
-                
-         txtName.setEditable(false);
-         txtName.setEnabled(false);
-        txtAge.setEditable(false);
-        txtAge.setEnabled(false);
-        radioMale.setEnabled(false);
-        radioFemale.setEnabled(false);
-        txtAdress.setEditable(false);
-        txtAdress.setEnabled(false);
-         txtPassword.setEditable(false);
-         txtPassword.setEnabled(false);
-        txtCity.setEditable(false);
-        txtCity.setEnabled(false);
-        networkJComboBox.setEditable(false);
-        networkJComboBox.setEnabled(false);
-        txtZipcode.setEditable(false);
-         txtZipcode.setEnabled(false);
-        txtHeight.setEditable(false);
-         txtHeight.setEnabled(false);
-        txtWeight.setEditable(false);
-         txtWeight.setEnabled(false);
-        saveBtn.setEnabled(false);
-        updateBtn.setEnabled(true);
-        clearLabels();
-        }else {
-           JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);
+
+            system.getStudentDirectory().updateStudent(student, name, height, weight, gender, age, address, city, zipcode);
+            system.getUserAccountDirectory().updateUserAccount(userAccount, password);
+            JOptionPane.showMessageDialog(null, "Student has been updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            txtName.setEditable(false);
+            txtName.setEnabled(false);
+            txtAge.setEditable(false);
+            txtAge.setEnabled(false);
+            radioMale.setEnabled(false);
+            radioFemale.setEnabled(false);
+            txtAdress.setEditable(false);
+            txtAdress.setEnabled(false);
+            txtPassword.setEditable(false);
+            txtPassword.setEnabled(false);
+            txtCity.setEditable(false);
+            txtCity.setEnabled(false);
+            networkJComboBox.setEditable(false);
+            networkJComboBox.setEnabled(false);
+            txtZipcode.setEditable(false);
+            txtZipcode.setEnabled(false);
+            txtHeight.setEditable(false);
+            txtHeight.setEnabled(false);
+            txtWeight.setEditable(false);
+            txtWeight.setEnabled(false);
+            saveBtn.setEnabled(false);
+            updateBtn.setEnabled(true);
+            clearLabels();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void radioFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFemaleActionPerformed
         // TODO add your handling code here:
-         radioMale.setSelected(false);
+        radioMale.setSelected(false);
     }//GEN-LAST:event_radioFemaleActionPerformed
 
     private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
-        if (!namePatternCorrect(txtName.getText()) && !(txtName.getText().isEmpty())){
-              nameLbl.setVisible(true);
-              nameSuccessLbl.setVisible(false);
-        }else if(txtName.getText().isEmpty()){
+        if (!namePatternCorrect(txtName.getText()) && !(txtName.getText().isEmpty())) {
+            nameLbl.setVisible(true);
+            nameSuccessLbl.setVisible(false);
+        } else if (txtName.getText().isEmpty()) {
             nameLbl.setVisible(false);
-             nameSuccessLbl.setVisible(false);
-        }else{
-         nameLbl.setVisible(false);
-         nameSuccessLbl.setVisible(true);
+            nameSuccessLbl.setVisible(false);
+        } else {
+            nameLbl.setVisible(false);
+            nameSuccessLbl.setVisible(true);
         }
     }//GEN-LAST:event_txtNameKeyReleased
 
     private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
         // TODO add your handling code here:
-        int age=0;
-        try{
+        int age = 0;
+        try {
             age = Integer.parseInt(txtAge.getText());
-        }catch(NumberFormatException e){
-            if(!txtAge.getText().isEmpty()){
-             invalidAgeLbl.setVisible(true);
-             ageValid = false;
-             ageBandLbl.setVisible(false);
-             AgeSuccessLbl.setVisible(false);
-             return;
-            }else {
+        } catch (NumberFormatException e) {
+            if (!txtAge.getText().isEmpty()) {
+                invalidAgeLbl.setVisible(true);
+                ageValid = false;
+                ageBandLbl.setVisible(false);
+                AgeSuccessLbl.setVisible(false);
+                return;
+            } else {
                 invalidAgeLbl.setVisible(false);
-             ageValid = false;
-             ageBandLbl.setVisible(false);
-             AgeSuccessLbl.setVisible(false);
-             return;
+                ageValid = false;
+                ageBandLbl.setVisible(false);
+                AgeSuccessLbl.setVisible(false);
+                return;
             }
         }
-        if(age < 15 || age > 85){
+        if (age < 15 || age > 85) {
             ageBandLbl.setVisible(true);
             ageValid = false;
-             invalidAgeLbl.setVisible(false);
+            invalidAgeLbl.setVisible(false);
             AgeSuccessLbl.setVisible(false);
-        }else{
+        } else {
             invalidAgeLbl.setVisible(false);
             ageBandLbl.setVisible(false);
             ageValid = true;
@@ -731,68 +717,68 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     private void txtHeightKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHeightKeyReleased
         // TODO add your handling code here:
-         int height=0;
-        try{
+        int height = 0;
+        try {
             height = Integer.parseInt(txtHeight.getText());
-        }catch(NumberFormatException e){
-            if(!txtHeight.getText().isEmpty()){
-             heightValid = false;
-             heightSuccessLbl.setVisible(false);
-             heightLbl.setVisible(true);
-             return;
-            }else {
-             heightValid = false;
-             heightLbl.setVisible(false);
-             heightSuccessLbl.setVisible(false);
-             return;
+        } catch (NumberFormatException e) {
+            if (!txtHeight.getText().isEmpty()) {
+                heightValid = false;
+                heightSuccessLbl.setVisible(false);
+                heightLbl.setVisible(true);
+                return;
+            } else {
+                heightValid = false;
+                heightLbl.setVisible(false);
+                heightSuccessLbl.setVisible(false);
+                return;
             }
         }
-        if(txtHeight.getText().length() > 3 || txtHeight.getText().length() < 3){
+        if (txtHeight.getText().length() > 3 || txtHeight.getText().length() < 3) {
             heightValid = false;
-             heightLbl.setVisible(true);
-             heightSuccessLbl.setVisible(false);
-        }else{
-             heightValid = true;
-             heightLbl.setVisible(false);
-             heightSuccessLbl.setVisible(true);
+            heightLbl.setVisible(true);
+            heightSuccessLbl.setVisible(false);
+        } else {
+            heightValid = true;
+            heightLbl.setVisible(false);
+            heightSuccessLbl.setVisible(true);
         }
     }//GEN-LAST:event_txtHeightKeyReleased
 
     private void txtWeightKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyReleased
         // TODO add your handling code here:
-         int weight=0;
-        try{
+        int weight = 0;
+        try {
             weight = Integer.parseInt(txtWeight.getText());
-        }catch(NumberFormatException e){
-            if(!txtWeight.getText().isEmpty()){
-             weightValid = false;
-             weightSuccessLbl.setVisible(false);
-             weightLbl.setVisible(true);
-             return;
-            }else {
-             weightValid = false;
-             weightLbl.setVisible(false);
-             weightSuccessLbl.setVisible(false);
-             return;
+        } catch (NumberFormatException e) {
+            if (!txtWeight.getText().isEmpty()) {
+                weightValid = false;
+                weightSuccessLbl.setVisible(false);
+                weightLbl.setVisible(true);
+                return;
+            } else {
+                weightValid = false;
+                weightLbl.setVisible(false);
+                weightSuccessLbl.setVisible(false);
+                return;
             }
         }
-        if(weight > 200){
+        if (weight > 200) {
             weightValid = false;
             weightLbl.setVisible(true);
             weightSuccessLbl.setVisible(false);
-        }else{
-             weightValid = true;
-             weightLbl.setVisible(false);
-             weightSuccessLbl.setVisible(true);
+        } else {
+            weightValid = true;
+            weightLbl.setVisible(false);
+            weightSuccessLbl.setVisible(true);
         }
     }//GEN-LAST:event_txtWeightKeyReleased
 
     private void txtAdressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyReleased
         // TODO add your handling code here:
-        if(!addressPatternCorrect(txtAdress.getText()) && !(txtAdress.getText().isEmpty())){
+        if (!addressPatternCorrect(txtAdress.getText()) && !(txtAdress.getText().isEmpty())) {
             addressSuccessLbl.setVisible(false);
             addressLbl.setVisible(true);
-        }else{
+        } else {
             addressLbl.setVisible(false);
             addressSuccessLbl.setVisible(true);
         }
@@ -800,10 +786,10 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     private void txtCityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityKeyReleased
         // TODO add your handling code here:
-         if(!cityPatternCorrect(txtCity.getText()) && !(txtCity.getText().isEmpty())){
+        if (!cityPatternCorrect(txtCity.getText()) && !(txtCity.getText().isEmpty())) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(true);
-        }else{
+        } else {
             cityLbl.setVisible(false);
             citySuccessLbl.setVisible(true);
         }
@@ -811,34 +797,34 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     private void txtZipcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtZipcodeKeyReleased
         // TODO add your handling code here:
-        int zip=0;
-        try{
+        int zip = 0;
+        try {
             zip = Integer.parseInt(txtZipcode.getText());
             zipValid = true;
-             zipSuccessLbl.setVisible(true);
-             zipLbl.setVisible(false);
-             return;
-        }catch(NumberFormatException e){
-            if(!txtZipcode.getText().isEmpty()){
-             zipValid = false;
-             zipSuccessLbl.setVisible(false);
-             zipLbl.setVisible(true);
-             return;
-            }else {
-             zipValid = false;
-             zipLbl.setVisible(false);
-             zipSuccessLbl.setVisible(false);
-             return;
+            zipSuccessLbl.setVisible(true);
+            zipLbl.setVisible(false);
+            return;
+        } catch (NumberFormatException e) {
+            if (!txtZipcode.getText().isEmpty()) {
+                zipValid = false;
+                zipSuccessLbl.setVisible(false);
+                zipLbl.setVisible(true);
+                return;
+            } else {
+                zipValid = false;
+                zipLbl.setVisible(false);
+                zipSuccessLbl.setVisible(false);
+                return;
             }
         }
     }//GEN-LAST:event_txtZipcodeKeyReleased
 
     private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
         // TODO add your handling code here:
-        if(!passwordPatternCorrect(txtPassword.getText()) && !(txtPassword.getText().isEmpty())){
+        if (!passwordPatternCorrect(txtPassword.getText()) && !(txtPassword.getText().isEmpty())) {
             passwordSuccessLbl.setVisible(false);
             passwordLbl.setVisible(true);
-        }else{
+        } else {
             passwordLbl.setVisible(false);
             passwordSuccessLbl.setVisible(true);
         }
@@ -859,16 +845,16 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnMaintainReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainReqActionPerformed
         // TODO add your handling code here:
-        RaiseRequestJPanel requestPanel = new RaiseRequestJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
-        userProcessContainer.add("StudentRequestJPanel",requestPanel);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        RaiseRequestJPanel requestPanel = new RaiseRequestJPanel(userProcessContainer, student, system, userAccount, enterprise, network);
+        userProcessContainer.add("StudentRequestJPanel", requestPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnMaintainReqActionPerformed
 
     private void placeOrderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtn1ActionPerformed
-        PlaceOrderJPanel placeOrder =new PlaceOrderJPanel(userProcessContainer,student,system,userAccount,enterprise, network);
-        userProcessContainer.add("StudentAnalysisJPanel",placeOrder);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        PlaceOrderJPanel placeOrder = new PlaceOrderJPanel(userProcessContainer, student, system, userAccount, enterprise, network);
+        userProcessContainer.add("StudentAnalysisJPanel", placeOrder);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_placeOrderBtn1ActionPerformed
 

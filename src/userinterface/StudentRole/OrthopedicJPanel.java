@@ -9,15 +9,12 @@ import Business.EcoSystem;
 import Business.Enterprise.DoctorEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Organization.GenPracOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrthopedicOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.GenPracWorkRequest;
 import Business.WorkQueue.OrthoWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -31,48 +28,49 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
     /**
      * Creates new form GeneralPractitionerJPanel
      */
-     private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private EcoSystem system;
     private Network network;
     private UserAccount userAccount;
     Enterprise e;
 
-    OrthopedicJPanel(JPanel userProcessContainer, EcoSystem system, Network network,UserAccount userAccount) {
+    OrthopedicJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system =system;
+        this.system = system;
         this.network = network;
         this.userAccount = userAccount;
         orthoTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         populateOrthoStatusTable();
     }
+
     private void populateOrthoStatusTable() {
         DefaultTableModel dtm = (DefaultTableModel) orthoTbl.getModel();
         dtm.setRowCount(0);
         Organization org = null;
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof DoctorEnterprise){
+        for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enter instanceof DoctorEnterprise) {
                 e = enter;
             }
         }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof OrthopedicOrganization){
+        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof OrthopedicOrganization) {
                 org = organization;
                 break;
             }
         }
-        if (org!=null){
-            for(WorkRequest request: org.getWorkQueue().getWorkRequestList()) {
-            if(request.getSender().equals(userAccount)){
-            Object row[] = new Object[5];
-            row[0] = request.getRequestID();
-            row[1] = request.getMessage();
-            row[2] = request.getReceiver();
-            row[3] = ((OrthoWorkRequest)request).getOrthoResult();
-            row[4] = request.getStatus();
-            dtm.addRow(row);
+        if (org != null) {
+            for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+                if (request.getSender().equals(userAccount)) {
+                    Object row[] = new Object[5];
+                    row[0] = request.getRequestID();
+                    row[1] = request.getMessage();
+                    row[2] = request.getReceiver();
+                    row[3] = ((OrthoWorkRequest) request).getOrthoResult();
+                    row[4] = request.getStatus();
+                    dtm.addRow(row);
+                }
             }
-    }
         }
     }
 
@@ -105,12 +103,12 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
         msgTxt.setRows(5);
         jScrollPane1.setViewportView(msgTxt);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 320, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Enter Your Message:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 170, 80));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 170, 80));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -121,7 +119,10 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 155, 48));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 155, 48));
+
+        jScrollPane2.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane2.setForeground(new java.awt.Color(51, 51, 51));
 
         orthoTbl.setBackground(new java.awt.Color(204, 204, 204));
         orthoTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -147,7 +148,7 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(orthoTbl);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 820, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 820, 140));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -163,62 +164,61 @@ public class OrthopedicJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    if(userAccount.getWorkQueue().getWorkRequestList().size()== 0){
-        OrthoWorkRequest req = new OrthoWorkRequest();
-        req.setSender(userAccount);
-        req.setMessage(msgTxt.getText());
-        req.setStatus("Request sent to Admin");
-        Organization org = null;
-        
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof DoctorEnterprise){
-                e = enter;
+        if (userAccount.getWorkQueue().getWorkRequestList().size() == 0) {
+            OrthoWorkRequest req = new OrthoWorkRequest();
+            req.setSender(userAccount);
+            req.setMessage(msgTxt.getText());
+            req.setStatus("Request sent to Admin");
+            Organization org = null;
+
+            for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enter instanceof DoctorEnterprise) {
+                    e = enter;
+                }
             }
-        }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof OrthopedicOrganization){
-                org = organization;
-                break;
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof OrthopedicOrganization) {
+                    org = organization;
+                    break;
+                }
             }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(req);
-            userAccount.getWorkQueue().getWorkRequestList().add(req);
-        }
-        JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-        populateOrthoStatusTable();
-    }
-    else{
-            int x = userAccount.getWorkQueue().getWorkRequestList().size()-1;
+            if (org != null) {
+                org.getWorkQueue().getWorkRequestList().add(req);
+                userAccount.getWorkQueue().getWorkRequestList().add(req);
+            }
+            JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            populateOrthoStatusTable();
+        } else {
+            int x = userAccount.getWorkQueue().getWorkRequestList().size() - 1;
             WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
-            if(r.getStatus().toLowerCase().equals("result posted")){
+            if (r.getStatus().toLowerCase().equals("result posted")) {
                 OrthoWorkRequest req = new OrthoWorkRequest();
                 req.setSender(userAccount);
                 req.setMessage(msgTxt.getText());
                 req.setStatus("Request sent to Admin");
                 Organization org = null;
 
-                for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-                    if(enter instanceof DoctorEnterprise){
+                for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (enter instanceof DoctorEnterprise) {
                         e = enter;
                     }
                 }
-                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof OrthopedicOrganization){
+                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof OrthopedicOrganization) {
                         org = organization;
                         break;
                     }
                 }
-                if (org!=null){
+                if (org != null) {
                     org.getWorkQueue().getWorkRequestList().add(req);
                     userAccount.getWorkQueue().getWorkRequestList().add(req);
                 }
-                JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 populateOrthoStatusTable();
-            }else {
-                JOptionPane.showMessageDialog(null,"Please wait until the previous request has been processed !","Alert",JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please wait until the previous request has been processed !", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-        } 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

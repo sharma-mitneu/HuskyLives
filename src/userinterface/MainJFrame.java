@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package userinterface;
+
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -12,27 +13,27 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import userinterface.StudentRole.CreateNewStudentJPanel;
-import userinterface.SystemAdminWorkArea.ManageNetworkJPanel;
-import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+
 /**
  *
  * @author ashish
  */
 public class MainJFrame extends javax.swing.JFrame {
-private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     EcoSystem system;
     UserAccount account;
     Enterprise enterprise;
     Organization organization;
     Network network;
+
     /**
      * Creates new form MainJFrameCopy
      */
     public MainJFrame() {
         initComponents();
-         system = dB4OUtil.retrieveSystem();
+        system = dB4OUtil.retrieveSystem();
     }
 
     /**
@@ -72,13 +73,17 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/usernameIcon.png"))); // NOI18N
         LeftJPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 40, -1));
 
+        userNameJTextField.setBackground(new java.awt.Color(204, 204, 204));
         userNameJTextField.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        userNameJTextField.setForeground(new java.awt.Color(51, 51, 51));
         LeftJPanel.add(userNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 204, 32));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/passwordIcon.png"))); // NOI18N
         LeftJPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 347, 40, 41));
 
+        passwordField.setBackground(new java.awt.Color(204, 204, 204));
         passwordField.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        passwordField.setForeground(new java.awt.Color(51, 51, 51));
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
@@ -87,7 +92,7 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
         LeftJPanel.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 347, 204, 32));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("New User? Click on Sign Up");
         LeftJPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, 204, -1));
@@ -150,69 +155,53 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-        // Get user name
-         
+
         String userName = userNameJTextField.getText();
-        // Get Password
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
-        
-        //Step1: Check in the system admin user account directory if you have the user
-        UserAccount userAccount=system.getUserAccountDirectory().authenticateUser(userName, password);
-        
-        Enterprise enterprise =null;
-        Organization organization=null;
-        
-        if(userAccount==null){
-            //Step 2: Go inside each network and check each enterprise
-            for(Network network:system.getNetworkList()){
-                //Step 2.a: check against each enterprise
-                for(Enterprise e:network.getEnterpriseDirectory().getEnterpriseList()){
-                    userAccount=e.getUserAccountDirectory().authenticateUser(userName, password);
-                    if(userAccount==null){
-                       //Step 3:check against each organization for each enterprise
-                       for(Organization org:e.getOrganizationDirectory().getOrganizationList()){
-                           userAccount=org.getUserAccountDirectory().authenticateUser(userName, password);
-                           if(userAccount!=null){
-                               enterprise = e;
-                               organization=org;
-                               break;
-                           }
-                       }
-                        
-                    }
-                    else{
-                       enterprise = e;
-                       break;
-                    }
-                    if(organization!=null){
+
+        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+
+        Enterprise enterprise = null;
+        Organization organization = null;
+
+        if (userAccount == null) {
+            for (Network network : system.getNetworkList()) {
+                for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    userAccount = e.getUserAccountDirectory().authenticateUser(userName, password);
+                    if (userAccount == null) {
+                        for (Organization org : e.getOrganizationDirectory().getOrganizationList()) {
+                            userAccount = org.getUserAccountDirectory().authenticateUser(userName, password);
+                            if (userAccount != null) {
+                                enterprise = e;
+                                organization = org;
+                                break;
+                            }
+                        }
+                    } else {
+                        enterprise = e;
                         break;
-                    }  
+                    }
+                    if (organization != null) {
+                        break;
+                    }
                 }
-                if(enterprise!=null){
+                if (enterprise != null) {
                     break;
                 }
             }
         }
-        if(userAccount !=null && userAccount.getStudent() != null){
+        if (userAccount != null && userAccount.getStudent() != null) {
             network = userAccount.getStudent().getNetwork();
-        
         }
-        if(userAccount==null){
+        if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
-        }
-        else{
-            CardLayout layout=(CardLayout)container.getLayout();
-//            System.out.println("role while loggin in" + userAccount.getRole());
-//            System.out.println("enterprise" + enterprise.toString());
-//            System.out.println("organization" + organization.toString());
-//            System.out.println("user account" + userAccount);
-            
-            container.add("workArea",userAccount.getRole().createWorkArea(container, enterprise, organization,userAccount , system, network));
+        } else {
+            CardLayout layout = (CardLayout) container.getLayout();
+            container.add("workArea", userAccount.getRole().createWorkArea(container, enterprise, organization, userAccount, system, network));
             layout.next(container);
         }
-        
         loginJButton.setEnabled(false);
         logoutJButton.setEnabled(true);
         userNameJTextField.setEnabled(false);
@@ -223,23 +212,21 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         // TODO add your handling code here:
-         logoutJButton.setEnabled(false);
+        logoutJButton.setEnabled(false);
         userNameJTextField.setEnabled(true);
         passwordField.setEnabled(true);
         loginJButton.setEnabled(true);
-        //orangeLbl.setEnabled(true);
         registerBtn.setVisible(true);
-
         userNameJTextField.setText("");
         passwordField.setText("");
 
         container.removeAll();
-       jSplitPane1.setLeftComponent(LeftJPanel);
+        jSplitPane1.setLeftComponent(LeftJPanel);
 
         container.setLayout(new java.awt.CardLayout());
 
         orangeLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/orangesBackground.jpg"))); // NOI18N
-       
+
         container.add(orangeLbl, "card2");
         jSplitPane1.setRightComponent(container);
         getContentPane().add(jSplitPane1, "card2");
@@ -254,11 +241,10 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         System.out.println("user list  " + system.getUserAccountDirectory().getUserAccountList());
-        CreateNewStudentJPanel createCus =new CreateNewStudentJPanel(container, system);
-        container.add("SignUpJPanel",createCus);
-        CardLayout layout=(CardLayout)container.getLayout();
+        CreateNewStudentJPanel createCus = new CreateNewStudentJPanel(container, system);
+        container.add("SignUpJPanel", createCus);
+        CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
-        // TODO add your handling code here:
     }//GEN-LAST:event_registerBtnActionPerformed
 
     /**

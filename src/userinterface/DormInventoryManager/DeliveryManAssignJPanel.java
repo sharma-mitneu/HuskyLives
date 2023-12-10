@@ -8,23 +8,14 @@ package userinterface.DormInventoryManager;
 //import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.StudentRequestOrder;
-import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.Organization.Type;
-//import Business.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.NutritionistWorkRequest;
 import Business.WorkQueue.DormInventoryWorkRequest;
-//import Business.WorkQueue.WorkOrderRequest;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.awt.Component;
-import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,11 +32,10 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DeliveryManAssignJPanel
      */
-
     DeliveryManAssignJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, DormInventoryWorkRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.business=business;
+        this.business = business;
         this.request = request;
         this.enterprise = enterprise;
         populateComboBox();
@@ -93,13 +83,13 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Deliveryman:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 80, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 80, -1));
 
         deliveryManCmbBox.setBackground(new java.awt.Color(204, 204, 204));
         deliveryManCmbBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        deliveryManCmbBox.setForeground(new java.awt.Color(0, 0, 0));
+        deliveryManCmbBox.setForeground(new java.awt.Color(51, 51, 51));
         deliveryManCmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(deliveryManCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 150, 30));
+        add(deliveryManCmbBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 150, 30));
 
         appointDelManBtn.setBackground(new java.awt.Color(204, 204, 204));
         appointDelManBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -110,7 +100,7 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
                 appointDelManBtnActionPerformed(evt);
             }
         });
-        add(appointDelManBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 95, 36));
+        add(appointDelManBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 95, 36));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -122,21 +112,21 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void appointDelManBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointDelManBtnActionPerformed
         // TODO add your handling code here:
-        for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){
-            for(UserAccount user: org.getUserAccountDirectory().getUserAccountList()){
-            if(deliveryManCmbBox.getSelectedItem().equals(user.getEmployee().getName())){    
-                request.setReceiver(user);
-                request.setStatus("Deliverman Assigned");
-                user.getWorkQueue().getWorkRequestList().add(request);
-                JOptionPane.showMessageDialog(null, "Deliveryman assigned successfully!","Success",JOptionPane.INFORMATION_MESSAGE);
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (UserAccount user : org.getUserAccountDirectory().getUserAccountList()) {
+                if (deliveryManCmbBox.getSelectedItem().equals(user.getEmployee().getName())) {
+                    request.setReceiver(user);
+                    request.setStatus("Deliverman Assigned");
+                    user.getWorkQueue().getWorkRequestList().add(request);
+                    JOptionPane.showMessageDialog(null, "Deliveryman assigned successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
-        }
         }
     }//GEN-LAST:event_appointDelManBtnActionPerformed
 
@@ -152,14 +142,14 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateComboBox() {
-        DefaultComboBoxModel dm=new DefaultComboBoxModel();
-           for(Organization o:enterprise.getOrganizationDirectory().getOrganizationList()){
-                for(UserAccount e : o.getUserAccountDirectory().getUserAccountList()){
-                    if(e.getRole().toString().equals("Business.Role.DeliveryManRole")){
-                        dm.addElement(e.getEmployee().getName());
-                        deliveryManCmbBox.setModel(dm);
-                    }
+        DefaultComboBoxModel dm = new DefaultComboBoxModel();
+        for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (UserAccount e : o.getUserAccountDirectory().getUserAccountList()) {
+                if (e.getRole().toString().equals("Business.Role.DeliveryManRole")) {
+                    dm.addElement(e.getEmployee().getName());
+                    deliveryManCmbBox.setModel(dm);
                 }
-             }
-  }
+            }
+        }
+    }
 }

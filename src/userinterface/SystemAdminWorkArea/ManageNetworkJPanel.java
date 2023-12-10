@@ -29,20 +29,22 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
      * Creates new form ManageNetworkJPanel
      */
     private boolean cityValid;
+
     public ManageNetworkJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-            citySuccessLbl.setVisible(false);
-            cityLbl.setVisible(false);
-            networkJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
+        citySuccessLbl.setVisible(false);
+        cityLbl.setVisible(false);
+        networkJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         populateNetworkTable();
     }
-     private boolean cityPatternCorrect(String val3){
-        Pattern p=Pattern.compile("^[a-zA-Z]+$");
-        Matcher m=p.matcher(val3);
-        boolean b=m.matches();
+
+    private boolean cityPatternCorrect(String val3) {
+        Pattern p = Pattern.compile("^[a-zA-Z]+$");
+        Matcher m = p.matcher(val3);
+        boolean b = m.matches();
         return b;
     }
 
@@ -87,7 +89,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Enter State Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 132, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 132, 20));
 
         submitJButton.setBackground(new java.awt.Color(204, 204, 204));
         submitJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -98,16 +100,16 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 90, 40));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 90, 40));
 
         nameJTextField.setBackground(new java.awt.Color(204, 204, 204));
-        nameJTextField.setForeground(new java.awt.Color(0, 0, 0));
+        nameJTextField.setForeground(new java.awt.Color(51, 51, 51));
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 nameJTextFieldKeyReleased(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 190, 30));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 190, 30));
 
         backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -122,7 +124,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         networkJTable.setBackground(new java.awt.Color(204, 204, 204));
         networkJTable.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        networkJTable.setForeground(new java.awt.Color(0, 0, 0));
+        networkJTable.setForeground(new java.awt.Color(51, 51, 51));
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -151,22 +153,22 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             networkJTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 404, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 404, 110));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MANAGE NETWORK");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 723, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 723, 30));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        cityLbl.setForeground(new java.awt.Color(255, 0, 0));
+        cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 190, 20));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 190, 20));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 40, 50));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 40, 50));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -177,7 +179,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 80, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 80, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -187,14 +189,14 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        if(cityValid){
+        if (cityValid) {
             String name = nameJTextField.getText();
             Network network = system.createAndAddNetwork();
             network.setName(name);
             citySuccessLbl.setVisible(false);
             populateNetworkTable();
-        }else {
-           JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
@@ -210,15 +212,15 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
     private void nameJTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyReleased
         // TODO add your handling code here:
-         if(!cityPatternCorrect(nameJTextField.getText()) && !(nameJTextField.getText().isEmpty())){
+        if (!cityPatternCorrect(nameJTextField.getText()) && !(nameJTextField.getText().isEmpty())) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(true);
             cityValid = false;
-        }else if(nameJTextField.getText().isEmpty()){
+        } else if (nameJTextField.getText().isEmpty()) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(false);
             cityValid = false;
-        }else{
+        } else {
             cityLbl.setVisible(false);
             cityValid = true;
             citySuccessLbl.setVisible(true);
@@ -227,14 +229,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = networkJTable.getSelectedRow();
-        if(row<0){
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Network n  = (Network) networkJTable.getValueAt(row, 0);
+        Network n = (Network) networkJTable.getValueAt(row, 0);
         system.getNetworkList().remove(n);
         populateNetworkTable();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

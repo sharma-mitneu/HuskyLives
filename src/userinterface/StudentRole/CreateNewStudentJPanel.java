@@ -7,24 +7,14 @@ package userinterface.StudentRole;
 
 import Business.Student.Student;
 import Business.DB4OUtil.DB4OUtil;
-import userinterface.SystemAdminWorkArea.*;
 import Business.EcoSystem;
-import Business.Employee.Employee;
-import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.StudentRole;
-import Business.UserAccount.UserAccount;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 
 /**
  *
@@ -38,28 +28,29 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem system;
     Organization organization;
-     private Student c;
-     private boolean ageValid;
-     private boolean emailValid;
-     private boolean zipValid;
-     private boolean heightValid;
-     private boolean weightValid;
-     private boolean cityValid;
+    private Student c;
+    private boolean ageValid;
+    private boolean emailValid;
+    private boolean zipValid;
+    private boolean heightValid;
+    private boolean weightValid;
+    private boolean cityValid;
+
     public CreateNewStudentJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.system=system;
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
         this.organization = organization;
         clearLabels();
         populateNetworkComboBox();
-        
+
     }
-    private void clearLabels(){
-     // Labels initialzed to false
+
+    private void clearLabels() {
         nameLbl.setVisible(false);
         nameSuccessLbl.setVisible(false);
         emailLbl.setVisible(false);
-         emailIDAlreadyLbl.setVisible(false);
+        emailIDAlreadyLbl.setVisible(false);
         emailSuccessLbl.setVisible(false);
         passwordSuccessLbl.setVisible(false);
         passwordLbl.setVisible(false);
@@ -78,9 +69,10 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
         heightSuccessLbl.setVisible(false);
         weightLbl.setVisible(false);
         weightSuccessLbl.setVisible(false);
-    
+
     }
-private void populateNetworkComboBox() {
+
+    private void populateNetworkComboBox() {
         networkJComboBox.removeAllItems();
 
         for (Network network : system.getNetworkList()) {
@@ -88,43 +80,47 @@ private void populateNetworkComboBox() {
         }
 
     }
-    
-    private boolean usernamePatternCorrect(String val){
-        Pattern p=Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
-        Matcher m=p.matcher(val);
-        boolean b=m.matches();
+
+    private boolean usernamePatternCorrect(String val) {
+        Pattern p = Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
+        Matcher m = p.matcher(val);
+        boolean b = m.matches();
         return b;
     }
-    private boolean namePatternCorrect(String val1){
-        Pattern p=Pattern.compile("^[a-zA-Z\\s]+$");
-        Matcher m=p.matcher(val1);
-        boolean b=m.matches();
+
+    private boolean namePatternCorrect(String val1) {
+        Pattern p = Pattern.compile("^[a-zA-Z\\s]+$");
+        Matcher m = p.matcher(val1);
+        boolean b = m.matches();
         return b;
     }
-    private boolean addressPatternCorrect(String val2){
-        Pattern p=Pattern.compile("^[a-z A-Z 0-9#/-]+$");
-        Matcher m=p.matcher(val2);
-        boolean b=m.matches();
+
+    private boolean addressPatternCorrect(String val2) {
+        Pattern p = Pattern.compile("^[a-z A-Z 0-9#/-]+$");
+        Matcher m = p.matcher(val2);
+        boolean b = m.matches();
         return b;
     }
-    private boolean cityPatternCorrect(String val3){
-        Pattern p=Pattern.compile("^[a-zA-Z]+$");
-        Matcher m=p.matcher(val3);
-        boolean b=m.matches();
+
+    private boolean cityPatternCorrect(String val3) {
+        Pattern p = Pattern.compile("^[a-zA-Z]+$");
+        Matcher m = p.matcher(val3);
+        boolean b = m.matches();
         return b;
     }
-    
-    private boolean passwordPatternCorrect(String val4){
+
+    private boolean passwordPatternCorrect(String val4) {
         Pattern p1;
         p1 = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
-        Matcher m1=p1.matcher(String.valueOf(val4));
-        boolean b1=m1.matches();
+        Matcher m1 = p1.matcher(String.valueOf(val4));
+        boolean b1 = m1.matches();
         return b1;
     }
-    private boolean numberPatternCorrect(String val5){
-        Pattern p=Pattern.compile("^[0-9]$");
-        Matcher m=p.matcher(val5);
-        boolean b=m.matches();
+
+    private boolean numberPatternCorrect(String val5) {
+        Pattern p = Pattern.compile("^[0-9]$");
+        Matcher m = p.matcher(val5);
+        boolean b = m.matches();
         return b;
     }
 
@@ -194,7 +190,9 @@ private void populateNetworkComboBox() {
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtName.setBackground(new java.awt.Color(204, 204, 204));
         txtName.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtName.setForeground(new java.awt.Color(51, 51, 51));
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNameKeyReleased(evt);
@@ -202,7 +200,9 @@ private void populateNetworkComboBox() {
         });
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 190, 30));
 
+        confirmPasswordTxt.setBackground(new java.awt.Color(204, 204, 204));
         confirmPasswordTxt.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        confirmPasswordTxt.setForeground(new java.awt.Color(51, 51, 51));
         confirmPasswordTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 confirmPasswordTxtKeyReleased(evt);
@@ -216,7 +216,9 @@ private void populateNetworkComboBox() {
         jLabel3.setText("Email ID:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 107, 30));
 
+        txtPassword.setBackground(new java.awt.Color(204, 204, 204));
         txtPassword.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(51, 51, 51));
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyReleased(evt);
@@ -224,7 +226,9 @@ private void populateNetworkComboBox() {
         });
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 190, 30));
 
+        txtEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(51, 51, 51));
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -289,6 +293,8 @@ private void populateNetworkComboBox() {
         jLabel5.setText("Age:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 90, 30));
 
+        txtAge.setBackground(new java.awt.Color(204, 204, 204));
+        txtAge.setForeground(new java.awt.Color(51, 51, 51));
         txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAgeKeyReleased(evt);
@@ -308,8 +314,8 @@ private void populateNetworkComboBox() {
         jLabel7.setText("Height(in cms):");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 86, 30));
 
-        radioMale.setBackground(new java.awt.Color(51, 51, 51));
         radioMale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        radioMale.setForeground(new java.awt.Color(204, 204, 204));
         radioMale.setSelected(true);
         radioMale.setText("Male");
         radioMale.addActionListener(new java.awt.event.ActionListener() {
@@ -319,6 +325,8 @@ private void populateNetworkComboBox() {
         });
         add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 68, -1));
 
+        txtHeight.setBackground(new java.awt.Color(204, 204, 204));
+        txtHeight.setForeground(new java.awt.Color(51, 51, 51));
         txtHeight.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtHeightKeyReleased(evt);
@@ -326,8 +334,8 @@ private void populateNetworkComboBox() {
         });
         add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 190, 30));
 
-        radioFemale.setBackground(new java.awt.Color(51, 51, 51));
         radioFemale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        radioFemale.setForeground(new java.awt.Color(204, 204, 204));
         radioFemale.setText("Female");
         radioFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,6 +344,8 @@ private void populateNetworkComboBox() {
         });
         add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 72, -1));
 
+        txtWeight.setBackground(new java.awt.Color(204, 204, 204));
+        txtWeight.setForeground(new java.awt.Color(51, 51, 51));
         txtWeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWeightActionPerformed(evt);
@@ -354,7 +364,9 @@ private void populateNetworkComboBox() {
         jLabel10.setText("Address:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 110, 30));
 
+        txtAdress.setBackground(new java.awt.Color(204, 204, 204));
         txtAdress.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtAdress.setForeground(new java.awt.Color(51, 51, 51));
         txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAdressKeyReleased(evt);
@@ -368,7 +380,9 @@ private void populateNetworkComboBox() {
         jLabel11.setText("City:");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 90, 30));
 
+        txtCity.setBackground(new java.awt.Color(204, 204, 204));
         txtCity.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtCity.setForeground(new java.awt.Color(51, 51, 51));
         txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCityKeyPressed(evt);
@@ -395,6 +409,8 @@ private void populateNetworkComboBox() {
         jLabel13.setText("Zip Code:");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 110, 30));
 
+        txtZipcode.setBackground(new java.awt.Color(204, 204, 204));
+        txtZipcode.setForeground(new java.awt.Color(51, 51, 51));
         txtZipcode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtZipcodeKeyReleased(evt);
@@ -413,18 +429,18 @@ private void populateNetworkComboBox() {
         add(AgeSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 50, 40));
 
         nameLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        nameLbl.setForeground(new java.awt.Color(255, 0, 0));
+        nameLbl.setForeground(new java.awt.Color(255, 51, 51));
         nameLbl.setText(" Only Alphabets are allowed.");
         add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 190, 20));
 
         invalidAgeLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        invalidAgeLbl.setForeground(new java.awt.Color(255, 0, 0));
+        invalidAgeLbl.setForeground(new java.awt.Color(255, 51, 51));
         invalidAgeLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         invalidAgeLbl.setText("Invalid Age.");
         add(invalidAgeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 190, 20));
 
         ageBandLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        ageBandLbl.setForeground(new java.awt.Color(255, 0, 0));
+        ageBandLbl.setForeground(new java.awt.Color(255, 51, 51));
         ageBandLbl.setText("Age Should be between 15-85");
         add(ageBandLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, -1, 20));
 
@@ -432,7 +448,7 @@ private void populateNetworkComboBox() {
         add(confirmPasswordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 40, -1));
 
         confirmPasswordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        confirmPasswordLbl.setForeground(new java.awt.Color(255, 0, 0));
+        confirmPasswordLbl.setForeground(new java.awt.Color(255, 51, 51));
         confirmPasswordLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         confirmPasswordLbl.setText("Password Not Matching");
         add(confirmPasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 160, 20));
@@ -441,7 +457,7 @@ private void populateNetworkComboBox() {
         add(nameSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 30, 40));
 
         emailLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        emailLbl.setForeground(new java.awt.Color(255, 0, 0));
+        emailLbl.setForeground(new java.awt.Color(255, 51, 51));
         emailLbl.setText("Valid Format - 'xx@xx.xx'");
         add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 150, 20));
 
@@ -452,12 +468,12 @@ private void populateNetworkComboBox() {
         add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 30, -1));
 
         passwordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        passwordLbl.setForeground(new java.awt.Color(255, 0, 0));
+        passwordLbl.setForeground(new java.awt.Color(255, 51, 51));
         passwordLbl.setText("Sample format: Asdf@1");
         add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 160, 20));
 
         addressLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        addressLbl.setForeground(new java.awt.Color(255, 0, 0));
+        addressLbl.setForeground(new java.awt.Color(255, 51, 51));
         addressLbl.setText("Only Alphabets, Numbers, '#/-' are allowed");
         add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 250, 20));
 
@@ -468,7 +484,7 @@ private void populateNetworkComboBox() {
         add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, 30, -1));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        cityLbl.setForeground(new java.awt.Color(255, 0, 0));
+        cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
         add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 160, 20));
@@ -477,7 +493,7 @@ private void populateNetworkComboBox() {
         add(zipSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 30, -1));
 
         zipLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        zipLbl.setForeground(new java.awt.Color(255, 0, 0));
+        zipLbl.setForeground(new java.awt.Color(255, 51, 51));
         zipLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         zipLbl.setText("Only Numbers Allowed");
         add(zipLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 160, 20));
@@ -490,19 +506,19 @@ private void populateNetworkComboBox() {
         add(heightSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, 60, 30));
 
         weightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        weightLbl.setForeground(new java.awt.Color(255, 0, 0));
+        weightLbl.setForeground(new java.awt.Color(255, 51, 51));
         weightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         weightLbl.setText("Invalid Weight");
         add(weightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 500, 160, 20));
 
         heightLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        heightLbl.setForeground(new java.awt.Color(255, 0, 0));
+        heightLbl.setForeground(new java.awt.Color(255, 51, 51));
         heightLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         heightLbl.setText("Invalid Height");
         add(heightLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 160, 20));
 
         emailIDAlreadyLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        emailIDAlreadyLbl.setForeground(new java.awt.Color(255, 0, 0));
+        emailIDAlreadyLbl.setForeground(new java.awt.Color(255, 51, 51));
         emailIDAlreadyLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailIDAlreadyLbl.setText("EmailID already Exists");
         add(emailIDAlreadyLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 160, 20));
@@ -517,54 +533,52 @@ private void populateNetworkComboBox() {
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
         clearValues();
         clearLabels();
-        // TODO add your handling code here:
     }//GEN-LAST:event_resetBtnActionPerformed
-        private void clearValues(){
-                txtName.setText("");
-                txtEmail.setText("");
-                txtPassword.setText("");
-                confirmPasswordTxt.setText("");
-                txtAge.setText("");
-                txtAdress.setText("");
-                txtCity.setText("");
-                try{
-                networkJComboBox.setSelectedIndex(0);
-                }catch (Exception e){
-                    
-                }
-                txtZipcode.setText("");
-                txtHeight.setText("");
-                txtWeight.setText("");
-                nameSuccessLbl.setVisible(false);
-                emailSuccessLbl.setVisible(false);
-                passwordSuccessLbl.setVisible(false);
-                confirmPasswordSuccessLbl.setVisible(false);
-                AgeSuccessLbl.setVisible(false);
-                addressSuccessLbl.setVisible(false);
-                citySuccessLbl.setVisible(false);
-                zipSuccessLbl.setVisible(false);
-                heightSuccessLbl.setVisible(false);
-                weightSuccessLbl.setVisible(false);
+    private void clearValues() {
+        txtName.setText("");
+        txtEmail.setText("");
+        txtPassword.setText("");
+        confirmPasswordTxt.setText("");
+        txtAge.setText("");
+        txtAdress.setText("");
+        txtCity.setText("");
+        try {
+            networkJComboBox.setSelectedIndex(0);
+        } catch (Exception e) {
+
         }
-    /* public void populateLongituteLatitude(LatLong latLong) {
-        this.latLong = latLong;
-        latLongTxt.setText(latLong.getLat()+ "," + latLong.getLongi());
-    }*/
+        txtZipcode.setText("");
+        txtHeight.setText("");
+        txtWeight.setText("");
+        nameSuccessLbl.setVisible(false);
+        emailSuccessLbl.setVisible(false);
+        passwordSuccessLbl.setVisible(false);
+        confirmPasswordSuccessLbl.setVisible(false);
+        AgeSuccessLbl.setVisible(false);
+        addressSuccessLbl.setVisible(false);
+        citySuccessLbl.setVisible(false);
+        zipSuccessLbl.setVisible(false);
+        heightSuccessLbl.setVisible(false);
+        weightSuccessLbl.setVisible(false);
+    }
+
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         Network network = (Network) networkJComboBox.getSelectedItem();
-         if(txtName.getText().isEmpty() || txtAge.getText().isEmpty() || txtWeight.getText().isEmpty() || txtHeight.getText().isEmpty() || txtEmail.getText().isEmpty() || txtAdress.getText().isEmpty() || txtCity.getText().isEmpty() ||  txtZipcode.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Field(s) cannot be Empty!","Error",JOptionPane.ERROR_MESSAGE);
-             return;
-          }else if(ageValid && zipValid && heightValid && weightValid && emailValid){
+        if (txtName.getText().isEmpty() || txtAge.getText().isEmpty()
+                || txtWeight.getText().isEmpty() || txtHeight.getText().isEmpty()
+                || txtEmail.getText().isEmpty() || txtAdress.getText().isEmpty() || txtCity.getText().isEmpty() || txtZipcode.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Field(s) cannot be Empty!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (ageValid && zipValid && heightValid && weightValid && emailValid) {
             String name = txtName.getText();
             String password = txtPassword.getText();
             String email = txtEmail.getText();
             String add = txtAdress.getText();
             String city = txtCity.getText();
-            String gender="";
-            if(radioMale.isSelected()){
+            String gender = "";
+            if (radioMale.isSelected()) {
                 gender = "Male";
-            }else{
+            } else {
                 gender = "Female";
             }
 
@@ -579,42 +593,35 @@ private void populateNetworkComboBox() {
             c.setCity(city);
             c.setZipcode(txtZipcode.getText());
             c.setNetwork(network);
-            
-            // User Name Already Exists Validation 
-            
-                system.getStudentDirectory().createStudent(c);
-                system.getUserAccountDirectory().createStudentAccount(email, password,c, new StudentRole());
-                JOptionPane.showMessageDialog(null, "Student added successfully","Success",JOptionPane.INFORMATION_MESSAGE);
-                clearValues();
-                DB4OUtil.getInstance().storeSystem(system);
-                
-        }else {
-           JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);
+
+            system.getStudentDirectory().createStudent(c);
+            system.getUserAccountDirectory().createStudentAccount(email, password, c, new StudentRole());
+            JOptionPane.showMessageDialog(null, "Student added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clearValues();
+            DB4OUtil.getInstance().storeSystem(system);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void radioMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMaleActionPerformed
-       // radioFemale.setEnabled(false);
-       radioFemale.setSelected(false);
-        // TODO add your handling code here:
+        radioFemale.setSelected(false);
     }//GEN-LAST:event_radioMaleActionPerformed
 
     private void radioFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFemaleActionPerformed
-      //  radioMale.setEnabled(false);
         radioMale.setSelected(false);
-        // TODO add your handling code here:
     }//GEN-LAST:event_radioFemaleActionPerformed
 
     private void confirmPasswordTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_confirmPasswordTxtKeyReleased
         // TODO add your handling code here:
-        if(confirmPasswordTxt.getText().equals(txtPassword.getText()) && !confirmPasswordTxt.getText().isEmpty()){
+        if (confirmPasswordTxt.getText().equals(txtPassword.getText()) && !confirmPasswordTxt.getText().isEmpty()) {
             confirmPasswordSuccessLbl.setVisible(true);
             confirmPasswordLbl.setVisible(false);
-        }else if(confirmPasswordTxt.getText().isEmpty()){
+        } else if (confirmPasswordTxt.getText().isEmpty()) {
             confirmPasswordLbl.setVisible(false);
-             confirmPasswordSuccessLbl.setVisible(false);
-        }else{
+            confirmPasswordSuccessLbl.setVisible(false);
+        } else {
             confirmPasswordLbl.setVisible(true);
             confirmPasswordSuccessLbl.setVisible(false);
         }
@@ -622,31 +629,30 @@ private void populateNetworkComboBox() {
 
     private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
         // TODO add your handling code here:
-         // Age As Number
-        int age=0;
-        try{
+        int age = 0;
+        try {
             age = Integer.parseInt(txtAge.getText());
-        }catch(NumberFormatException e){
-            if(!txtAge.getText().isEmpty()){
-             invalidAgeLbl.setVisible(true);
-             ageValid = false;
-             ageBandLbl.setVisible(false);
-             AgeSuccessLbl.setVisible(false);
-             return;
-            }else {
+        } catch (NumberFormatException e) {
+            if (!txtAge.getText().isEmpty()) {
+                invalidAgeLbl.setVisible(true);
+                ageValid = false;
+                ageBandLbl.setVisible(false);
+                AgeSuccessLbl.setVisible(false);
+                return;
+            } else {
                 invalidAgeLbl.setVisible(false);
-             ageValid = false;
-             ageBandLbl.setVisible(false);
-             AgeSuccessLbl.setVisible(false);
-             return;
+                ageValid = false;
+                ageBandLbl.setVisible(false);
+                AgeSuccessLbl.setVisible(false);
+                return;
             }
         }
-        if(age < 15 || age > 85){
+        if (age < 15 || age > 85) {
             ageBandLbl.setVisible(true);
             ageValid = false;
-             invalidAgeLbl.setVisible(false);
+            invalidAgeLbl.setVisible(false);
             AgeSuccessLbl.setVisible(false);
-        }else{
+        } else {
             invalidAgeLbl.setVisible(false);
             ageBandLbl.setVisible(false);
             ageValid = true;
@@ -656,51 +662,51 @@ private void populateNetworkComboBox() {
 
     private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
-        if (!namePatternCorrect(txtName.getText()) && !(txtName.getText().isEmpty())){
-              nameLbl.setVisible(true);
-              nameSuccessLbl.setVisible(false);
-        }else if(txtName.getText().isEmpty()){
+        if (!namePatternCorrect(txtName.getText()) && !(txtName.getText().isEmpty())) {
+            nameLbl.setVisible(true);
+            nameSuccessLbl.setVisible(false);
+        } else if (txtName.getText().isEmpty()) {
             nameLbl.setVisible(false);
-             nameSuccessLbl.setVisible(false);
-        }else{
-         nameLbl.setVisible(false);
-         nameSuccessLbl.setVisible(true);
+            nameSuccessLbl.setVisible(false);
+        } else {
+            nameLbl.setVisible(false);
+            nameSuccessLbl.setVisible(true);
         }
     }//GEN-LAST:event_txtNameKeyReleased
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
         // TODO add your handling code here:
-        if (!usernamePatternCorrect(txtEmail.getText()) && !(txtEmail.getText().isEmpty()) && system.getStudentDirectory().checkIfUsernameIsUnique(txtEmail.getText())){
-              emailLbl.setVisible(true);
-              emailIDAlreadyLbl.setVisible(false);
-              emailSuccessLbl.setVisible(false);
-              emailValid =false;
-        }else if(txtEmail.getText().isEmpty()){
+        if (!usernamePatternCorrect(txtEmail.getText()) && !(txtEmail.getText().isEmpty()) && system.getStudentDirectory().checkIfUsernameIsUnique(txtEmail.getText())) {
+            emailLbl.setVisible(true);
+            emailIDAlreadyLbl.setVisible(false);
+            emailSuccessLbl.setVisible(false);
+            emailValid = false;
+        } else if (txtEmail.getText().isEmpty()) {
             emailLbl.setVisible(false);
             emailIDAlreadyLbl.setVisible(false);
-            emailValid =false;
-             emailSuccessLbl.setVisible(false);
-        }else if(!system.getStudentDirectory().checkIfUsernameIsUnique(txtEmail.getText())){
+            emailValid = false;
+            emailSuccessLbl.setVisible(false);
+        } else if (!system.getStudentDirectory().checkIfUsernameIsUnique(txtEmail.getText())) {
             emailIDAlreadyLbl.setVisible(true);
             emailSuccessLbl.setVisible(false);
-            emailValid =false;
-        }else{
-         emailLbl.setVisible(false);
-         emailIDAlreadyLbl.setVisible(false);
-         emailSuccessLbl.setVisible(true);
-         emailValid =true;
+            emailValid = false;
+        } else {
+            emailLbl.setVisible(false);
+            emailIDAlreadyLbl.setVisible(false);
+            emailSuccessLbl.setVisible(true);
+            emailValid = true;
         }
     }//GEN-LAST:event_txtEmailKeyReleased
 
     private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
         // TODO add your handling code here:
-        if(!passwordPatternCorrect(txtPassword.getText()) && !(txtPassword.getText().isEmpty())){
+        if (!passwordPatternCorrect(txtPassword.getText()) && !(txtPassword.getText().isEmpty())) {
             passwordSuccessLbl.setVisible(false);
             passwordLbl.setVisible(true);
-        }else if(txtPassword.getText().isEmpty()){
+        } else if (txtPassword.getText().isEmpty()) {
             passwordLbl.setVisible(false);
-             passwordSuccessLbl.setVisible(false);
-        }else{
+            passwordSuccessLbl.setVisible(false);
+        } else {
             passwordLbl.setVisible(false);
             passwordSuccessLbl.setVisible(true);
         }
@@ -708,13 +714,13 @@ private void populateNetworkComboBox() {
 
     private void txtAdressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyReleased
         // TODO add your handling code here:
-        if(!addressPatternCorrect(txtAdress.getText()) && !(txtAdress.getText().isEmpty())){
+        if (!addressPatternCorrect(txtAdress.getText()) && !(txtAdress.getText().isEmpty())) {
             addressSuccessLbl.setVisible(false);
             addressLbl.setVisible(true);
-        }else if(txtAdress.getText().isEmpty()){
+        } else if (txtAdress.getText().isEmpty()) {
             addressLbl.setVisible(false);
-             addressSuccessLbl.setVisible(false);
-        }else{
+            addressSuccessLbl.setVisible(false);
+        } else {
             addressLbl.setVisible(false);
             addressSuccessLbl.setVisible(true);
         }
@@ -722,15 +728,15 @@ private void populateNetworkComboBox() {
 
     private void txtCityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityKeyReleased
         // TODO add your handling code here:
-        if(!cityPatternCorrect(txtCity.getText()) && !(txtCity.getText().isEmpty())){
+        if (!cityPatternCorrect(txtCity.getText()) && !(txtCity.getText().isEmpty())) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(true);
             cityValid = false;
-        }else if(txtCity.getText().isEmpty()){
+        } else if (txtCity.getText().isEmpty()) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(false);
             cityValid = false;
-        }else{
+        } else {
             cityValid = true;
             cityLbl.setVisible(false);
             citySuccessLbl.setVisible(true);
@@ -739,96 +745,96 @@ private void populateNetworkComboBox() {
 
     private void txtZipcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtZipcodeKeyReleased
         // TODO add your handling code here:
-        int zip=0;
-        try{
+        int zip = 0;
+        try {
             zip = Integer.parseInt(txtZipcode.getText());
-            if(zip == 0){
+            if (zip == 0) {
                 zipLbl.setVisible(false);
                 zipSuccessLbl.setVisible(false);
                 zipValid = false;
             }
             zipValid = true;
-             zipSuccessLbl.setVisible(true);
-             zipLbl.setVisible(false);
-             return;
-        }catch(NumberFormatException e){
-            if(!txtZipcode.getText().isEmpty()){
-             zipValid = false;
-             zipSuccessLbl.setVisible(false);
-             zipLbl.setVisible(true);
-             return;
-            }else {
-             zipValid = false;
-             zipLbl.setVisible(false);
-             zipSuccessLbl.setVisible(false);
-             return;
+            zipSuccessLbl.setVisible(true);
+            zipLbl.setVisible(false);
+            return;
+        } catch (NumberFormatException e) {
+            if (!txtZipcode.getText().isEmpty()) {
+                zipValid = false;
+                zipSuccessLbl.setVisible(false);
+                zipLbl.setVisible(true);
+                return;
+            } else {
+                zipValid = false;
+                zipLbl.setVisible(false);
+                zipSuccessLbl.setVisible(false);
+                return;
             }
         }
     }//GEN-LAST:event_txtZipcodeKeyReleased
 
     private void txtHeightKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHeightKeyReleased
         // TODO add your handling code here:
-        int height=0;
-        if(txtHeight.getText().isEmpty()){
-        heightSuccessLbl.setVisible(false);
-             heightLbl.setVisible(false);
+        int height = 0;
+        if (txtHeight.getText().isEmpty()) {
+            heightSuccessLbl.setVisible(false);
+            heightLbl.setVisible(false);
         }
-        try{
+        try {
             height = Integer.parseInt(txtHeight.getText());
-        }catch(NumberFormatException e){
-            if(!txtHeight.getText().isEmpty()){
-             heightValid = false;
-             heightSuccessLbl.setVisible(false);
-             heightLbl.setVisible(true);
-             return;
-            }else {
-             heightValid = false;
-             heightLbl.setVisible(false);
-             heightSuccessLbl.setVisible(false);
-             return;
+        } catch (NumberFormatException e) {
+            if (!txtHeight.getText().isEmpty()) {
+                heightValid = false;
+                heightSuccessLbl.setVisible(false);
+                heightLbl.setVisible(true);
+                return;
+            } else {
+                heightValid = false;
+                heightLbl.setVisible(false);
+                heightSuccessLbl.setVisible(false);
+                return;
             }
         }
-        if(txtHeight.getText().length() > 3 || txtHeight.getText().length() < 3){
+        if (txtHeight.getText().length() > 3 || txtHeight.getText().length() < 3) {
             heightValid = false;
-             heightLbl.setVisible(true);
-             heightSuccessLbl.setVisible(false);
-        }else{
-             heightValid = true;
-             heightLbl.setVisible(false);
-             heightSuccessLbl.setVisible(true);
+            heightLbl.setVisible(true);
+            heightSuccessLbl.setVisible(false);
+        } else {
+            heightValid = true;
+            heightLbl.setVisible(false);
+            heightSuccessLbl.setVisible(true);
         }
     }//GEN-LAST:event_txtHeightKeyReleased
 
     private void txtWeightKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyReleased
         // TODO add your handling code here:
-        int weight=0;
-        if(txtWeight.getText().isEmpty()){
-        weightSuccessLbl.setVisible(false);
-             weightLbl.setVisible(false);
+        int weight = 0;
+        if (txtWeight.getText().isEmpty()) {
+            weightSuccessLbl.setVisible(false);
+            weightLbl.setVisible(false);
         }
-        try{
+        try {
             weight = Integer.parseInt(txtWeight.getText());
-        }catch(NumberFormatException e){
-            if(!txtWeight.getText().isEmpty()){
-             weightValid = false;
-             weightSuccessLbl.setVisible(false);
-             weightLbl.setVisible(true);
-             return;
-            }else {
-             weightValid = false;
-             weightLbl.setVisible(false);
-             weightSuccessLbl.setVisible(false);
-             return;
+        } catch (NumberFormatException e) {
+            if (!txtWeight.getText().isEmpty()) {
+                weightValid = false;
+                weightSuccessLbl.setVisible(false);
+                weightLbl.setVisible(true);
+                return;
+            } else {
+                weightValid = false;
+                weightLbl.setVisible(false);
+                weightSuccessLbl.setVisible(false);
+                return;
             }
         }
-        if(weight > 200){
+        if (weight > 200) {
             weightValid = false;
             weightLbl.setVisible(true);
             weightSuccessLbl.setVisible(false);
-        }else{
-             weightValid = true;
-             weightLbl.setVisible(false);
-             weightSuccessLbl.setVisible(true);
+        } else {
+            weightValid = true;
+            weightLbl.setVisible(false);
+            weightSuccessLbl.setVisible(true);
         }
     }//GEN-LAST:event_txtWeightKeyReleased
 
@@ -843,7 +849,6 @@ private void populateNetworkComboBox() {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
