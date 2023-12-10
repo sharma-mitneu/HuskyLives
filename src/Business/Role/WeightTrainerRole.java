@@ -9,19 +9,16 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Organization.WeightTrainingOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.WeightTrainerRole.WeightTrainerWorkAreaJPanel;
-//import userinterface.WeightTrainer.WeightTrainerWorkAreaJPanel;
 
 /**
  *
  * @author omkar
  */
 public class WeightTrainerRole extends Role {
-    
-    
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business, Network network) {
         

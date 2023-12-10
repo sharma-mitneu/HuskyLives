@@ -24,19 +24,22 @@ public abstract class Enterprise extends Organization{
     
     public Enterprise(String name,EnterpriseType type){
         super(name);
-        this.enterpriseType=type;
-        this.itemsList =new ArrayList<>();
+        this.enterpriseType = type;
+        this.itemsList = new ArrayList<>();
         this.serviceTypeList = new ArrayList<>();
-        organizationDirectory=new OrganizationDirectory();
+        organizationDirectory = new OrganizationDirectory();
     }
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
+    
     public DormInventoryDirectory getDormInventoryDirectory() {
         return dormInventoryDirectory;
     }
+    
     public enum EnterpriseType{
+        
         DietUnit("Diet Unit"),
         TrainerUnit("Trainer Unit"),
         DoctorUnit("Doctor Unit"),
@@ -49,13 +52,15 @@ public abstract class Enterprise extends Organization{
         private EnterpriseType(String value){
             this.value=value;
         }
+        
         public String getValue() {
             return value;
         }
+        
         @Override
         public String toString(){
-        return value;
-    }
+            return value;
+        }
     }
 
     public ArrayList<Items> getItemsList() {
@@ -99,7 +104,6 @@ public abstract class Enterprise extends Organization{
         return item;
     }
       
-    
     public void deleteItem(Items item){
        itemsList.remove(item); 
     }

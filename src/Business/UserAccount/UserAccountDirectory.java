@@ -18,7 +18,7 @@ public class UserAccountDirectory {
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
-        userAccountList = new ArrayList();
+        userAccountList = new ArrayList<>();
     }
 
     public ArrayList<UserAccount> getUserAccountList() {
@@ -42,6 +42,7 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
+    
     public UserAccount createUserAccount(String username, String password,Employee employee, Role role){
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
@@ -51,6 +52,7 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
+    
     public UserAccount createStudentAccount(String username, String password,Student student, Role role){
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
@@ -65,7 +67,7 @@ public class UserAccountDirectory {
     public void removeUserAccount(UserAccount ua){
         userAccountList.remove(ua);
     }
-    // Update User Account
+    
     public UserAccount updateUserAccount(UserAccount userAccount, String password){
         userAccount.setPassword(password);
         return userAccount;

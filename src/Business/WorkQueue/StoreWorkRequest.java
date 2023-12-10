@@ -7,7 +7,6 @@ package Business.WorkQueue;
 
 import Business.Enterprise.Items;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
@@ -17,12 +16,10 @@ public class StoreWorkRequest extends WorkRequest {
     
     private ArrayList<Items> cusList;
     private String cusMessage;
-    private int totalBill=0;
+    private int totalBill = 0;
 
-    public StoreWorkRequest() {
-        
+    public StoreWorkRequest() {}
     
-    } 
     public ArrayList<Items> getCusList() {
         return cusList;
     }

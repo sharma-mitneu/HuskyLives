@@ -10,6 +10,7 @@ package Business.WorkQueue;
  * @author srira
  */
 public class PhysioWorkRequest extends WorkRequest{
+    
     private String physioResult;
 
     public String getPhysioResult() {

@@ -20,7 +20,7 @@ public class GenPracOrganization extends Organization{
     
     @Override
     public ArrayList<Role> getSupportedRole() {
-        ArrayList<Role> roles = new ArrayList();
+        ArrayList<Role> roles = new ArrayList<>();
         roles.add(new GeneralPractitionerRole());
         return roles;
     }

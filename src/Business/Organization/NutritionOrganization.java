@@ -19,12 +19,10 @@ public class NutritionOrganization extends Organization {
         super(Type.Nutrition.getValue());
     }
     
-     @Override
+    @Override
     public ArrayList<Role> getSupportedRole() {
-        ArrayList<Role> roles = new ArrayList();
+        ArrayList<Role> roles = new ArrayList<>();
         roles.add(new NutritionistRole());
         return roles;
-    }
-     
-    
+    }   
 }

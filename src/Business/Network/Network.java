@@ -30,10 +30,6 @@ public class Network {
         return enterpriseDirectory;
     }
     
-//    public EnterpriseDirectory getCustEnterpriseDirectory() {
-//        return custEnterpriseDirectory;
-//    }
-    
     @Override
     public String toString(){
         return name;

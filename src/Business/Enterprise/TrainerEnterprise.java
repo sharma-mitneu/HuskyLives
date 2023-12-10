@@ -13,9 +13,11 @@ import java.util.ArrayList;
  * @author mittul.sharma
  */
 public class TrainerEnterprise extends Enterprise {
+   
     public TrainerEnterprise(String name){
         super(name,EnterpriseType.TrainerUnit);
     }
+    
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;

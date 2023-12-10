@@ -13,13 +13,14 @@ import java.util.Random;
 public class Employee {
     
     private String name;
+    private static int count = 0;
     private int id;
     private int min = 1000;
     private int max = 9999;
-    private static int count = 0;
+
 
     public Employee() {
-         Random r = new Random();
+        Random r = new Random();
         count = r.nextInt(max-min) + min;
         id = count;
     }
@@ -32,7 +33,6 @@ public class Employee {
         this.name = name;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -41,6 +41,5 @@ public class Employee {
     public String toString() {
         return name;
     }
-    
     
 }

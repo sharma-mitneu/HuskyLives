@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 /**
  *
- * @author risha
+ * @author ashish
  */
 public class StoreDirectory {
     private ArrayList<Store> storeList;
     
     public StoreDirectory() {
-        storeList = new ArrayList();
+        storeList = new ArrayList<>();
     }
     
     public ArrayList<Store> getStoreList() {

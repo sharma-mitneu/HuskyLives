@@ -4,7 +4,6 @@
  */
 package Business.Employee;
 
-import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +32,8 @@ public class EmployeeDirectory {
     public void removeEmployee (Employee e){
         employeeList.remove(e);
     }
-       public boolean checkIfUsernameIsUnique(String name){
+    
+    public boolean checkIfUsernameIsUnique(String name){
         for (Employee e : employeeList){
             if (e.getName().equals(name))
                 return false;
