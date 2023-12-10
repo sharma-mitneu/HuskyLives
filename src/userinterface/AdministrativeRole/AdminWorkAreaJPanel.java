@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author  aishwaryasamel
+ * @author  ashish
  */
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
@@ -72,7 +72,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 180, 40));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 180, 40));
 
         manageOrganizationJButton.setBackground(new java.awt.Color(204, 204, 204));
         manageOrganizationJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -83,17 +83,17 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 180, 40));
+        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 180, 40));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
         enterpriseLabel.setText("Enterprise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 150, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 150, 30));
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         valueLabel.setForeground(new java.awt.Color(255, 51, 51));
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 220, 30));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 220, 30));
 
         manageRequestsBtn.setBackground(new java.awt.Color(204, 204, 204));
         manageRequestsBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -104,7 +104,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageRequestsBtnActionPerformed(evt);
             }
         });
-        add(manageRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 180, 40));
+        add(manageRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 180, 40));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

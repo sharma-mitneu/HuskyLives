@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import userinterface.AdministrativeRole.ViewStudentsJPanel;
 
 /**
  *
@@ -113,6 +114,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jTree = new javax.swing.JTree();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        viewStudentsBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -139,7 +142,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jSplitPane.setLeftComponent(jPanel1);
@@ -161,7 +164,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageEnterprise.setBackground(new java.awt.Color(204, 204, 204));
         btnManageEnterprise.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnManageEnterprise.setForeground(new java.awt.Color(51, 51, 51));
-        btnManageEnterprise.setText("Manage All Enterprise");
+        btnManageEnterprise.setText("Manage All Housing");
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEnterpriseActionPerformed(evt);
@@ -187,7 +190,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 28, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageAdminImg.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 28, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 28, -1));
 
         greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         greetLbl.setForeground(new java.awt.Color(204, 204, 204));
@@ -216,6 +219,20 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundFoot.png"))); // NOI18N
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 264, 52));
+
+        viewStudentsBtn.setBackground(new java.awt.Color(204, 204, 204));
+        viewStudentsBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        viewStudentsBtn.setForeground(new java.awt.Color(51, 51, 51));
+        viewStudentsBtn.setText("View Students");
+        viewStudentsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewStudentsBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(viewStudentsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 190, 40));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageAdminImg.png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 28, -1));
 
         jSplitPane.setRightComponent(jPanel2);
 
@@ -253,6 +270,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             //        }
     }//GEN-LAST:event_jTreeValueChanged
 
+    private void viewStudentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewStudentsBtnActionPerformed
+        // TODO add your handling code here:
+        ViewStudentsJPanel manageRequestsJPanel = new ViewStudentsJPanel(userProcessContainer, system);
+        userProcessContainer.add("ViewStudentsJPanel", manageRequestsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewStudentsBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageAdmin;
@@ -266,10 +291,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JTree jTree;
+    private javax.swing.JButton viewStudentsBtn;
     // End of variables declaration//GEN-END:variables
 }

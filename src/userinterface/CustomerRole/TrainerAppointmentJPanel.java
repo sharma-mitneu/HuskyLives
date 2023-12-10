@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sriram
+ * @author ashish
  */
 public class TrainerAppointmentJPanel extends javax.swing.JPanel {
 

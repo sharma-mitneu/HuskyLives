@@ -29,7 +29,7 @@ import static Business.Role.Role.RoleType.DormInventoryManager;
 
 /**
  *
- * @author Sriram
+ * @author ashish
  */
 public class PlaceOrderJPanel extends javax.swing.JPanel {
 
