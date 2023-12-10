@@ -154,7 +154,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 404, 110));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MANAGE NETWORK");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 723, 30));

@@ -125,13 +125,15 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("STUDENT DETAILS");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1200, 39));
 
+        tblStudentList.setBackground(new java.awt.Color(204, 204, 204));
         tblStudentList.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        tblStudentList.setForeground(new java.awt.Color(51, 51, 51));
         tblStudentList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -155,8 +157,9 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 675, 91));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Process Request");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,29 +169,37 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 640, -1, 40));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 107, 30));
 
         nameTxt.setEditable(false);
+        nameTxt.setBackground(new java.awt.Color(204, 204, 204));
         nameTxt.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        nameTxt.setForeground(new java.awt.Color(51, 51, 51));
         add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 150, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Age:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 90, 30));
 
         txtAge.setEditable(false);
+        txtAge.setBackground(new java.awt.Color(204, 204, 204));
+        txtAge.setForeground(new java.awt.Color(51, 51, 51));
         add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 150, 30));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Gender:");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 107, 20));
 
-        radioMale.setBackground(new java.awt.Color(204, 204, 255));
+        radioMale.setBackground(new java.awt.Color(51, 51, 51));
         radioMale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        radioMale.setForeground(new java.awt.Color(204, 204, 204));
         radioMale.setText("Male");
         radioMale.setEnabled(false);
         radioMale.addActionListener(new java.awt.event.ActionListener() {
@@ -198,8 +209,9 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(radioMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 68, -1));
 
-        radioFemale.setBackground(new java.awt.Color(204, 204, 255));
+        radioFemale.setBackground(new java.awt.Color(51, 51, 51));
         radioFemale.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        radioFemale.setForeground(new java.awt.Color(204, 204, 204));
         radioFemale.setText("Female");
         radioFemale.setEnabled(false);
         radioFemale.addActionListener(new java.awt.event.ActionListener() {
@@ -210,19 +222,25 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 72, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Height(in cms):");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 86, 30));
 
         txtHeight.setEditable(false);
+        txtHeight.setBackground(new java.awt.Color(204, 204, 204));
+        txtHeight.setForeground(new java.awt.Color(51, 51, 51));
         add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, 150, 30));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Weight (in Kgs):");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, 30));
 
         txtWeight.setEditable(false);
+        txtWeight.setBackground(new java.awt.Color(204, 204, 204));
+        txtWeight.setForeground(new java.awt.Color(51, 51, 51));
         add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 150, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
@@ -237,8 +255,9 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 40));
 
-        viewDetailsBtn.setBackground(new java.awt.Color(255, 102, 0));
+        viewDetailsBtn.setBackground(new java.awt.Color(204, 204, 204));
         viewDetailsBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        viewDetailsBtn.setForeground(new java.awt.Color(51, 51, 51));
         viewDetailsBtn.setText("View Details");
         viewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,23 +267,29 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 138, 45));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Message:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 550, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, -1, -1));
 
+        weightMsgTxt.setBackground(new java.awt.Color(204, 204, 204));
         weightMsgTxt.setColumns(20);
+        weightMsgTxt.setForeground(new java.awt.Color(51, 51, 51));
         weightMsgTxt.setRows(5);
         jScrollPane2.setViewportView(weightMsgTxt);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 190, -1));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 240, 70));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Workout Chart:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 130, 50));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 130, 50));
 
+        weightChartComboBox.setBackground(new java.awt.Color(204, 204, 204));
         weightChartComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        weightChartComboBox.setForeground(new java.awt.Color(51, 51, 51));
         weightChartComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Workout Chart-1", "Workout Chart-2" }));
-        add(weightChartComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, 150, 30));
+        add(weightChartComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 470, 150, 30));
 
         greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

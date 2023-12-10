@@ -258,7 +258,7 @@ private boolean cityPatternCorrect(String val3){
         add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 190, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("MANAGE ENTERPRISE ADMIN");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 723, 30));

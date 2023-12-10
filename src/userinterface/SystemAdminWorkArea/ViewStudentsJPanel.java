@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package userinterface.AdministrativeRole;
+package userinterface.SystemAdminWorkArea;
 
 import Business.Student.Student;
 import Business.EcoSystem;
@@ -127,6 +127,7 @@ public class ViewStudentsJPanel extends javax.swing.JPanel {
         try {
             nuId = Integer.parseInt(txtNuIdSearchField.getText());
         } catch (Exception e) {
+            populateTable();
             JOptionPane.showMessageDialog(this, "Please enter numbers only", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
