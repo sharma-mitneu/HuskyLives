@@ -313,8 +313,8 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
     
     public void sendEmail(String email, String chart){
                 //final String username = "";
-		final String password = "Password@123";
-		String fromEmail = "huskylives@gmail.com";
+		final String password = "uhugcrgdragopyzz";
+		String fromEmail = "huskylives23@gmail.com";
 		String toEmail = email;
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");

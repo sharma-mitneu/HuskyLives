@@ -85,7 +85,6 @@ public class CreateServicesJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         serviceTbl = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -100,19 +99,19 @@ public class CreateServicesJPanel extends javax.swing.JPanel {
         priceLbl = new javax.swing.JLabel();
         priceSuccessLbl = new javax.swing.JLabel();
         price0lbl = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         priceLbl1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(80, 80, 82));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Create Maintenance Services");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 1200, 37));
-
+        serviceTbl.setBackground(new java.awt.Color(204, 204, 204));
         serviceTbl.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        serviceTbl.setForeground(new java.awt.Color(0, 0, 0));
         serviceTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -134,36 +133,43 @@ public class CreateServicesJPanel extends javax.swing.JPanel {
             serviceTbl.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 103, -1, 91));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, 91));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Service Name:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 100, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 100, 30));
 
+        itemNameTxt.setBackground(new java.awt.Color(204, 204, 204));
+        itemNameTxt.setForeground(new java.awt.Color(51, 51, 51));
         itemNameTxt.setMinimumSize(new java.awt.Dimension(7, 25));
         itemNameTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 itemNameTxtKeyReleased(evt);
             }
         });
-        jPanel1.add(itemNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 150, 30));
+        jPanel1.add(itemNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 150, 30));
 
+        priceTxt.setBackground(new java.awt.Color(204, 204, 204));
+        priceTxt.setForeground(new java.awt.Color(51, 51, 51));
         priceTxt.setMinimumSize(new java.awt.Dimension(7, 25));
         priceTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 priceTxtKeyReleased(evt);
             }
         });
-        jPanel1.add(priceTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 150, 30));
+        jPanel1.add(priceTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 150, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Price:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 130, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 130, 30));
 
-        backBtn.setBackground(new java.awt.Color(255, 102, 0));
+        backBtn.setBackground(new java.awt.Color(204, 204, 204));
         backBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        backBtn.setForeground(new java.awt.Color(51, 51, 51));
         backBtn.setText("< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,77 +178,81 @@ public class CreateServicesJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 30));
 
-        addBtn.setBackground(new java.awt.Color(255, 102, 0));
+        addBtn.setBackground(new java.awt.Color(204, 204, 204));
         addBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(51, 51, 51));
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 100, 40));
+        jPanel1.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 100, 40));
 
-        delBtn.setBackground(new java.awt.Color(255, 102, 0));
+        delBtn.setBackground(new java.awt.Color(204, 204, 204));
         delBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        delBtn.setForeground(new java.awt.Color(51, 51, 51));
         delBtn.setText("Delete");
         delBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 205, 80, 40));
+        jPanel1.add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 80, 40));
 
         itemLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         itemLbl.setForeground(new java.awt.Color(181, 7, 7));
         itemLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         itemLbl.setText("Only Alphabets are allowed");
-        jPanel1.add(itemLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 150, 20));
+        jPanel1.add(itemLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 150, 20));
 
         itemSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        jPanel1.add(itemSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 30, -1));
+        jPanel1.add(itemSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 30, -1));
 
         priceLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         priceLbl.setForeground(new java.awt.Color(181, 7, 7));
         priceLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceLbl.setText("Only Numbers Allowed");
-        jPanel1.add(priceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 160, 20));
+        jPanel1.add(priceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 160, 20));
 
         priceSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        jPanel1.add(priceSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 30, -1));
+        jPanel1.add(priceSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 30, -1));
 
         price0lbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         price0lbl.setForeground(new java.awt.Color(181, 7, 7));
         price0lbl.setText("Price Should be Greater than 0");
-        jPanel1.add(price0lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageinventory.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-140, 0, 1340, 770));
+        jPanel1.add(price0lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
 
         priceLbl1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         priceLbl1.setForeground(new java.awt.Color(181, 7, 7));
         priceLbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceLbl1.setText("Only Numbers Allowed");
-        jPanel1.add(priceLbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 160, 20));
+        jPanel1.add(priceLbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 160, 20));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText("Create Maintenance Services");
+        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 410, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 735, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -377,13 +387,14 @@ public class CreateServicesJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton delBtn;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel itemLbl;
     private javax.swing.JTextField itemNameTxt;
     private javax.swing.JLabel itemSuccessLbl;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel price0lbl;
