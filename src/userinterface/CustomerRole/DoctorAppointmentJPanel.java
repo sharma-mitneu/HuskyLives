@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sriram
+ * @author ashish
  */
 public class DoctorAppointmentJPanel extends javax.swing.JPanel {
 

@@ -20,7 +20,6 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
-    // ID Genereation
     private int min = 1000;
     private int max = 9999;
     private int counter = 0;

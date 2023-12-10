@@ -29,7 +29,7 @@ import userinterface.SystemAdminWorkArea.ManageNetworkJPanel;
 
 /**
  *
- * @author aishwaryasamel
+ * @author ashish
  */
 public class CustomerAnalysisJPanel extends javax.swing.JPanel {
 
