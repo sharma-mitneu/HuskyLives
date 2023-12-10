@@ -111,16 +111,18 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txtWeight = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        greetLbl = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         viewDetailsBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         weightMsgTxt = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         weightChartComboBox = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        greetLbl = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -151,7 +153,7 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblStudentList);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 675, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 675, 91));
 
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -223,19 +225,17 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         txtWeight.setEditable(false);
         add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 150, 30));
 
-        jPanel3.setBackground(new java.awt.Color(102, 153, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Welcome,");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, 120, 140));
+        jLabel13.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("Welcome,");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 90, 40));
 
-        greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel3.add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -50, 320, 160));
-
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 60));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 40));
 
         viewDetailsBtn.setBackground(new java.awt.Color(255, 102, 0));
         viewDetailsBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -266,9 +266,15 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
         weightChartComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Workout Chart-1", "Workout Chart-2" }));
         add(weightChartComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, 150, 30));
 
-        jLabel6.setBackground(new java.awt.Color(102, 153, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/wightTrain.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1010, 700));
+        greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 320, 40));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMaleActionPerformed
@@ -384,12 +390,13 @@ public class WeightTrainerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel greetLbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
