@@ -126,6 +126,7 @@ public class NutritionWorkAreaJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         greetLbl = new javax.swing.JLabel();
+        viewGoalBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -243,7 +244,7 @@ public class NutritionWorkAreaJPanel extends javax.swing.JPanel {
                 viewDetailsBtnActionPerformed(evt);
             }
         });
-        add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 138, 45));
+        add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 138, 45));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setText("Message:");
@@ -285,6 +286,15 @@ public class NutritionWorkAreaJPanel extends javax.swing.JPanel {
         greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 320, 40));
+
+        viewGoalBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        viewGoalBtn.setText("View Goal");
+        viewGoalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewGoalBtnActionPerformed(evt);
+            }
+        });
+        add(viewGoalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, 138, 45));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
@@ -407,6 +417,35 @@ public class NutritionWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_radioMaleActionPerformed
 
+    private void viewGoalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewGoalBtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) tblStudentList.getModel();
+        dtm.setRowCount(0);
+        String goalMessage = "";
+
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (Employee emp : org.getEmployeeDirectory().getEmployeeList()) {
+                if (emp.toString().equals(account.getEmployee().toString())) {
+                    for (WorkRequest request : account.getWorkQueue().getWorkRequestList()) {
+                        Student cust = request.getSender().getStudent();
+                        Object[] row = new Object[4];
+                        row[0] = cust.getId();
+                        row[1] = cust;
+                        row[2] = request;
+                        row[3] = request.getStatus();
+                        dtm.addRow(row);
+                    }
+                }
+            }
+        }
+
+        // Display the value of row[2] in a JOptionPane message
+        if (dtm.getRowCount() > 0) {
+            goalMessage = "Request: " + dtm.getValueAt(0, 2); // Assuming you want the first row's request value
+            JOptionPane.showMessageDialog(null, goalMessage, "Information", JOptionPane.INFORMATION_MESSAGE);
+    }
+    }//GEN-LAST:event_viewGoalBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> dietChartComboBox;
@@ -435,5 +474,6 @@ public class NutritionWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtWeight;
     private javax.swing.JButton viewDetailsBtn;
+    private javax.swing.JButton viewGoalBtn;
     // End of variables declaration//GEN-END:variables
 }
