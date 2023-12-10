@@ -4,14 +4,19 @@
  */
 package Business.Employee;
 
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author mittul.sharma
+ */
 public class EmployeeDirectory {
     
     private ArrayList<Employee> employeeList;
 
     public EmployeeDirectory() {
-        employeeList = new ArrayList<>();
+        employeeList = new ArrayList();
     }
 
     public ArrayList<Employee> getEmployeeList() {
@@ -23,5 +28,16 @@ public class EmployeeDirectory {
         employee.setName(name);
         employeeList.add(employee);
         return employee;
+    }
+    
+    public void removeEmployee (Employee e){
+        employeeList.remove(e);
+    }
+       public boolean checkIfUsernameIsUnique(String name){
+        for (Employee e : employeeList){
+            if (e.getName().equals(name))
+                return false;
+        }
+        return true;
     }
 }

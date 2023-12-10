@@ -4,15 +4,24 @@
  */
 package Business.Employee;
 
+import java.util.Random;
+
+/**
+ *
+ * @author mittul.sharma
+ */
 public class Employee {
     
     private String name;
     private int id;
-    private static int count = 1;
+    private int min = 1000;
+    private int max = 9999;
+    private static int count = 0;
 
     public Employee() {
+         Random r = new Random();
+        count = r.nextInt(max-min) + min;
         id = count;
-        count++;
     }
 
     public int getId() {
