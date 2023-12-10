@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import userinterface.GeneralProctor.GeneralProctorJPanel;
+import userinterface.AdministrativeRole.ViewStudentsJPanel;
 
 /**
  *
@@ -116,8 +117,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         viewStudentsBtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        viewGeneralProctor = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -221,20 +220,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageAdminImg.png"))); // NOI18N
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 28, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageAdminImg.png"))); // NOI18N
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 28, -1));
-
-        viewGeneralProctor.setBackground(new java.awt.Color(204, 204, 204));
-        viewGeneralProctor.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        viewGeneralProctor.setForeground(new java.awt.Color(51, 51, 51));
-        viewGeneralProctor.setText("General Proctor");
-        viewGeneralProctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewGeneralProctorActionPerformed(evt);
-            }
-        });
-        jPanel2.add(viewGeneralProctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 190, 40));
-
         jSplitPane.setRightComponent(jPanel2);
 
         add(jSplitPane, java.awt.BorderLayout.CENTER);
@@ -279,14 +264,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewStudentsBtnActionPerformed
 
-    private void viewGeneralProctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewGeneralProctorActionPerformed
-        // TODO add your handling code here:
-        GeneralProctorJPanel generalProctorJPanel = new GeneralProctorJPanel(userProcessContainer, system);
-        userProcessContainer.add("GeneralProctorJPanel", generalProctorJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_viewGeneralProctorActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageAdmin;
@@ -301,13 +278,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JTree jTree;
-    private javax.swing.JButton viewGeneralProctor;
     private javax.swing.JButton viewStudentsBtn;
     // End of variables declaration//GEN-END:variables
 }

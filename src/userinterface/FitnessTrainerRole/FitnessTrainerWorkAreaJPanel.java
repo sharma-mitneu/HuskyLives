@@ -119,6 +119,7 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         greetLbl = new javax.swing.JLabel();
+        viewMessageBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -252,7 +253,7 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
                 viewDetailsBtnActionPerformed(evt);
             }
         });
-        add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 138, 45));
+        add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 138, 45));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
@@ -294,6 +295,15 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
         greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 320, 50));
+
+        viewMessageBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        viewMessageBtn.setText("View Message");
+        viewMessageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewMessageBtnActionPerformed(evt);
+            }
+        });
+        add(viewMessageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 138, 45));
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMaleActionPerformed
@@ -403,6 +413,35 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_viewDetailsBtnActionPerformed
 
+    private void viewMessageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMessageBtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) tblStudentList.getModel();
+        dtm.setRowCount(0);
+        String viewMessage = "";
+
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (Employee emp : org.getEmployeeDirectory().getEmployeeList()) {
+                if (emp.toString().equals(account.getEmployee().toString())) {
+                    for (WorkRequest request : account.getWorkQueue().getWorkRequestList()) {
+                        Student cust = request.getSender().getStudent();
+                        Object[] row = new Object[4];
+                        row[0] = cust.getId();
+                        row[1] = cust;
+                        row[2] = request;
+                        row[3] = request.getStatus();
+                        dtm.addRow(row);
+                    }
+                }
+            }
+        }
+
+        // Display the value of row[2] in a JOptionPane message
+        if (dtm.getRowCount() > 0) {
+            viewMessage = "Request: " + dtm.getValueAt(0, 2); // Assuming you want the first row's request value
+            JOptionPane.showMessageDialog(null, viewMessage, "Information", JOptionPane.INFORMATION_MESSAGE);
+    }
+    }//GEN-LAST:event_viewMessageBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> fitnessChartComboBox;
@@ -431,6 +470,7 @@ public class FitnessTrainerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtWeight;
     private javax.swing.JButton viewDetailsBtn;
+    private javax.swing.JButton viewMessageBtn;
     // End of variables declaration//GEN-END:variables
 
     
