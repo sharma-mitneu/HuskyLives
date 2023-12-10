@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.StoreManager;
+package userinterface.DormInventoryManager;
 
 
 import Business.EcoSystem;
@@ -11,7 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.Enterprise.Items;
 import Business.Enterprise.ServiceTypes;
 import Business.Organization.Organization;
-import Business.Store.Store;
+//import Business.Store.Store;
 import Business.UserAccount.UserAccount;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
