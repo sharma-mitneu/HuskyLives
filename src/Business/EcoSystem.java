@@ -9,10 +9,10 @@ import Business.Enterprise.EnterpriseDirectory;
 import Business.Enterprise.Items;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Store.StoreDirectory;
+import Business.Inventory.DormInventoryDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
-import Business.Store.Store;
+import Business.Inventory.DormInventory;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +25,7 @@ public class EcoSystem extends Organization{
     private ArrayList<Network> networkList;
     private CustomerRequestDirectory customerRequestDirectory;
     private EnterpriseDirectory enterpriseDirectory;
-    private Store storeDirectory;
+    private DormInventory dormInventoryDirectory;
     
     private EcoSystem(){
         super(null);

@@ -350,9 +350,8 @@ public class OrthoWorkAreaJPanel extends javax.swing.JPanel {
 
    public void sendEmail(String email, String name){
                 //final String username = "";
-		final String password = "HealthifyMe123#";
-		String fromEmail = "healthifyyme@gmail.com";
-		//String toEmail = "surprise.aishwarya@gmail.com";
+		final String password = "Password@123";
+		String fromEmail = "huskylives@gmail.com";
 		String toEmail = email;
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");

@@ -47,8 +47,8 @@ public class EnterpriseDirectory {
             enterprise=new DoctorEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        if(type==Enterprise.EnterpriseType.StoreUnit){
-            enterprise=new StoreEnterprise(name);
+        if(type==Enterprise.EnterpriseType.DormInventoryUnit){
+            enterprise=new DormInventoryEnterprise(name);
             enterpriseList.add(enterprise);
         }
         if(type==Enterprise.EnterpriseType.ProctorOfficer){

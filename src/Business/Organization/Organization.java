@@ -38,7 +38,7 @@ public abstract class Organization {
         Physiotherapist("Physiotherapist"),
         GeneralPractitioner("General Practitioner"),
         Orthopedic("Orthopedic Doctor"),
-        Store("Store"),
+        DormInventory("Dorm Inventory"),
         Delivery("DeliveryMan"),
         Lab("Lab Organization"),
         Doctor("Doctor Organisation");
