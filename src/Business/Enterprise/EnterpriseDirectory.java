@@ -51,6 +51,12 @@ public class EnterpriseDirectory {
             enterprise=new DormInventoryEnterprise(name);
             enterpriseList.add(enterprise);
         }
+      
+        if(type==Enterprise.EnterpriseType.ProctorOfficer){
+            enterprise=new StoreEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+
         if(type==Enterprise.EnterpriseType.MaintenanceUnit){
             enterprise=new MaintenanceEnterprise(name);
             enterpriseList.add(enterprise); 
