@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Sriram
+ * @author ashish
  */
 public class WeightTrainerJPanel extends javax.swing.JPanel {
 

@@ -7,6 +7,7 @@ package Business;
 
 //import Business.Enterprise.Items;
 import Business.Enterprise.Items;
+import Business.Enterprise.ServiceTypes;
 import static java.lang.Integer.toString;
 import java.util.ArrayList;
 
@@ -23,12 +24,14 @@ public class CustomerRequestOrder {
     private String goal;
     private String  customerUserName;
     private ArrayList<Items> itemsList;
+    private ArrayList<ServiceTypes> serviceList;
     private String feedback;
     
-      public CustomerRequestOrder() {
+    public CustomerRequestOrder() {
         reqId = counter;
         ++counter;
         itemsList=new ArrayList<Items>();
+        serviceList = new ArrayList<ServiceTypes>();
     }
 
     public ArrayList<Items> getItemsList() {
@@ -37,6 +40,14 @@ public class CustomerRequestOrder {
 
     public void setItemsList(ArrayList<Items> itemsList) {
         this.itemsList = itemsList;
+    }
+    
+    public ArrayList<ServiceTypes> getServiceList() {
+        return serviceList;
+    }
+
+    public void setServiceList(ArrayList<ServiceTypes> serviceList) {
+        this.serviceList = serviceList;
     }
 
     public int getReqId() {

@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Sriram
+ * @author ashish
  */
 public class GeneralPractitionerJPanel extends javax.swing.JPanel {
 

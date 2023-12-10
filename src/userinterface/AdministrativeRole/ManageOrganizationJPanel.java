@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author risha
+ * @author ashish
  */
 public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
@@ -72,6 +72,14 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                     organizationJComboBox.addItem(type);
                 }
                 if (type.getValue().equals(Type.Delivery.getValue())){
+                    organizationJComboBox.addItem(type);
+                } 
+            }
+            else if(ent.equals("Maintenance Unit")){
+                 if (type.getValue().equals(Type.Service.getValue())){
+                    organizationJComboBox.addItem(type);
+                }
+                if (type.getValue().equals(Type.ServiceWorker.getValue())){
                     organizationJComboBox.addItem(type);
                 } 
             }
@@ -202,6 +210,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         String t = String.valueOf(type)+" Organization";
+        System.out.println("TTTTT" + t);
         for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){   
             if(org.getName().equals(t)){
                 JOptionPane.showMessageDialog(null, "Organization is already added !","Alert",JOptionPane.INFORMATION_MESSAGE);

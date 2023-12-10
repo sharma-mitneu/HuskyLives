@@ -204,6 +204,11 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
         }
         else{
             CardLayout layout=(CardLayout)container.getLayout();
+//            System.out.println("role while loggin in" + userAccount.getRole());
+//            System.out.println("enterprise" + enterprise.toString());
+//            System.out.println("organization" + organization.toString());
+//            System.out.println("user account" + userAccount);
+            
             container.add("workArea",userAccount.getRole().createWorkArea(container, enterprise, organization,userAccount , system, network));
             layout.next(container);
         }
