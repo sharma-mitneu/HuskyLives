@@ -202,7 +202,7 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("MANAGE ENTERPRISE");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 723, 30));

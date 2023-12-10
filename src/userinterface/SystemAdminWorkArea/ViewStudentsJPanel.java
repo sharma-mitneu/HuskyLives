@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package userinterface.AdministrativeRole;
+package userinterface.SystemAdminWorkArea;
 
 import Business.Student.Student;
 import Business.EcoSystem;
@@ -124,11 +124,14 @@ public class ViewStudentsJPanel extends javax.swing.JPanel {
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
         int nuId = 0;
-        try {
-            nuId = Integer.parseInt(txtNuIdSearchField.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Please enter numbers only", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+        System.out.println(txtNuIdSearchField.getText());
+        if(!txtNuIdSearchField.getText().isEmpty()){
+            try {
+                nuId = Integer.parseInt(txtNuIdSearchField.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Please enter numbers only", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
         
         if(nuId==0){
@@ -159,6 +162,7 @@ public class ViewStudentsJPanel extends javax.swing.JPanel {
         row[3] = studentResult.getRoomNumber();
         row[4] = studentResult.getEmail();
         
+        model.addRow(row);
     }//GEN-LAST:event_searchBtnActionPerformed
 
 
