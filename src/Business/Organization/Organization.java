@@ -24,12 +24,13 @@ public abstract class Organization {
     private UserAccountDirectory userAccountDirectory;
     private StudentDirectory studentDirectory;
     private int organizationID;
-   private int min = 1000;
+    private int min = 1000;
     private int max = 9999;
     private static int count = 0;
 
     
     public enum Type{
+        
         Admin("Admin Organization"), 
         Nutrition("Nutrition Organization"), 
         Dietitian("Dietitian Organization"),
@@ -46,12 +47,15 @@ public abstract class Organization {
         Doctor("Doctor Organisation");
         
         private String value;
+        
         private Type(String value) {
             this.value = value;
         }
+        
         public String getValue() {
             return value;
         }
+        
     }
 
     public Organization(String name) {
@@ -60,7 +64,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         studentDirectory = new StudentDirectory();
-          Random r = new Random();
+        Random r = new Random();
         count = r.nextInt(max-min) + min;
         organizationID = count;
     }
@@ -83,7 +87,6 @@ public abstract class Organization {
         this.studentDirectory = studentDirectory;
     }
     
-
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
@@ -108,6 +111,4 @@ public abstract class Organization {
     public String toString() {
         return name;
     }
-    
-    
 }

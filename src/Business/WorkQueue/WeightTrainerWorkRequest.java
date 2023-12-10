@@ -10,6 +10,7 @@ package Business.WorkQueue;
  * @author srira
  */
 public class WeightTrainerWorkRequest  extends WorkRequest{
+    
     private String weightTrainerResult;
 
     public String getWeightTrainerResult() {
@@ -19,6 +20,5 @@ public class WeightTrainerWorkRequest  extends WorkRequest{
     public void setWeightTrainerResult(String weightTrainerResult) {
         this.weightTrainerResult = weightTrainerResult;
     }
-    
-    
+
 }

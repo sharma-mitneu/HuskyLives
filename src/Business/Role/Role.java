@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 public abstract class Role {
     
     public enum RoleType{
+        
         Admin("Admin"),
         MaintenanceAdmin("Maintenance Admin"),
         Student("Student"),
@@ -56,12 +57,11 @@ public abstract class Role {
             Organization organization,
             UserAccount account, 
             EcoSystem business,
-            Network network);
+            Network network
+    );
 
     @Override
     public String toString() {
         return this.getClass().getName();
     }
-    
-    
 }

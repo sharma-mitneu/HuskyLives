@@ -19,6 +19,4 @@ public class FitnessTrainerWorkRequest extends WorkRequest{
     public void setFitnessTrainerResult(String fitnessTrainerResult) {
         this.fitnessTrainerResult = fitnessTrainerResult;
     }
-
-    
 }

@@ -22,7 +22,6 @@ public class Items {
         this.itemType = itemType;
     }
 
-
     public String getItemName() {
         return itemName;
     }
@@ -39,8 +38,8 @@ public class Items {
         this.price = price;
     }
     
-      @Override
-        public String toString(){
+    @Override
+    public String toString(){
         return itemName;
     }
 }

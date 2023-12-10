@@ -10,6 +10,7 @@ package Business.WorkQueue;
  * @author srira
  */
 public class OrthoWorkRequest extends WorkRequest{
+    
     private String orthoResult;
 
     public String getOrthoResult() {
@@ -19,6 +20,4 @@ public class OrthoWorkRequest extends WorkRequest{
     public void setOrthoResult(String orthoResult) {
         this.orthoResult = orthoResult;
     }
-    
-    
 }

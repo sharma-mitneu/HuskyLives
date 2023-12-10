@@ -5,22 +5,15 @@
  */
 package Business.Store;
 
-import Business.Organization.Organization;
-import Business.Role.StoreManagerRole;
-import Business.Role.Role;
-import java.util.ArrayList;
-
 /**
  *
- * @author harold
+ * @author ashish
  */
 public class Store{
     String itemName;
     int price;
     String itemType;
     
-
-
     public String getItemName() {
         return itemName;
     }
@@ -46,7 +39,7 @@ public class Store{
     }
     
     
-      @Override
+    @Override
         public String toString(){
         return itemName;
     }

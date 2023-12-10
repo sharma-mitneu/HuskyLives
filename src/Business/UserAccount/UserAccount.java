@@ -26,8 +26,6 @@ public class UserAccount {
         workQueue = new WorkQueue();
     }
     
-    
-    
     public String getUsername() {
         return username;
     }

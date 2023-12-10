@@ -9,7 +9,6 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 import javax.swing.JPanel;
 import userinterface.StoreManager.ManageStoreJPanel;
 
@@ -24,6 +23,4 @@ public class StoreManagerRole extends Role{
         return new ManageStoreJPanel(userProcessContainer, enterprise, organization, account, business, network);
     }
 
-    
-    
 }

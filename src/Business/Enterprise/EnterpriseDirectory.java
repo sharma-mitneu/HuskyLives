@@ -5,7 +5,6 @@
  */
 package Business.Enterprise;
 
-import Business.Organization.OrganizationDirectory;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 public class EnterpriseDirectory {
     private ArrayList<Enterprise> enterpriseList;
    
-
     public ArrayList<Enterprise> getEnterpriseList() {
         return enterpriseList;
     }
@@ -25,7 +23,7 @@ public class EnterpriseDirectory {
     }
     
     public EnterpriseDirectory(){
-        enterpriseList=new ArrayList<Enterprise>();
+        enterpriseList=new ArrayList<>();
     }
     
     public void removeEnterprise(Enterprise e){
@@ -34,30 +32,30 @@ public class EnterpriseDirectory {
     
     //Create enterprise
     public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseType type){
-        Enterprise enterprise=null;
-        if(type==Enterprise.EnterpriseType.DietUnit){
+        Enterprise enterprise = null;
+        if(type == Enterprise.EnterpriseType.DietUnit){
             enterprise=new DietEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        if(type==Enterprise.EnterpriseType.TrainerUnit){
+        if(type == Enterprise.EnterpriseType.TrainerUnit){
             enterprise=new TrainerEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        if(type==Enterprise.EnterpriseType.DoctorUnit){
+        if(type == Enterprise.EnterpriseType.DoctorUnit){
             enterprise=new DoctorEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        if(type==Enterprise.EnterpriseType.DormInventoryUnit){
+        if(type == Enterprise.EnterpriseType.DormInventoryUnit){
             enterprise=new DormInventoryEnterprise(name);
             enterpriseList.add(enterprise);
         }
       
-        if(type==Enterprise.EnterpriseType.ProctorOfficer){
+        if(type == Enterprise.EnterpriseType.ProctorOfficer){
             enterprise=new ProctorEnterprise(name);
             enterpriseList.add(enterprise);
         }
 
-        if(type==Enterprise.EnterpriseType.MaintenanceUnit){
+        if(type == Enterprise.EnterpriseType.MaintenanceUnit){
             enterprise=new MaintenanceEnterprise(name);
             enterpriseList.add(enterprise); 
         }

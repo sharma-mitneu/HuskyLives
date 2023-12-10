@@ -5,15 +5,11 @@
  */
 package Business;
 
-import Business.Student.StudentDirectory;
 import Business.Enterprise.EnterpriseDirectory;
-import Business.Enterprise.Items;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Inventory.DormInventoryDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
-import Business.Inventory.DormInventory;
 import java.util.ArrayList;
 
 /**
@@ -26,13 +22,12 @@ public class EcoSystem extends Organization{
     private ArrayList<Network> networkList;
     private StudentRequestDirectory studentRequestDirectory;
     private EnterpriseDirectory enterpriseDirectory;
-    private DormInventory dormInventoryDirectory;
     
     private EcoSystem(){
         super(null);
         studentRequestDirectory = new StudentRequestDirectory();
-        enterpriseDirectory=new EnterpriseDirectory();
-        networkList=new ArrayList<Network>();
+        enterpriseDirectory = new EnterpriseDirectory();
+        networkList = new ArrayList<>();
     }
 
     public EnterpriseDirectory getEnterpriseDirectory() {
@@ -59,25 +54,25 @@ public class EcoSystem extends Organization{
     }
     
     public static EcoSystem getInstance(){
-        if(business==null){
-            business=new EcoSystem();
+        if(business == null){
+            business = new EcoSystem();
         }
         return business;
     }
     
     public Network createAndAddNetwork(){
-        Network network=new Network();
+        Network network = new Network();
         networkList.add(network);
         return network;
     }
     
     public void removeNetwork(Network network){
         networkList.remove(network);
-        //return network;
     }
+    
     @Override
     public ArrayList<Role> getSupportedRole() {
-        ArrayList<Role> roleList=new ArrayList<Role>();
+        ArrayList<Role> roleList=new ArrayList<>();
         roleList.add(new SystemAdminRole());
         return roleList;
     }
@@ -93,9 +88,6 @@ public class EcoSystem extends Organization{
     public boolean checkIfUserIsUnique(String userName){
         if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
             return false;
-        }
-        for(Network network:networkList){
-            
         }
         return true;
     }

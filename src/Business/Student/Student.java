@@ -68,8 +68,6 @@ public class Student {
         this.BMI = BMI;
     }
     
-    
-
     public void setNetwork(Network network) {
         this.network = network;
     }
@@ -81,8 +79,6 @@ public class Student {
     public void setEnterprise(String enterprise) {
         this.enterprise = enterprise;
     }
-    
-    
 
     public void setHeight(double height) {
         this.height = height;
@@ -96,7 +92,6 @@ public class Student {
         this.weight = weight;
     }
 
-
     public int getAge() {
         return age;
     }
@@ -105,13 +100,10 @@ public class Student {
         this.age = age;
     }
     
-    
-
     public void setName(String name) {
         this.name = name;
     }
 
-    
     public String getName() {
         return name;
     }

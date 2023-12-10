@@ -20,7 +20,8 @@ import java.nio.file.Paths;
  */
 public class DB4OUtil {
 
-    private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
+    // Data store path
+    private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();
     private static DB4OUtil dB4OUtil;
     
     public synchronized static DB4OUtil getInstance(){
@@ -37,24 +38,22 @@ public class DB4OUtil {
     }
 
     private ObjectContainer createConnection() {
+        
         try {
-
+            
             EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+            
             config.common().add(new TransparentPersistenceSupport());
-            //Controls the number of objects in memory
             config.common().activationDepth(Integer.MAX_VALUE);
-            //Controls the depth/level of updation of Object
             config.common().updateDepth(Integer.MAX_VALUE);
-
-            //Register your top most Class here
-            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true); // Change to the object you want to save
+            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true); 
 
             ObjectContainer db = Db4oEmbedded.openFile(config, FILENAME);
             return db;
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
             System.out.println(ex.getStackTrace());
-            System.out.println("--------------------------------------------------");
+            System.out.println("We have got an exception");
         }
         return null;
     }
@@ -72,9 +71,10 @@ public class DB4OUtil {
         EcoSystem system = null;
 
         try {
-            systems = conn.query(EcoSystem.class); // Change to the object you want to save
+            systems = conn.query(EcoSystem.class);
             if (systems.size() == 0){
-                system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
+                // create a new system when there in none
+                system = ConfigureASystem.configure();
             }
             else{
                 system = systems.get(systems.size() - 1);

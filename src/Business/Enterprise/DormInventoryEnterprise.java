@@ -13,9 +13,11 @@ import java.util.ArrayList;
  * @author mittul.sharma
  */
 public class DormInventoryEnterprise extends Enterprise {
+    
     public DormInventoryEnterprise(String name){
         super(name,Enterprise.EnterpriseType.DormInventoryUnit);
     }
+    
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;

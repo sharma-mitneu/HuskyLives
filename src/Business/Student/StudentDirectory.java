@@ -16,7 +16,7 @@ public class StudentDirectory {
     private ArrayList<Student> studentList;
 
     public StudentDirectory() {
-        studentList = new ArrayList();
+        studentList = new ArrayList<>();
     }
 
     public ArrayList<Student> getStudentList() {
@@ -39,7 +39,8 @@ public class StudentDirectory {
         }
         return true;
     }
-       public Student updateStudent(Student cus, String name, Double height, Double weight, String gender, int age, String address, String city, String zipcode){
+    
+    public Student updateStudent(Student cus, String name, Double height, Double weight, String gender, int age, String address, String city, String zipcode){
         cus.setName(name);
         cus.setHeight(height);
         cus.setWeight(weight);

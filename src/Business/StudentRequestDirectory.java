@@ -5,7 +5,6 @@
  */
 package Business;
 
-import Business.Enterprise.Enterprise;
 import java.util.ArrayList;
 
 /**
@@ -36,16 +35,4 @@ public class StudentRequestDirectory {
       public void deleteOrder(StudentRequestOrder order){
         studReqOrderList.remove(order); 
     }
-      /*public StudentRequestOrder searchOrder(String enterpriseName){
-        for (StudentRequestOrder order: studReqOrderList) {
-            if (order.getRestaurantName().equalsIgnoreCase(enterpriseName)) {
-                return order;
-            }
-        }
-        return null;
-      }
-      public Order updateOrder(Order order, String name, String address){
-             order.setRestaurantName(name);
-             return order;
-         }*/
 }

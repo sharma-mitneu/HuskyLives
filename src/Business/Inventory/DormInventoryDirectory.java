@@ -14,7 +14,7 @@ public class DormInventoryDirectory {
     private ArrayList<DormInventory> dormInventoryList;
     
     public DormInventoryDirectory() {
-        dormInventoryList = new ArrayList();
+        dormInventoryList = new ArrayList<>();
     }
     
     public ArrayList<DormInventory> getDormInventoryList() {
@@ -26,10 +26,8 @@ public class DormInventoryDirectory {
         return dormInventory;
     }
     
-//    public DormInventory updateItem(DormInventory dormInventory,String itemName,String itemType, int price){
     public DormInventory updateItem(DormInventory dormInventory,String itemName, int price){
         dormInventory.setItemName(itemName);
-//        dormInventory.setItemType(itemType);
         dormInventory.setPrice(price);
         return dormInventory;
     }

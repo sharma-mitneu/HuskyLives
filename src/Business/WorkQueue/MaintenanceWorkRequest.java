@@ -5,10 +5,8 @@
  */
 package Business.WorkQueue;
 
-import Business.Enterprise.Items;
 import Business.Enterprise.ServiceTypes;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
@@ -18,10 +16,9 @@ public class MaintenanceWorkRequest extends WorkRequest {
     
     private ArrayList<ServiceTypes> cusList;
     private String cusMessage;
-    private int totalBill=0;
+    private int totalBill = 0;
 
-    public MaintenanceWorkRequest() {
-    } 
+    public MaintenanceWorkRequest() {} 
     
     public ArrayList<ServiceTypes> getCusList() {
         return cusList;

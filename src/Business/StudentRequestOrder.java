@@ -5,10 +5,8 @@
  */
 package Business;
 
-//import Business.Enterprise.Items;
 import Business.Enterprise.Items;
 import Business.Enterprise.ServiceTypes;
-import static java.lang.Integer.toString;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +28,8 @@ public class StudentRequestOrder {
     public StudentRequestOrder() {
         reqId = counter;
         ++counter;
-        itemsList=new ArrayList<Items>();
-        serviceList = new ArrayList<ServiceTypes>();
+        itemsList=new ArrayList<>();
+        serviceList = new ArrayList<>();
     }
 
     public ArrayList<Items> getItemsList() {

@@ -15,12 +15,10 @@ import java.util.ArrayList;
  * @author srira
  */
 public class DormInventory{
+    
     String itemName;
     int price;
-//    String itemType;
     
-
-
     public String getItemName() {
         return itemName;
     }
@@ -36,18 +34,9 @@ public class DormInventory{
     public void setPrice(int price) {
         this.price = price;
     }
-
-//    public String getItemType() {
-//        return itemType;
-//    }
-//
-//    public void setItemType(String itemType) {
-//        this.itemType = itemType;
-//    }
     
-    
-      @Override
-        public String toString(){
-        return itemName;
+    @Override
+    public String toString(){
+       return itemName;
     }
 }

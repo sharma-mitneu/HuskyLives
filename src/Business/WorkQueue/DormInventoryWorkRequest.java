@@ -7,7 +7,6 @@ package Business.WorkQueue;
 
 import Business.Enterprise.Items;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
@@ -19,10 +18,8 @@ public class DormInventoryWorkRequest extends WorkRequest {
     private String cusMessage;
     private int totalBill=0;
 
-    public DormInventoryWorkRequest() {
-        
+    public DormInventoryWorkRequest() {} 
     
-    } 
     public ArrayList<Items> getCusList() {
         return cusList;
     }

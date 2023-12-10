@@ -10,6 +10,7 @@ package Business.WorkQueue;
  * @author srira
  */
 public class GenPracWorkRequest extends WorkRequest{
+   
     private String doctorResult;
 
     public String getDoctorResult() {
