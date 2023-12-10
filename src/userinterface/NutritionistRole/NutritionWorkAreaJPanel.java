@@ -343,8 +343,8 @@ public class NutritionWorkAreaJPanel extends javax.swing.JPanel {
 
     public void sendEmail(String email, String chart){
                 //final String username = "";
-		final String password = "Password@123";
-		String fromEmail = "huskylives@gmail.com";
+		final String password = "uhugcrgdragopyzz";
+		String fromEmail = "huskylives23@gmail.com";
 		String toEmail = email;
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");
@@ -352,6 +352,9 @@ public class NutritionWorkAreaJPanel extends javax.swing.JPanel {
 		properties.put("mail.smtp.starttls.enable", "true");
 		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.port", "587");
+                
+                properties.put("mail.smtp.starttls.required", "true");
+                properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
 		
 		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
