@@ -9,14 +9,9 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Items;
 import Business.Organization.Organization;
-import Business.Inventory.DormInventory;
-//import Business.Restaurant.Restaurant;
-//import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -31,7 +26,6 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private UserAccount userAcc;
-   // private Restaurant restaurant;
     private Organization organization;
     private Enterprise enterprise;
     private UserAccount account;
@@ -42,30 +36,31 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageMenuJPanel
      */
-
     ManageInventoryJPanel(JPanel userProcessContainer, Organization organization, EcoSystem business, Enterprise enterprise, UserAccount account) {
-       initComponents();
-        this.organization=organization;
-        this.enterprise=enterprise;
-        this.account=account;
-        this.business=business;
+        initComponents();
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.business = business;
         itemLbl.setVisible(false);
         itemSuccessLbl.setVisible(false);
         priceLbl.setVisible(false);
         price0lbl.setVisible(false);
         menuTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         priceSuccessLbl.setVisible(false);
-        this.userProcessContainer=userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         jLabel5.setVisible(false);
         typeComboBox.setVisible(false);
-                populateTable();
+        populateTable();
     }
-      private boolean cityPatternCorrect(String val3){
-        Pattern p=Pattern.compile("^[a-zA-Z ]+$");
-        Matcher m=p.matcher(val3);
-        boolean b=m.matches();
+
+    private boolean cityPatternCorrect(String val3) {
+        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher m = p.matcher(val3);
+        boolean b = m.matches();
         return b;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +70,6 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         menuTbl = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -95,19 +89,14 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
         priceLbl1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Dorm Inventory Inventory Management");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 520, 37));
-
         menuTbl.setBackground(new java.awt.Color(204, 204, 204));
         menuTbl.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        menuTbl.setForeground(new java.awt.Color(0, 0, 0));
+        menuTbl.setForeground(new java.awt.Color(51, 51, 51));
         menuTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -130,39 +119,39 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
             menuTbl.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 103, -1, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, 91));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Item Name:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 100, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 100, 30));
 
         itemNameTxt.setBackground(new java.awt.Color(204, 204, 204));
-        itemNameTxt.setForeground(new java.awt.Color(0, 0, 0));
+        itemNameTxt.setForeground(new java.awt.Color(51, 51, 51));
         itemNameTxt.setMinimumSize(new java.awt.Dimension(7, 25));
         itemNameTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 itemNameTxtKeyReleased(evt);
             }
         });
-        add(itemNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 150, 30));
+        add(itemNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 150, 30));
 
         priceTxt.setBackground(new java.awt.Color(204, 204, 204));
-        priceTxt.setForeground(new java.awt.Color(0, 0, 0));
+        priceTxt.setForeground(new java.awt.Color(51, 51, 51));
         priceTxt.setMinimumSize(new java.awt.Dimension(7, 25));
         priceTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 priceTxtKeyReleased(evt);
             }
         });
-        add(priceTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 150, 30));
+        add(priceTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, 150, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Price:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 130, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 130, 30));
 
         backBtn.setBackground(new java.awt.Color(204, 204, 204));
         backBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -184,78 +173,75 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
                 addBtnActionPerformed(evt);
             }
         });
-        add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 100, 40));
+        add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, 100, 40));
 
-        delBtn.setBackground(new java.awt.Color(51, 51, 51));
+        delBtn.setBackground(new java.awt.Color(204, 204, 204));
         delBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        delBtn.setForeground(new java.awt.Color(204, 204, 204));
+        delBtn.setForeground(new java.awt.Color(51, 51, 51));
         delBtn.setText("Delete");
         delBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delBtnActionPerformed(evt);
             }
         });
-        add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 205, 80, 40));
+        add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 80, 40));
 
         itemLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         itemLbl.setForeground(new java.awt.Color(255, 51, 51));
         itemLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         itemLbl.setText("Only Alphabets are allowed");
-        add(itemLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 150, 20));
+        add(itemLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 150, 20));
 
         itemSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(itemSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 30, -1));
+        add(itemSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 30, -1));
 
         priceLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         priceLbl.setForeground(new java.awt.Color(255, 51, 51));
         priceLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceLbl.setText("Only Numbers Allowed");
-        add(priceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 160, 20));
+        add(priceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 160, 20));
 
         priceSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(priceSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 30, -1));
+        add(priceSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 30, -1));
 
         price0lbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         price0lbl.setForeground(new java.awt.Color(255, 51, 51));
         price0lbl.setText("Price Should be Greater than 0");
-        add(price0lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, -1));
+        add(price0lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Item Type:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 60, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 60, 30));
 
         typeComboBox.setBackground(new java.awt.Color(204, 204, 204));
-        typeComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        typeComboBox.setForeground(new java.awt.Color(51, 51, 51));
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Equipments", "Supplements" }));
-        add(typeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 150, 30));
+        add(typeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 150, 30));
 
         priceLbl1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        priceLbl1.setForeground(new java.awt.Color(181, 7, 7));
+        priceLbl1.setForeground(new java.awt.Color(255, 51, 51));
         priceLbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceLbl1.setText("Only Numbers Allowed");
-        add(priceLbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 160, 20));
+        add(priceLbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 160, 20));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
-    }// </editor-fold>//GEN-END:initComponents
-    /*public void populateRestaurantJComboBox() {
-            resNameCmbBox.removeAllItems();
 
-            for (Restaurant rest : system.getRestaurantDirectory().getRestaurantList()) {
-                if (userAcc.getEmployee().getName().equals(rest.getName())) {
-                    resNameCmbBox.addItem(rest);
-                }
-            }
-        }*/
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText("Dorm Inventory Inventory Management");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 490, 30));
+    }// </editor-fold>//GEN-END:initComponents
+
     private void populateTable() {
         DefaultTableModel dtm = (DefaultTableModel) menuTbl.getModel();
         dtm.setRowCount(0);
-      
-        for(Items dormInventory:enterprise.getItemsList()) {
+
+        for (Items dormInventory : enterprise.getItemsList()) {
             Object row[] = new Object[3];
             row[0] = dormInventory;
             row[1] = dormInventory.getItemType();
@@ -265,54 +251,53 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
     }
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        if(priceValid && itemValid){
-            
-            for(Items item:enterprise.getItemsList()) {
-            if(itemNameTxt.getText().equals(item.getItemName())){
-                
-        JOptionPane.showMessageDialog(null, "Item already exists.","Error",JOptionPane.ERROR_MESSAGE);
-        return;
-            } 
+        if (priceValid && itemValid) {
+
+            for (Items item : enterprise.getItemsList()) {
+                if (itemNameTxt.getText().equals(item.getItemName())) {
+
+                    JOptionPane.showMessageDialog(null, "Item already exists.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+            if (itemNameTxt.getText().equals("") || itemNameTxt.getText() == null) {
+                JOptionPane.showMessageDialog(null, "Field(s) cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (!itemNameTxt.getText().matches("^[a-zA-Z0-9 ]*$")) {
+                JOptionPane.showMessageDialog(null, "Invalid Item Name.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            try {
+                Double.parseDouble(priceTxt.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Invalid Price.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (Double.parseDouble(priceTxt.getText()) <= 0) {
+                JOptionPane.showMessageDialog(null, "Price should be greater than zero.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            String name = itemNameTxt.getText();
+            String type = (String) typeComboBox.getSelectedItem();
+            int price = Integer.parseInt(priceTxt.getText());
+            Items s = enterprise.createMenuItem();
+            s.setItemName(name);
+            s.setItemType(type);
+            s.setPrice(price);
+            JOptionPane.showMessageDialog(null, "Item Added Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            populateTable();
+            itemNameTxt.setText("");
+            priceTxt.setText("");
+            typeComboBox.setSelectedIndex(0);
+            itemSuccessLbl.setVisible(false);
+            priceSuccessLbl.setVisible(false);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        if(itemNameTxt.getText().equals("")||itemNameTxt.getText()==null){
-              JOptionPane.showMessageDialog(null, "Field(s) cannot be empty.","Error",JOptionPane.ERROR_MESSAGE);
-        return;
-        }
-        if(!itemNameTxt.getText().matches("^[a-zA-Z0-9 ]*$")){
-            JOptionPane.showMessageDialog(null, "Invalid Item Name.","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        try{
-            Double.parseDouble(priceTxt.getText());
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Invalid Price.","Error",JOptionPane.ERROR_MESSAGE);
-        return;
-        }
-        if(Double.parseDouble(priceTxt.getText()) <= 0){
-            JOptionPane.showMessageDialog(null, "Price should be greater than zero.","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        String name = itemNameTxt.getText();
-        String type = (String) typeComboBox.getSelectedItem();
-        int price = Integer.parseInt(priceTxt.getText());
-        Items s = enterprise.createMenuItem();
-        s.setItemName(name);
-        s.setItemType(type);
-        s.setPrice(price);
-        JOptionPane.showMessageDialog(null, "Item Added Successfully!","Success",JOptionPane.INFORMATION_MESSAGE);
-        populateTable();
-        itemNameTxt.setText("");
-        priceTxt.setText("");
-        typeComboBox.setSelectedIndex(0);
-        itemSuccessLbl.setVisible(false);
-        priceSuccessLbl.setVisible(false);
-        
-        }else{
-            JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);
-        }
-        
+
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -324,26 +309,25 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
         // TODO add your handling code here:
-                  int selectedRow = menuTbl.getSelectedRow();
+        int selectedRow = menuTbl.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row.","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a row.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
+        } else {
+            Items item = (Items) menuTbl.getValueAt(selectedRow, 0);
+            enterprise.deleteItem(item);
+            JOptionPane.showMessageDialog(null, "Item deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            populateTable();
         }
-        else{
-            Items item = (Items)menuTbl.getValueAt(selectedRow, 0);
-           enterprise.deleteItem(item);
-        JOptionPane.showMessageDialog(null, "Item deleted successfully.","Success",JOptionPane.INFORMATION_MESSAGE);
-        populateTable();
-    } 
     }//GEN-LAST:event_delBtnActionPerformed
 
     private void itemNameTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itemNameTxtKeyReleased
         // TODO add your handling code here:
-        if(!cityPatternCorrect(itemNameTxt.getText()) && !(itemNameTxt.getText().isEmpty())){
+        if (!cityPatternCorrect(itemNameTxt.getText()) && !(itemNameTxt.getText().isEmpty())) {
             itemSuccessLbl.setVisible(false);
             itemValid = false;
             itemLbl.setVisible(true);
-        }else{
+        } else {
             itemLbl.setVisible(false);
             itemValid = true;
             itemSuccessLbl.setVisible(true);
@@ -352,42 +336,42 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
 
     private void priceTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceTxtKeyReleased
         // TODO add your handling code here:
-        if(priceTxt.getText().isEmpty()){
-             priceValid = false;
-             priceSuccessLbl.setVisible(false);
-             priceLbl.setVisible(false);
-             price0lbl.setVisible(false);
-             return;
-        }
-        int price=0;
-        try{
-            price = Integer.parseInt(priceTxt.getText());
-            if(price > 0){ 
-            priceValid = true;
-             priceSuccessLbl.setVisible(true);
-             priceLbl.setVisible(false);
-             price0lbl.setVisible(false);
-             return;
-            }else if( price == 0 || price < 0){
+        if (priceTxt.getText().isEmpty()) {
             priceValid = false;
-             priceSuccessLbl.setVisible(false);
-             price0lbl.setVisible(true);
-             priceLbl.setVisible(false);
-             return;
+            priceSuccessLbl.setVisible(false);
+            priceLbl.setVisible(false);
+            price0lbl.setVisible(false);
+            return;
+        }
+        int price = 0;
+        try {
+            price = Integer.parseInt(priceTxt.getText());
+            if (price > 0) {
+                priceValid = true;
+                priceSuccessLbl.setVisible(true);
+                priceLbl.setVisible(false);
+                price0lbl.setVisible(false);
+                return;
+            } else if (price == 0 || price < 0) {
+                priceValid = false;
+                priceSuccessLbl.setVisible(false);
+                price0lbl.setVisible(true);
+                priceLbl.setVisible(false);
+                return;
             }
-        }catch(NumberFormatException e){
-            if(!priceTxt.getText().isEmpty()){
-             priceValid = false;
-             priceSuccessLbl.setVisible(false);
-             priceLbl.setVisible(true);
-             price0lbl.setVisible(false);
-             return;
-            }else {
-             priceValid = false;
-             priceLbl.setVisible(false);
-             price0lbl.setVisible(false);
-             priceSuccessLbl.setVisible(true);
-             return;
+        } catch (NumberFormatException e) {
+            if (!priceTxt.getText().isEmpty()) {
+                priceValid = false;
+                priceSuccessLbl.setVisible(false);
+                priceLbl.setVisible(true);
+                price0lbl.setVisible(false);
+                return;
+            } else {
+                priceValid = false;
+                priceLbl.setVisible(false);
+                price0lbl.setVisible(false);
+                priceSuccessLbl.setVisible(true);
+                return;
             }
         }
     }//GEN-LAST:event_priceTxtKeyReleased
@@ -397,10 +381,10 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton delBtn;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel itemLbl;
     private javax.swing.JTextField itemNameTxt;
     private javax.swing.JLabel itemSuccessLbl;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

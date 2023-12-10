@@ -15,7 +15,6 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PhysioWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,47 +28,49 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PhysioJPanel
      */
- private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private EcoSystem system;
     private Network network;
     private UserAccount userAccount;
     Enterprise e;
+
     PhysiotherapistJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system =system;
+        this.system = system;
         this.network = network;
         this.userAccount = userAccount;
         physioTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         populatePhysioStatusTable();
     }
+
     private void populatePhysioStatusTable() {
-         DefaultTableModel dtm = (DefaultTableModel) physioTbl.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) physioTbl.getModel();
         dtm.setRowCount(0);
         Organization org = null;
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof DoctorEnterprise){
+        for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enter instanceof DoctorEnterprise) {
                 e = enter;
             }
         }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof PhysioOrganization){
+        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof PhysioOrganization) {
                 org = organization;
                 break;
             }
         }
-        if (org!=null){
-            for(WorkRequest request: org.getWorkQueue().getWorkRequestList()) {
-            if(request.getSender().equals(userAccount)){
-            Object row[] = new Object[5];
-            row[0] = request.getRequestID();
-            row[1] = request.getMessage();
-            row[2] = request.getReceiver();
-            row[3] = ((PhysioWorkRequest)request).getPhysioResult();
-            row[4] = request.getStatus();
-            dtm.addRow(row);
+        if (org != null) {
+            for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+                if (request.getSender().equals(userAccount)) {
+                    Object row[] = new Object[5];
+                    row[0] = request.getRequestID();
+                    row[1] = request.getMessage();
+                    row[2] = request.getReceiver();
+                    row[3] = ((PhysioWorkRequest) request).getPhysioResult();
+                    row[4] = request.getStatus();
+                    dtm.addRow(row);
+                }
             }
-    }
         }
     }
 
@@ -106,26 +107,27 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
         msgTxt.setRows(5);
         jScrollPane1.setViewportView(msgTxt);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 320, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Enter Your Message:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 180, 80));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 180, 80));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Book Appointment");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 155, 48));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 155, 48));
 
         physioTbl.setBackground(new java.awt.Color(204, 204, 204));
         physioTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        physioTbl.setForeground(new java.awt.Color(0, 0, 0));
+        physioTbl.setForeground(new java.awt.Color(51, 51, 51));
         physioTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -147,7 +149,7 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(physioTbl);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 820, 140));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 820, 140));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -164,62 +166,61 @@ public class PhysiotherapistJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    if(userAccount.getWorkQueue().getWorkRequestList().size()== 0){
-        PhysioWorkRequest req = new PhysioWorkRequest();
-        req.setSender(userAccount);
-        req.setMessage(msgTxt.getText());
-        req.setStatus("Request sent to Physiotherapist");
-        Organization org = null;
-        
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof DoctorEnterprise){
-                e = enter;
+        if (userAccount.getWorkQueue().getWorkRequestList().size() == 0) {
+            PhysioWorkRequest req = new PhysioWorkRequest();
+            req.setSender(userAccount);
+            req.setMessage(msgTxt.getText());
+            req.setStatus("Request sent to Physiotherapist");
+            Organization org = null;
+
+            for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enter instanceof DoctorEnterprise) {
+                    e = enter;
+                }
             }
-        }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof PhysioOrganization){
-                org = organization;
-                break;
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof PhysioOrganization) {
+                    org = organization;
+                    break;
+                }
             }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(req);
-            userAccount.getWorkQueue().getWorkRequestList().add(req);
-        }
-        JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-        populatePhysioStatusTable();
-    }
-    else{
-            int x = userAccount.getWorkQueue().getWorkRequestList().size()-1;
+            if (org != null) {
+                org.getWorkQueue().getWorkRequestList().add(req);
+                userAccount.getWorkQueue().getWorkRequestList().add(req);
+            }
+            JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            populatePhysioStatusTable();
+        } else {
+            int x = userAccount.getWorkQueue().getWorkRequestList().size() - 1;
             WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
-            if(r.getStatus().toLowerCase().equals("result posted")){
+            if (r.getStatus().toLowerCase().equals("result posted")) {
                 PhysioWorkRequest req = new PhysioWorkRequest();
                 req.setSender(userAccount);
                 req.setMessage(msgTxt.getText());
                 req.setStatus("Request sent to Physiotherapist");
                 Organization org = null;
 
-                for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-                    if(enter instanceof DoctorEnterprise){
+                for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (enter instanceof DoctorEnterprise) {
                         e = enter;
                     }
                 }
-                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof PhysioOrganization){
+                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof PhysioOrganization) {
                         org = organization;
                         break;
                     }
                 }
-                if (org!=null){
+                if (org != null) {
                     org.getWorkQueue().getWorkRequestList().add(req);
                     userAccount.getWorkQueue().getWorkRequestList().add(req);
                 }
-                JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 populatePhysioStatusTable();
             } else {
-                JOptionPane.showMessageDialog(null,"Please wait until the previous request has been processed !","Alert",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please wait until the previous request has been processed !", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-        } 
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

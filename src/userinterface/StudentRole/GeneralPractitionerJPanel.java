@@ -15,7 +15,6 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.GenPracWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -35,44 +34,45 @@ public class GeneralPractitionerJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     Enterprise e;
 
-    GeneralPractitionerJPanel(JPanel userProcessContainer, EcoSystem system, Network network,UserAccount userAccount) {
+    GeneralPractitionerJPanel(JPanel userProcessContainer, EcoSystem system, Network network, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system =system;
+        this.system = system;
         this.network = network;
         this.userAccount = userAccount;
         genPracTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         populateGenPracStatusTable();
     }
+
     private void populateGenPracStatusTable() {
         DefaultTableModel dtm = (DefaultTableModel) genPracTbl.getModel();
         dtm.setRowCount(0);
         Organization org = null;
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof DoctorEnterprise){
+        for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enter instanceof DoctorEnterprise) {
                 e = enter;
             }
         }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof GenPracOrganization){
+        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof GenPracOrganization) {
                 org = organization;
                 break;
             }
         }
-        if (org!=null){
-            for(WorkRequest request: org.getWorkQueue().getWorkRequestList()) {
-            if(request.getSender().equals(userAccount)){
-            Object row[] = new Object[5];
-            row[0] = request.getRequestID();
-            row[1] = request.getMessage();
-            row[2] = request.getReceiver();
-            row[3] = ((GenPracWorkRequest)request).getDoctorResult();
-            row[4] = request.getStatus();
-            dtm.addRow(row);
+        if (org != null) {
+            for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+                if (request.getSender().equals(userAccount)) {
+                    Object row[] = new Object[5];
+                    row[0] = request.getRequestID();
+                    row[1] = request.getMessage();
+                    row[2] = request.getReceiver();
+                    row[3] = ((GenPracWorkRequest) request).getDoctorResult();
+                    row[4] = request.getStatus();
+                    dtm.addRow(row);
+                }
             }
-    }
         }
-        
+
     }
 
     /**
@@ -104,12 +104,12 @@ public class GeneralPractitionerJPanel extends javax.swing.JPanel {
         msgTxt.setRows(5);
         jScrollPane1.setViewportView(msgTxt);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 320, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Enter Your Message:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 170, 80));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 170, 80));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -120,11 +120,11 @@ public class GeneralPractitionerJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 155, 48));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 155, 48));
 
         genPracTbl.setBackground(new java.awt.Color(204, 204, 204));
         genPracTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        genPracTbl.setForeground(new java.awt.Color(0, 0, 0));
+        genPracTbl.setForeground(new java.awt.Color(51, 51, 51));
         genPracTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -146,7 +146,7 @@ public class GeneralPractitionerJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(genPracTbl);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 820, 130));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 820, 130));
 
         jLabel9.setForeground(new java.awt.Color(255, 51, 51));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
@@ -164,63 +164,61 @@ public class GeneralPractitionerJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    if(userAccount.getWorkQueue().getWorkRequestList().size()== 0){
-        GenPracWorkRequest req = new GenPracWorkRequest();
-        req.setSender(userAccount);
-        req.setMessage(msgTxt.getText());
-        req.setStatus("Request sent to Admin");
-        Organization org = null;
-        
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof DoctorEnterprise){
-                e = enter;
+        if (userAccount.getWorkQueue().getWorkRequestList().size() == 0) {
+            GenPracWorkRequest req = new GenPracWorkRequest();
+            req.setSender(userAccount);
+            req.setMessage(msgTxt.getText());
+            req.setStatus("Request sent to Admin");
+            Organization org = null;
+
+            for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enter instanceof DoctorEnterprise) {
+                    e = enter;
+                }
             }
-        }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof GenPracOrganization){
-                org = organization;
-                break;
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof GenPracOrganization) {
+                    org = organization;
+                    break;
+                }
             }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(req);
-            userAccount.getWorkQueue().getWorkRequestList().add(req);
-        }
-        JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-        populateGenPracStatusTable();
-    }
-    else{
-            int x = userAccount.getWorkQueue().getWorkRequestList().size()-1;
+            if (org != null) {
+                org.getWorkQueue().getWorkRequestList().add(req);
+                userAccount.getWorkQueue().getWorkRequestList().add(req);
+            }
+            JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            populateGenPracStatusTable();
+        } else {
+            int x = userAccount.getWorkQueue().getWorkRequestList().size() - 1;
             WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
-            if(r.getStatus().toLowerCase().equals("result posted")){
+            if (r.getStatus().toLowerCase().equals("result posted")) {
                 GenPracWorkRequest req = new GenPracWorkRequest();
                 req.setSender(userAccount);
                 req.setMessage(msgTxt.getText());
                 req.setStatus("Request sent to Admin");
                 Organization org = null;
 
-                for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-                    if(enter instanceof DoctorEnterprise){
+                for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (enter instanceof DoctorEnterprise) {
                         e = enter;
                     }
                 }
-                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof GenPracOrganization){
+                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof GenPracOrganization) {
                         org = organization;
                         break;
                     }
                 }
-                if (org!=null){
+                if (org != null) {
                     org.getWorkQueue().getWorkRequestList().add(req);
                     userAccount.getWorkQueue().getWorkRequestList().add(req);
                 }
-                JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 populateGenPracStatusTable();
+            } else {
+                JOptionPane.showMessageDialog(null, "Please wait until the previous request has been processed !", "Alert", JOptionPane.WARNING_MESSAGE);
             }
-            else {
-                JOptionPane.showMessageDialog(null,"Please wait until the previous request has been processed !","Alert",JOptionPane.WARNING_MESSAGE);
-            }
-        } 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

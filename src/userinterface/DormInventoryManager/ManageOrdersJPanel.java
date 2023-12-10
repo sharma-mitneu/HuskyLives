@@ -8,9 +8,7 @@ package userinterface.DormInventoryManager;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Items;
-import Business.StudentRequestOrder;
 import Business.Organization.Organization;
-//import Business.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DormInventoryWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -29,25 +27,22 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount userAcc;
     private UserAccount account;
-    //private Organization organization;
     private Enterprise enterprise;
     private EcoSystem business;
 
     /**
      * Creates new form ManageOrderJPanel
      */
-
     ManageOrdersJPanel(JPanel userProcessContainer, Organization organization, EcoSystem business, Enterprise enterprise, UserAccount account) {
-         initComponents();
-        
+        initComponents();
+
         this.userProcessContainer = userProcessContainer;
-       this.account=account;
-        //this.organization=organization;
-        this.enterprise=enterprise;
+        this.account = account;
+        this.enterprise = enterprise;
         orderMgtTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         itemListTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        this.business=business;
-        
+        this.business = business;
+
         populateTable();
     }
 
@@ -81,7 +76,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         orderMgtTbl.setBackground(new java.awt.Color(204, 204, 204));
         orderMgtTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        orderMgtTbl.setForeground(new java.awt.Color(0, 0, 0));
+        orderMgtTbl.setForeground(new java.awt.Color(51, 51, 51));
         orderMgtTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -172,7 +167,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         itemListTbl.setBackground(new java.awt.Color(204, 204, 204));
         itemListTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        itemListTbl.setForeground(new java.awt.Color(0, 0, 0));
+        itemListTbl.setForeground(new java.awt.Color(51, 51, 51));
         itemListTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -199,7 +194,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         jLabel2.setBackground(new java.awt.Color(51, 51, 51));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Order Details");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 452, -1));
@@ -213,6 +208,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         totBillTxt.setEditable(false);
         totBillTxt.setBackground(new java.awt.Color(204, 204, 204));
+        totBillTxt.setForeground(new java.awt.Color(51, 51, 51));
         add(totBillTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 193, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
@@ -224,24 +220,23 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-         userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void viewOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOrderBtnActionPerformed
         // TODO add your handling code here:
-       int selectedRow = orderMgtTbl.getSelectedRow();
-       if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+        int selectedRow = orderMgtTbl.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-       /*StudentRequestOrder order1 = (StudentRequestOrder)orderMgtTbl.getValueAt(selectedRow, 0);*/
-       DormInventoryWorkRequest request = (DormInventoryWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
-            DefaultTableModel dtm = (DefaultTableModel) itemListTbl.getModel();
+        DormInventoryWorkRequest request = (DormInventoryWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
+        DefaultTableModel dtm = (DefaultTableModel) itemListTbl.getModel();
         dtm.setRowCount(0);
-        
-        for(Items i: request.getCusList()) {
+
+        for (Items i : request.getCusList()) {
             Object row[] = new Object[2];
             row[0] = i;
             row[1] = i.getPrice();
@@ -253,45 +248,47 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
     private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
         // TODO add your handling code here:
         int selectedRow = orderMgtTbl.getSelectedRow();
-        
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
-        DormInventoryWorkRequest request = (DormInventoryWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
-         if(!(request.getStatus().equals("Order Placed"))){
-            JOptionPane.showMessageDialog(null, "Order already Accepted.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-         return ; }
-         
-         request.setStatus("Accepted");
-         
-            JOptionPane.showMessageDialog(null, "Order accepted successfully.","Success",JOptionPane.INFORMATION_MESSAGE);
-             populateTable();
+
+        DormInventoryWorkRequest request = (DormInventoryWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
+        if (!(request.getStatus().equals("Order Placed"))) {
+            JOptionPane.showMessageDialog(null, "Order already Accepted.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        request.setStatus("Accepted");
+
+        JOptionPane.showMessageDialog(null, "Order accepted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        populateTable();
     }//GEN-LAST:event_placeOrderBtnActionPerformed
 
     private void assignDelManBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDelManBtnActionPerformed
         // TODO add your handling code here:
         int selectedRow = orderMgtTbl.getSelectedRow();
-        
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
-        DormInventoryWorkRequest order1 = (DormInventoryWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
-         if(order1.getStatus().equalsIgnoreCase("Delivered")){
-            JOptionPane.showMessageDialog(null, "Order has been already Delivered.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-         return ; }
-         if(order1.getStatus().equalsIgnoreCase("Out for Delivery")){
-            JOptionPane.showMessageDialog(null, "Deliveryman has been already assigned.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-            return ; 
-         }
-         if(!order1.getStatus().equalsIgnoreCase("Accepted")){
-            JOptionPane.showMessageDialog(null, "Order is not accepted. Kindly accept the order first to proceed.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-            return ; 
-         }
-         DeliveryManAssignJPanel panel = new DeliveryManAssignJPanel(userProcessContainer,business, enterprise, order1);
+
+        DormInventoryWorkRequest order1 = (DormInventoryWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
+        if (order1.getStatus().equalsIgnoreCase("Delivered")) {
+            JOptionPane.showMessageDialog(null, "Order has been already Delivered.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if (order1.getStatus().equalsIgnoreCase("Out for Delivery")) {
+            JOptionPane.showMessageDialog(null, "Deliveryman has been already assigned.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if (!order1.getStatus().equalsIgnoreCase("Accepted")) {
+            JOptionPane.showMessageDialog(null, "Order is not accepted. Kindly accept the order first to proceed.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        DeliveryManAssignJPanel panel = new DeliveryManAssignJPanel(userProcessContainer, business, enterprise, order1);
         userProcessContainer.add("AssignDeliveryManJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -299,7 +296,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
         // TODO add your handling code here:
-         populateTable();
+        populateTable();
     }//GEN-LAST:event_refreshBtnActionPerformed
 
 
@@ -321,22 +318,21 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
     private javax.swing.JButton viewOrderBtn;
     // End of variables declaration//GEN-END:variables
 
-
     private void populateTable() {
-         DefaultTableModel dtm = (DefaultTableModel) orderMgtTbl.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) orderMgtTbl.getModel();
         dtm.setRowCount(0);
-        
-         for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-           int orderID = request.getRequestID();
-            row[0] = orderID;
-            row[1] = request.getSender().getStudent().getName();
-            row[2] = request;
-            row[3] = request.getStatus();
-            
-            dtm.addRow(row);
-        }
+
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+                Object[] row = new Object[4];
+                int orderID = request.getRequestID();
+                row[0] = orderID;
+                row[1] = request.getSender().getStudent().getName();
+                row[2] = request;
+                row[3] = request.getStatus();
+
+                dtm.addRow(row);
+            }
         }
     }
 }

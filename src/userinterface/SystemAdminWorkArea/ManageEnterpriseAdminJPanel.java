@@ -29,7 +29,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private boolean emailValid;
     private boolean nameValid;
-    private int entAvail=0;
+    private int entAvail = 0;
 
     /**
      * Creates new form ManageEnterpriseJPanel
@@ -44,13 +44,14 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         populateNetworkComboBox();
     }
+
     private void clearLabels() {
-       emailLbl.setVisible(false);
-              emailSuccessLbl.setVisible(false);
-               passwordSuccessLbl.setVisible(false);
-            passwordLbl.setVisible(false);
-             citySuccessLbl.setVisible(false);
-            cityLbl.setVisible(false);
+        emailLbl.setVisible(false);
+        emailSuccessLbl.setVisible(false);
+        passwordSuccessLbl.setVisible(false);
+        passwordLbl.setVisible(false);
+        citySuccessLbl.setVisible(false);
+        cityLbl.setVisible(false);
     }
 
     private void populateTable() {
@@ -72,44 +73,46 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         }
     }
-private boolean usernamePatternCorrect(String val){
-        Pattern p=Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
-        Matcher m=p.matcher(val);
-        boolean b=m.matches();
+
+    private boolean usernamePatternCorrect(String val) {
+        Pattern p = Pattern.compile("^.+@[^\\.].*\\.[a-z]{2,}$");
+        Matcher m = p.matcher(val);
+        boolean b = m.matches();
         return b;
     }
-private boolean cityPatternCorrect(String val3){
-        Pattern p=Pattern.compile("^[a-zA-Z ]+$");
-        Matcher m=p.matcher(val3);
-        boolean b=m.matches();
+
+    private boolean cityPatternCorrect(String val3) {
+        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher m = p.matcher(val3);
+        boolean b = m.matches();
         return b;
     }
-    
-    private boolean passwordPatternCorrect(String val4){
+
+    private boolean passwordPatternCorrect(String val4) {
         Pattern p1;
         p1 = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
-        Matcher m1=p1.matcher(String.valueOf(val4));
-        boolean b1=m1.matches();
+        Matcher m1 = p1.matcher(String.valueOf(val4));
+        boolean b1 = m1.matches();
         return b1;
     }
-    private void populateNetworkComboBox(){
+
+    private void populateNetworkComboBox() {
         networkJComboBox.removeAllItems();
-        
-        for (Network network : system.getNetworkList()){
+
+        for (Network network : system.getNetworkList()) {
             networkJComboBox.addItem(network);
         }
     }
-    
-    private void populateEnterpriseComboBox(Network network){
+
+    private void populateEnterpriseComboBox(Network network) {
         enterpriseJComboBox.removeAllItems();
-        
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
-                enterpriseJComboBox.addItem(enterprise);
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            enterpriseJComboBox.addItem(enterprise);
         }
-        
-        
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,7 +150,7 @@ private boolean cityPatternCorrect(String val3){
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseJTable.setBackground(new java.awt.Color(204, 204, 204));
-        enterpriseJTable.setForeground(new java.awt.Color(0, 0, 0));
+        enterpriseJTable.setForeground(new java.awt.Color(51, 51, 51));
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -176,92 +179,92 @@ private boolean cityPatternCorrect(String val3){
             enterpriseJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 730, 95));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 205, 730, 110));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Network :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 80, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 80, 30));
 
         networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        networkJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        networkJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 190, 30));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Email ID:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 80, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 80, 30));
 
         usernameJTextField.setBackground(new java.awt.Color(204, 204, 204));
-        usernameJTextField.setForeground(new java.awt.Color(0, 0, 0));
+        usernameJTextField.setForeground(new java.awt.Color(51, 51, 51));
         usernameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 usernameJTextFieldKeyReleased(evt);
             }
         });
-        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 190, 30));
+        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 190, 30));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Enterprise :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 90, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 90, 30));
 
         enterpriseJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         enterpriseJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        enterpriseJComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        enterpriseJComboBox.setForeground(new java.awt.Color(51, 51, 51));
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         enterpriseJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpriseJComboBoxActionPerformed(evt);
             }
         });
-        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 190, 30));
+        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, 190, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Password :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 80, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 80, 30));
 
         nameJTextField.setBackground(new java.awt.Color(204, 204, 204));
-        nameJTextField.setForeground(new java.awt.Color(0, 0, 0));
+        nameJTextField.setForeground(new java.awt.Color(51, 51, 51));
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 nameJTextFieldKeyReleased(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 190, 30));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 190, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Name:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 80, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 80, 30));
 
         passwordJPasswordField.setBackground(new java.awt.Color(204, 204, 204));
-        passwordJPasswordField.setForeground(new java.awt.Color(0, 0, 0));
+        passwordJPasswordField.setForeground(new java.awt.Color(51, 51, 51));
         passwordJPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 passwordJPasswordFieldKeyReleased(evt);
             }
         });
-        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 190, 30));
+        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 190, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("MANAGE ENTERPRISE ADMIN");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 723, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 723, 30));
 
         backJButton1.setBackground(new java.awt.Color(204, 204, 204));
         backJButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -283,34 +286,34 @@ private boolean cityPatternCorrect(String val3){
                 submitJButton1ActionPerformed(evt);
             }
         });
-        add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 98, 42));
+        add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 600, 98, 42));
 
         emailLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         emailLbl.setForeground(new java.awt.Color(255, 51, 51));
         emailLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailLbl.setText("Valid Format - 'xx@xx.xx'");
-        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 190, 20));
+        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 190, 20));
 
         emailSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 30, 30));
+        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 30, 30));
 
         passwordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         passwordLbl.setForeground(new java.awt.Color(255, 51, 51));
         passwordLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordLbl.setText("Sample format: Asdf@1");
-        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 190, 50));
+        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 190, 50));
 
         passwordSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 30, -1));
+        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 30, -1));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 190, 40));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, 190, 40));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 30, -1));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 30, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -322,11 +325,9 @@ private boolean cityPatternCorrect(String val3){
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
 
         Network network = (Network) networkJComboBox.getSelectedItem();
-        if (network != null){
+        if (network != null) {
             populateEnterpriseComboBox(network);
         }
-        
-        
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void enterpriseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseJComboBoxActionPerformed
@@ -345,13 +346,13 @@ private boolean cityPatternCorrect(String val3){
 
     private void submitJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButton1ActionPerformed
         Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
-        if(enterprise.getEmployeeDirectory().getEmployeeList().size() != 0){
-                entAvail=1;
+        if (enterprise.getEmployeeDirectory().getEmployeeList().size() != 0) {
+            entAvail = 1;
         }
-        if(usernameJTextField.getText().isEmpty() || passwordJPasswordField.getText().isEmpty() || nameJTextField.getText().isEmpty()){
-             JOptionPane.showMessageDialog(null,"Field(s) cannot be Empty!","Error",JOptionPane.ERROR_MESSAGE);
-             return;
-        }else if(emailValid && nameValid && entAvail!=1){
+        if (usernameJTextField.getText().isEmpty() || passwordJPasswordField.getText().isEmpty() || nameJTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Field(s) cannot be Empty!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (emailValid && nameValid && entAvail != 1) {
 
             String username = usernameJTextField.getText();
             String password = String.valueOf(passwordJPasswordField.getPassword());
@@ -359,7 +360,7 @@ private boolean cityPatternCorrect(String val3){
 
             Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
 
-            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password,employee, new AdminRole());
+            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
             populateTable();
             networkJComboBox.setSelectedIndex(0);
             enterpriseJComboBox.setSelectedIndex(0);
@@ -367,47 +368,47 @@ private boolean cityPatternCorrect(String val3){
             passwordJPasswordField.setText("");
             nameJTextField.setText("");
             clearLabels();
-        
-        }else {
-            if(entAvail == 1){
-                JOptionPane.showMessageDialog(null, "Enterprise admin is already added !","Alert",JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            if (entAvail == 1) {
+                JOptionPane.showMessageDialog(null, "Enterprise admin is already added !", "Alert", JOptionPane.INFORMATION_MESSAGE);
                 clearLabels();
                 usernameJTextField.setText("");
                 passwordJPasswordField.setText("");
                 nameJTextField.setText("");
-            }else{
-                JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!","Error",JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter all the required fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        
+
     }//GEN-LAST:event_submitJButton1ActionPerformed
 
     private void usernameJTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameJTextFieldKeyReleased
         // TODO add your handling code here:
-         if (!usernamePatternCorrect(usernameJTextField.getText()) && !(usernameJTextField.getText().isEmpty())){
-              emailLbl.setVisible(true);
-              emailSuccessLbl.setVisible(false);
-              emailValid =false;
-        }else if(usernameJTextField.getText().isEmpty()){
+        if (!usernamePatternCorrect(usernameJTextField.getText()) && !(usernameJTextField.getText().isEmpty())) {
+            emailLbl.setVisible(true);
+            emailSuccessLbl.setVisible(false);
+            emailValid = false;
+        } else if (usernameJTextField.getText().isEmpty()) {
             emailLbl.setVisible(false);
-            emailValid =false;
-             emailSuccessLbl.setVisible(false);
-        }else{
-         emailLbl.setVisible(false);
-         emailSuccessLbl.setVisible(true);
-         emailValid =true;
+            emailValid = false;
+            emailSuccessLbl.setVisible(false);
+        } else {
+            emailLbl.setVisible(false);
+            emailSuccessLbl.setVisible(true);
+            emailValid = true;
         }
     }//GEN-LAST:event_usernameJTextFieldKeyReleased
 
     private void passwordJPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordJPasswordFieldKeyReleased
         // TODO add your handling code here:
-        if(!passwordPatternCorrect(passwordJPasswordField.getText()) && !(passwordJPasswordField.getText().isEmpty())){
+        if (!passwordPatternCorrect(passwordJPasswordField.getText()) && !(passwordJPasswordField.getText().isEmpty())) {
             passwordSuccessLbl.setVisible(false);
             passwordLbl.setVisible(true);
-        }else if(passwordJPasswordField.getText().isEmpty()){
+        } else if (passwordJPasswordField.getText().isEmpty()) {
             passwordLbl.setVisible(false);
-             passwordSuccessLbl.setVisible(false);
-        }else{
+            passwordSuccessLbl.setVisible(false);
+        } else {
             passwordLbl.setVisible(false);
             passwordSuccessLbl.setVisible(true);
         }
@@ -415,15 +416,15 @@ private boolean cityPatternCorrect(String val3){
 
     private void nameJTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyReleased
         // TODO add your handling code here:
-        if(!cityPatternCorrect(nameJTextField.getText()) && !(nameJTextField.getText().isEmpty())){
+        if (!cityPatternCorrect(nameJTextField.getText()) && !(nameJTextField.getText().isEmpty())) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(true);
             nameValid = false;
-        }else if(nameJTextField.getText().isEmpty()){
+        } else if (nameJTextField.getText().isEmpty()) {
             citySuccessLbl.setVisible(false);
             cityLbl.setVisible(false);
             nameValid = false;
-        }else{
+        } else {
             nameValid = true;
             cityLbl.setVisible(false);
             citySuccessLbl.setVisible(true);
@@ -456,5 +457,4 @@ private boolean cityPatternCorrect(String val3){
     private javax.swing.JTextField usernameJTextField;
     // End of variables declaration//GEN-END:variables
 
-    
 }

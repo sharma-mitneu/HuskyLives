@@ -9,15 +9,11 @@ import Business.Student.Student;
 import Business.StudentRequestOrder;
 import Business.EcoSystem;
 import Business.Enterprise.DietEnterprise;
-import Business.Enterprise.DoctorEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Organization.AdminOrganization;
-import Business.Organization.GenPracOrganization;
 import Business.Organization.NutritionOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.GenPracWorkRequest;
 import Business.WorkQueue.NutritionistWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
@@ -25,7 +21,6 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.SystemAdminWorkArea.ManageNetworkJPanel;
 
 /**
  *
@@ -44,7 +39,8 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     Enterprise e;
     private Network network;
-    public StudentAnalysisJPanel(JPanel userProcessContainer,Student student, EcoSystem system, UserAccount userAccount, Enterprise enterprise, Network network) {
+
+    public StudentAnalysisJPanel(JPanel userProcessContainer, Student student, EcoSystem system, UserAccount userAccount, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.student = student;
@@ -56,27 +52,24 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
         calculateWeightCategory();
         populateDietStatusTable();
     }
-    
-    public void calculateBMI(){
-       double heightMts = student.getHeight()/100;
-       double heightSquare = heightMts*heightMts;
-       bmi = student.getWeight()/heightSquare;
-       System.out.println("BMI  " + bmi);
-       String bmiStr = String.format("%.2f", bmi);
-       txtBMI.setText(String.valueOf(bmiStr));
+
+    public void calculateBMI() {
+        double heightMts = student.getHeight() / 100;
+        double heightSquare = heightMts * heightMts;
+        bmi = student.getWeight() / heightSquare;
+        System.out.println("BMI  " + bmi);
+        String bmiStr = String.format("%.2f", bmi);
+        txtBMI.setText(String.valueOf(bmiStr));
     }
-    
-    public void calculateWeightCategory(){
-        if(bmi <= 18.5){
+
+    public void calculateWeightCategory() {
+        if (bmi <= 18.5) {
             txtWtDec.setText("UNDER WEIGHT");
-        }
-        else if (bmi > 18.5 && bmi <= 24.9){
+        } else if (bmi > 18.5 && bmi <= 24.9) {
             txtWtDec.setText("NORMAL WEIGHT");
-        }
-        else if(bmi >= 25 && bmi <= 29.9){
+        } else if (bmi >= 25 && bmi <= 29.9) {
             txtWtDec.setText("OVER WEIGHT");
-        }
-        else if(bmi >= 30){
+        } else if (bmi >= 30) {
             txtWtDec.setText("OBESE");
         }
     }
@@ -114,7 +107,7 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Your BMI:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 149, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 149, 30));
 
         txtBMI.setEditable(false);
         txtBMI.setBackground(new java.awt.Color(204, 204, 204));
@@ -126,13 +119,13 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
                 txtBMIActionPerformed(evt);
             }
         });
-        add(txtBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 138, 32));
+        add(txtBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 138, 32));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Based on your BMI you are:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, 40));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, 40));
 
         btnDocApp.setBackground(new java.awt.Color(204, 204, 204));
         btnDocApp.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -143,19 +136,19 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
                 btnDocAppActionPerformed(evt);
             }
         });
-        add(btnDocApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 183, 40));
+        add(btnDocApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 183, 40));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Your Goal:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 160, 32));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 160, 32));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Your Analysis");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 692, 36));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 692, 36));
 
         backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -178,13 +171,13 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
                 txtWtDecActionPerformed(evt);
             }
         });
-        add(txtWtDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 138, 32));
+        add(txtWtDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 138, 32));
 
         goalComboBox.setBackground(new java.awt.Color(204, 204, 204));
         goalComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        goalComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        goalComboBox.setForeground(new java.awt.Color(51, 51, 51));
         goalComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gain Weight", "Loose Weight" }));
-        add(goalComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 138, 32));
+        add(goalComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 138, 32));
 
         trainerAptBtn.setBackground(new java.awt.Color(204, 204, 204));
         trainerAptBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -195,7 +188,7 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
                 trainerAptBtnActionPerformed(evt);
             }
         });
-        add(trainerAptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 183, 40));
+        add(trainerAptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 183, 40));
 
         submitRequest.setBackground(new java.awt.Color(204, 204, 204));
         submitRequest.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -206,9 +199,11 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
                 submitRequestActionPerformed(evt);
             }
         });
-        add(submitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 190, 45));
+        add(submitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 190, 45));
 
+        dietStatusTbl.setBackground(new java.awt.Color(204, 204, 204));
         dietStatusTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        dietStatusTbl.setForeground(new java.awt.Color(51, 51, 51));
         dietStatusTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -237,13 +232,13 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
             dietStatusTbl.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 720, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 720, 92));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Diet Status");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 378, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 378, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
@@ -257,10 +252,10 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBMIActionPerformed
 
     private void btnDocAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDocAppActionPerformed
-        DoctorAppointmentJPanel doc =new DoctorAppointmentJPanel(userProcessContainer, system, network, userAccount);
-        userProcessContainer.add("DoctorAppointmentJPanel",doc);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer);    
+        DoctorAppointmentJPanel doc = new DoctorAppointmentJPanel(userProcessContainer, system, network, userAccount);
+        userProcessContainer.add("DoctorAppointmentJPanel", doc);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDocAppActionPerformed
 
@@ -276,79 +271,78 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
 
     private void trainerAptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainerAptBtnActionPerformed
         // TODO add your handling code here:
-        TrainerAppointmentJPanel trainer =new TrainerAppointmentJPanel(userProcessContainer, system, network, userAccount);
-        userProcessContainer.add("TrainerAppointmentJPanel",trainer);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer); 
+        TrainerAppointmentJPanel trainer = new TrainerAppointmentJPanel(userProcessContainer, system, network, userAccount);
+        userProcessContainer.add("TrainerAppointmentJPanel", trainer);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_trainerAptBtnActionPerformed
 
     private void submitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitRequestActionPerformed
         // TODO add your handling code here:
-        if(userAccount.getWorkQueue().getWorkRequestList().size()== 0){
-                String bmi = txtBMI.getText();
-                String goal = (String)goalComboBox.getSelectedItem();
-                NutritionistWorkRequest request = new NutritionistWorkRequest();
-                request.setMessage(goal);
-                request.setSender(userAccount);
-                request.setStatus("Request Sent to Admin");
-                System.out.print("Request sent to Admin");
-                Organization org = null;
+        if (userAccount.getWorkQueue().getWorkRequestList().size() == 0) {
+            String bmi = txtBMI.getText();
+            String goal = (String) goalComboBox.getSelectedItem();
+            NutritionistWorkRequest request = new NutritionistWorkRequest();
+            request.setMessage(goal);
+            request.setSender(userAccount);
+            request.setStatus("Request Sent to Admin");
+            System.out.print("Request sent to Admin");
+            Organization org = null;
 
-                for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-                    if(enter instanceof DietEnterprise){
-                        e = enter;
-                    }
+            for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enter instanceof DietEnterprise) {
+                    e = enter;
                 }
-                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof NutritionOrganization){
-                        org = organization;
-                        break;
-                    }
-                }
-                if (org!=null){
-                    org.getWorkQueue().getWorkRequestList().add(request);
-                    userAccount.getWorkQueue().getWorkRequestList().add(request);
-                }
-                        JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-                populateDietStatusTable();
-        }
-        else{
-            int x = userAccount.getWorkQueue().getWorkRequestList().size()-1;
-            WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
-            if(r.getStatus().toLowerCase().equals("result posted")){
-                String bmi = txtBMI.getText();
-                String goal = (String)goalComboBox.getSelectedItem();
-                NutritionistWorkRequest request = new NutritionistWorkRequest();
-                request.setMessage(goal);
-                request.setSender(userAccount);
-                request.setStatus("Request Sent to Admin");
-                System.out.print("Request sent to Admin");
-                Organization org = null;
-
-                for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-                    if(enter instanceof DietEnterprise){
-                        e = enter;
-                    }
-                }
-                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof NutritionOrganization){
-                        org = organization;
-                        break;
-                    }
-                }
-                if (org!=null){
-                    org.getWorkQueue().getWorkRequestList().add(request);
-                    userAccount.getWorkQueue().getWorkRequestList().add(request);
-                }
-                        JOptionPane.showMessageDialog(null,"Request has been sent. You will receive an email once it is processed!!","Success",JOptionPane.INFORMATION_MESSAGE);
-                populateDietStatusTable();
-        
-            }else {
-                JOptionPane.showMessageDialog(null,"Please wait until the previous request has been processed !","Alert",JOptionPane.WARNING_MESSAGE);
             }
-        } 
-       
-        
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof NutritionOrganization) {
+                    org = organization;
+                    break;
+                }
+            }
+            if (org != null) {
+                org.getWorkQueue().getWorkRequestList().add(request);
+                userAccount.getWorkQueue().getWorkRequestList().add(request);
+            }
+            JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            populateDietStatusTable();
+        } else {
+            int x = userAccount.getWorkQueue().getWorkRequestList().size() - 1;
+            WorkRequest r = userAccount.getWorkQueue().getWorkRequestList().get(x);
+            if (r.getStatus().toLowerCase().equals("result posted")) {
+                String bmi = txtBMI.getText();
+                String goal = (String) goalComboBox.getSelectedItem();
+                NutritionistWorkRequest request = new NutritionistWorkRequest();
+                request.setMessage(goal);
+                request.setSender(userAccount);
+                request.setStatus("Request Sent to Admin");
+                System.out.print("Request sent to Admin");
+                Organization org = null;
+
+                for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (enter instanceof DietEnterprise) {
+                        e = enter;
+                    }
+                }
+                for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof NutritionOrganization) {
+                        org = organization;
+                        break;
+                    }
+                }
+                if (org != null) {
+                    org.getWorkQueue().getWorkRequestList().add(request);
+                    userAccount.getWorkQueue().getWorkRequestList().add(request);
+                }
+                JOptionPane.showMessageDialog(null, "Request has been sent. You will receive an email once it is processed!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                populateDietStatusTable();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Please wait until the previous request has been processed !", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
+
     }//GEN-LAST:event_submitRequestActionPerformed
 
 
@@ -375,29 +369,29 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) dietStatusTbl.getModel();
         dtm.setRowCount(0);
         Organization org = null;
-        for(Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enter instanceof DietEnterprise){
+        for (Enterprise enter : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enter instanceof DietEnterprise) {
                 e = enter;
             }
         }
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof NutritionOrganization){
+        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof NutritionOrganization) {
                 org = organization;
                 break;
             }
         }
-        if (org!=null){
-            for(WorkRequest request: org.getWorkQueue().getWorkRequestList()) {
-            if(request.getSender().equals(userAccount)){
-            Object row[] = new Object[5];
-            row[0] = request.getRequestID();
-            row[1] = request.getMessage();
-            row[2] = request.getReceiver();
-            row[3] = ((NutritionistWorkRequest)request).getDietResult();
-            row[4] = request.getStatus();
-            dtm.addRow(row);
+        if (org != null) {
+            for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+                if (request.getSender().equals(userAccount)) {
+                    Object row[] = new Object[5];
+                    row[0] = request.getRequestID();
+                    row[1] = request.getMessage();
+                    row[2] = request.getReceiver();
+                    row[3] = ((NutritionistWorkRequest) request).getDietResult();
+                    row[4] = request.getStatus();
+                    dtm.addRow(row);
+                }
             }
-    }
         }
     }
 }

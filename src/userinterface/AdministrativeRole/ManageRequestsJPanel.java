@@ -8,11 +8,8 @@ package userinterface.AdministrativeRole;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.Organization.AdminOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.NutritionistWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
@@ -32,10 +29,7 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
-    //private AdminOrganization adminOrganization;
     private Enterprise enterprise;
-
-    
 
     public ManageRequestsJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account, Organization organization, EcoSystem business) {
         initComponents();
@@ -44,45 +38,42 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
         this.business = business;
         this.enterprise = enterprise;
         workRequestJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        //this.adminOrganization = (AdminOrganization)organization;
-       
+
         populateOrganization();
     }
+
     private void populateOrganization() {
-        
+
         orgComboBox.removeAllItems();
-        
+
         employeeComboBox.removeAllItems();
-        
-       for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-                orgComboBox.addItem(organization.toString());
+
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            orgComboBox.addItem(organization.toString());
         }
-       
+
     }
-    public void populateTable(){
-        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
-        
+
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+
         model.setRowCount(0);
         String o = orgComboBox.getSelectedItem().toString();
-         for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){
-            if(org.getName().equals(o)){
-                for(WorkRequest request : org.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-           
-            row[0] = request.getSender().getStudent().getName();
-            row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[2] = request;
-            row[3] = request.getStatus();
-            
-            model.addRow(row);
-            }}  
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getName().equals(o)) {
+                for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+                    Object[] row = new Object[4];
+
+                    row[0] = request.getSender().getStudent().getName();
+                    row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                    row[2] = request;
+                    row[3] = request.getStatus();
+
+                    model.addRow(row);
+                }
+            }
         }
-        
-        
-        
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,12 +101,13 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Organization:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
 
         orgComboBox.setBackground(new java.awt.Color(204, 204, 204));
         orgComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        orgComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        orgComboBox.setForeground(new java.awt.Color(51, 51, 51));
         orgComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         orgComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,11 +123,12 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
 
         employeeComboBox.setBackground(new java.awt.Color(204, 204, 204));
         employeeComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        employeeComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        employeeComboBox.setForeground(new java.awt.Color(51, 51, 51));
         employeeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(employeeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 345, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Assign Selected Task to:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 353, 172, -1));
@@ -153,7 +146,7 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setBackground(new java.awt.Color(204, 204, 204));
         workRequestJTable.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        workRequestJTable.setForeground(new java.awt.Color(0, 0, 0));
+        workRequestJTable.setForeground(new java.awt.Color(51, 51, 51));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -227,60 +220,53 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
     private void assignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtnActionPerformed
         // TODO add your handling code here:
         int selectedRow = workRequestJTable.getSelectedRow();
-        if(selectedRow >= 0){
+        if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 2);
-            //NutritionistWorkRequest request = (NutritionistWorkRequest) workRequestJTable.getValueAt(selectedRow, 2);
-        //request.setSender(userAccount);
-            if(!request.getStatus().equals("Assigned") && !request.getStatus().equals("Result Posted")){
-                for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){
-                    for(UserAccount user: org.getUserAccountDirectory().getUserAccountList()){
-                        if(employeeComboBox.getSelectedItem().equals(user.getEmployee().getName())){    
-                            
+            if (!request.getStatus().equals("Assigned") && !request.getStatus().equals("Result Posted")) {
+                for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount user : org.getUserAccountDirectory().getUserAccountList()) {
+                        if (employeeComboBox.getSelectedItem().equals(user.getEmployee().getName())) {
+
                             int x = user.getWorkQueue().getWorkRequestList().size();
-                            if(x>0){
-                            WorkRequest r = user.getWorkQueue().getWorkRequestList().get(x-1);
-                            String st = r.getStatus();
-                                if(st.equals("Assigned")){
-                                    JOptionPane.showMessageDialog(null,"Asignee already has a request in open status!","Error",JOptionPane.ERROR_MESSAGE);
-                                        return;
-                                    
+                            if (x > 0) {
+                                WorkRequest r = user.getWorkQueue().getWorkRequestList().get(x - 1);
+                                String st = r.getStatus();
+                                if (st.equals("Assigned")) {
+                                    JOptionPane.showMessageDialog(null, "Asignee already has a request in open status!", "Error", JOptionPane.ERROR_MESSAGE);
+                                    return;
+                                } else {
+                                    request.setReceiver(user);
+                                    //request.setStatus("Assigned to " + employeeComboBox.getSelectedItem());
+                                    request.setStatus("Assigned");
+                                    JOptionPane.showMessageDialog(null, "Request has been Assigned Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                                    user.getWorkQueue().getWorkRequestList().add(request);
                                 }
-                                else{
+                            } else {
                                 request.setReceiver(user);
                                 //request.setStatus("Assigned to " + employeeComboBox.getSelectedItem());
-                                 request.setStatus("Assigned");
-                                 JOptionPane.showMessageDialog(null,"Request has been Assigned Successfully!","Success",JOptionPane.INFORMATION_MESSAGE);
+                                request.setStatus("Assigned");
+                                JOptionPane.showMessageDialog(null, "Request has been Assigned Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                                 user.getWorkQueue().getWorkRequestList().add(request);
-
-                                }}else{
-                            request.setReceiver(user);
-                            //request.setStatus("Assigned to " + employeeComboBox.getSelectedItem());
-                             request.setStatus("Assigned");
-                             JOptionPane.showMessageDialog(null,"Request has been Assigned Successfully!","Success",JOptionPane.INFORMATION_MESSAGE);
-                            user.getWorkQueue().getWorkRequestList().add(request);
-
-                                }
+                            }
                         }
                     }
                 }
                 populateTable();
-            }else{
-                if(request.getStatus().equals("Assigned")){
-                     JOptionPane.showMessageDialog(null,"Request has been assigned Already!","Alert",JOptionPane.INFORMATION_MESSAGE);
-                }else if(request.getStatus().equals("Result Posted")){
-                     JOptionPane.showMessageDialog(null,"Request has been Posted Already!","Alert",JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                if (request.getStatus().equals("Assigned")) {
+                    JOptionPane.showMessageDialog(null, "Request has been assigned Already!", "Alert", JOptionPane.INFORMATION_MESSAGE);
+                } else if (request.getStatus().equals("Result Posted")) {
+                    JOptionPane.showMessageDialog(null, "Request has been Posted Already!", "Alert", JOptionPane.INFORMATION_MESSAGE);
                 }
-               
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Please Select a row","Error",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please Select a row", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
     }//GEN-LAST:event_assignBtnActionPerformed
 
     private void orgComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgComboBoxActionPerformed
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_orgComboBoxActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -292,28 +278,21 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
 
     private void orgComboBoxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_orgComboBoxPropertyChange
         // TODO add your handling code here:
-             
-        
-        
     }//GEN-LAST:event_orgComboBoxPropertyChange
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         employeeComboBox.removeAllItems();
         String organization = orgComboBox.getSelectedItem().toString();
-        for(Organization org: enterprise.getOrganizationDirectory().getOrganizationList()){
-            if(org.getName().equals(organization)){
-                
-                for(Employee emp:org.getEmployeeDirectory().getEmployeeList()){
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getName().equals(organization)) {
+
+                for (Employee emp : org.getEmployeeDirectory().getEmployeeList()) {
                     employeeComboBox.addItem(emp.getName());
                 }
-               
-                    
-                }
-            
-         populateTable();
-                
+
             }
-        // TODO add your handling code here:
+            populateTable();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -332,5 +311,4 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 
-    
 }
