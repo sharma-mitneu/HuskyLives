@@ -28,7 +28,7 @@ public abstract class Role {
         Dietician("Dietician"),
         GeneralPhysician("General Physician"),
         Physiotherapist("Physiotherapist"),
-        StoreManager("Store Manager"),
+        DormInventoryManager("Dorm Inventory Manager"),
         DeliveryMan("Delivery Man"),
         FitnessTrainer("Fitness Trainer"),
         WeightTrainer("Weight Trainer");

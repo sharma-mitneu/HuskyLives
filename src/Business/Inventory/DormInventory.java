@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Store;
+package Business.Inventory;
 
 import Business.Organization.Organization;
-import Business.Role.StoreManagerRole;
+import Business.Role.DormInventoryManagerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -14,10 +14,10 @@ import java.util.ArrayList;
  *
  * @author srira
  */
-public class Store{
+public class DormInventory{
     String itemName;
     int price;
-    String itemType;
+//    String itemType;
     
 
 
@@ -37,13 +37,13 @@ public class Store{
         this.price = price;
     }
 
-    public String getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
+//    public String getItemType() {
+//        return itemType;
+//    }
+//
+//    public void setItemType(String itemType) {
+//        this.itemType = itemType;
+//    }
     
     
       @Override

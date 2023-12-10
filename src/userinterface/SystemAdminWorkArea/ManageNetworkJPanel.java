@@ -73,40 +73,45 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         networkJTable = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cityLbl = new javax.swing.JLabel();
         citySuccessLbl = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Enter State Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 132, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 132, 20));
 
-        submitJButton.setBackground(new java.awt.Color(255, 102, 0));
+        submitJButton.setBackground(new java.awt.Color(204, 204, 204));
         submitJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        submitJButton.setForeground(new java.awt.Color(51, 51, 51));
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 90, 40));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 90, 40));
 
+        nameJTextField.setBackground(new java.awt.Color(204, 204, 204));
+        nameJTextField.setForeground(new java.awt.Color(0, 0, 0));
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 nameJTextFieldKeyReleased(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 190, 30));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 190, 30));
 
-        backJButton.setBackground(new java.awt.Color(255, 102, 0));
+        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(51, 51, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,13 +120,12 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, 30));
 
+        networkJTable.setBackground(new java.awt.Color(204, 204, 204));
         networkJTable.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        networkJTable.setForeground(new java.awt.Color(0, 0, 0));
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Name"
@@ -147,38 +151,39 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             networkJTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 79, 404, 91));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageNetworkPage.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 79, -1, 100));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 404, 110));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MANAGE NETWORK");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 11, 723, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 723, 30));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        cityLbl.setForeground(new java.awt.Color(181, 7, 7));
+        cityLbl.setForeground(new java.awt.Color(255, 0, 0));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 190, 20));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 190, 20));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 40, 50));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 40, 50));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 80, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 80, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageNetworkPageBackDrop.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 1300, 900));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -238,9 +243,9 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel citySuccessLbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTable networkJTable;

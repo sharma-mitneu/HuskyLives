@@ -103,10 +103,13 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         citySuccessLbl = new javax.swing.JLabel();
         cityLbl = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        enterpriseJTable.setBackground(new java.awt.Color(204, 204, 204));
+        enterpriseJTable.setForeground(new java.awt.Color(0, 0, 0));
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -135,7 +138,9 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         jLabel1.setText("Network:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 215, 88, -1));
 
+        networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        networkJComboBox.setForeground(new java.awt.Color(0, 0, 0));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +154,8 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         jLabel2.setText("Enterprise Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 301, 130, -1));
 
+        nameJTextField.setBackground(new java.awt.Color(204, 204, 204));
+        nameJTextField.setForeground(new java.awt.Color(0, 0, 0));
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 nameJTextFieldKeyReleased(evt);
@@ -161,7 +168,9 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         jLabel3.setText("Enterprise Type:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 258, -1, -1));
 
+        enterpriseTypeJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         enterpriseTypeJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        enterpriseTypeJComboBox.setForeground(new java.awt.Color(0, 0, 0));
         enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         enterpriseTypeJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,8 +179,9 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         });
         add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 254, 190, 30));
 
-        submitJButton.setBackground(new java.awt.Color(255, 102, 0));
+        submitJButton.setBackground(new java.awt.Color(204, 204, 204));
         submitJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        submitJButton.setForeground(new java.awt.Color(51, 51, 51));
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,8 +190,9 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         });
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 101, 41));
 
-        backJButton.setBackground(new java.awt.Color(255, 102, 0));
+        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(51, 51, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,23 +202,25 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("MANAGE ENTERPRISE");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 0, 723, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 723, 30));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
         add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 30, 60));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        cityLbl.setForeground(new java.awt.Color(181, 7, 7));
+        cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
         add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 220, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageEnterprise.png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 1200, 730));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -296,6 +309,7 @@ enterpriseJTable.getTableHeader().setDefaultRenderer(new tableHeaderColors());
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

@@ -10,7 +10,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.StoreWorkRequest;
+import Business.WorkQueue.DormInventoryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
@@ -169,7 +169,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row.","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-        StoreWorkRequest request = (StoreWorkRequest) delManTbl.getValueAt(selectedRow, 2);
+        DormInventoryWorkRequest request = (DormInventoryWorkRequest) delManTbl.getValueAt(selectedRow, 2);
         if(request.getStatus() == "Delivered"){
             JOptionPane.showMessageDialog(null, "The order has been already Delivered.","Error",JOptionPane.ERROR_MESSAGE);
             populateTable();

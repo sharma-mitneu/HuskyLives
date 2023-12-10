@@ -12,9 +12,9 @@ import java.util.ArrayList;
  *
  * @author mittul.sharma
  */
-public class StoreEnterprise extends Enterprise {
-    public StoreEnterprise(String name){
-        super(name,Enterprise.EnterpriseType.StoreUnit);
+public class DormInventoryEnterprise extends Enterprise {
+    public DormInventoryEnterprise(String name){
+        super(name,Enterprise.EnterpriseType.DormInventoryUnit);
     }
     @Override
     public ArrayList<Role> getSupportedRole() {

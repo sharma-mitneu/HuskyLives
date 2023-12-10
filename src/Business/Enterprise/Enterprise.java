@@ -7,7 +7,7 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
-import Business.Store.StoreDirectory;
+import Business.Inventory.DormInventoryDirectory;
 import java.util.ArrayList;
 
 /**
@@ -18,20 +18,20 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
-    private StoreDirectory storeDirectory;
+    private DormInventoryDirectory dormInventoryDirectory;
     private ArrayList<Items> itemsList;
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
-    public StoreDirectory getStoreDirectory() {
-        return storeDirectory;
+    public DormInventoryDirectory getDormInventoryDirectory() {
+        return dormInventoryDirectory;
     }
     public enum EnterpriseType{
         DietUnit("Diet Unit"),
         TrainerUnit("Trainer Unit"),
         DoctorUnit("Doctor Unit"),
-        StoreUnit("Store Unit");
+        DormInventoryUnit("Dorm Inventory Unit");
         
         private String value;
         
