@@ -58,8 +58,8 @@ public class OrganizationDirectory {
             organization = new GenPracOrganization();
             organizationList.add(organization);
         }
-         else if (type.getValue().equals(Type.Store.getValue())){
-            organization = new StoreOrganization();
+         else if (type.getValue().equals(Type.DormInventory.getValue())){
+            organization = new InventoryOrganization();
             organizationList.add(organization);
         }
          /*TBD*/

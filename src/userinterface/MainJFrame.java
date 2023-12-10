@@ -65,7 +65,7 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
         jSplitPane1.setDividerLocation(300);
         jSplitPane1.setMaximumSize(new java.awt.Dimension(1754, 724));
 
-        LeftJPanel.setBackground(new java.awt.Color(238, 137, 19));
+        LeftJPanel.setBackground(new java.awt.Color(51, 51, 51));
         LeftJPanel.setMaximumSize(new java.awt.Dimension(467, 722));
         LeftJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,15 +87,17 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
         LeftJPanel.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 347, 204, 32));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("New User? Click on Sign Up");
         LeftJPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, 204, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/UserImg.png"))); // NOI18N
-        LeftJPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 152, 118));
+        LeftJPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 78, 250, 150));
 
-        loginJButton.setBackground(new java.awt.Color(255, 102, 0));
+        loginJButton.setBackground(new java.awt.Color(204, 204, 204));
         loginJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        loginJButton.setForeground(new java.awt.Color(51, 51, 51));
         loginJButton.setText("Log in");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +106,9 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
         });
         LeftJPanel.add(loginJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 409, 148, 49));
 
-        registerBtn.setBackground(new java.awt.Color(255, 102, 0));
+        registerBtn.setBackground(new java.awt.Color(204, 204, 204));
         registerBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        registerBtn.setForeground(new java.awt.Color(51, 51, 51));
         registerBtn.setText("Sign Up");
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,14 +117,15 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
         });
         LeftJPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 558, 149, 49));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Looking to get Fit? Join Us");
+        jLabel6.setText("Northeastern University");
         LeftJPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 295, 58));
 
-        logoutJButton.setBackground(new java.awt.Color(255, 102, 0));
+        logoutJButton.setBackground(new java.awt.Color(204, 204, 204));
         logoutJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        logoutJButton.setForeground(new java.awt.Color(51, 51, 51));
         logoutJButton.setText("Log Out");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +138,7 @@ private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
         container.setLayout(new java.awt.CardLayout());
 
+        orangeLbl.setBackground(new java.awt.Color(51, 51, 51));
         orangeLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/orangesBackground.jpg"))); // NOI18N
         container.add(orangeLbl, "card2");
 

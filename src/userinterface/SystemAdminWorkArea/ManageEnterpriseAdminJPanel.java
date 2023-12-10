@@ -140,11 +140,14 @@ private boolean cityPatternCorrect(String val3){
         passwordSuccessLbl = new javax.swing.JLabel();
         cityLbl = new javax.swing.JLabel();
         citySuccessLbl = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        enterpriseJTable.setBackground(new java.awt.Color(204, 204, 204));
+        enterpriseJTable.setForeground(new java.awt.Color(0, 0, 0));
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -173,80 +176,96 @@ private boolean cityPatternCorrect(String val3){
             enterpriseJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 62, 730, 95));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 730, 95));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Network :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 80, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 80, 30));
 
+        networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        networkJComboBox.setForeground(new java.awt.Color(0, 0, 0));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 190, 30));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Email ID:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 80, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 80, 30));
 
+        usernameJTextField.setBackground(new java.awt.Color(204, 204, 204));
+        usernameJTextField.setForeground(new java.awt.Color(0, 0, 0));
         usernameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 usernameJTextFieldKeyReleased(evt);
             }
         });
-        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 190, 30));
+        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 190, 30));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Enterprise :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 90, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 90, 30));
 
+        enterpriseJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         enterpriseJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        enterpriseJComboBox.setForeground(new java.awt.Color(0, 0, 0));
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         enterpriseJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpriseJComboBoxActionPerformed(evt);
             }
         });
-        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 190, 30));
+        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 190, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Password :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 80, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 80, 30));
 
+        nameJTextField.setBackground(new java.awt.Color(204, 204, 204));
+        nameJTextField.setForeground(new java.awt.Color(0, 0, 0));
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 nameJTextFieldKeyReleased(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 190, 30));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 190, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Name:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 80, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 80, 30));
 
+        passwordJPasswordField.setBackground(new java.awt.Color(204, 204, 204));
+        passwordJPasswordField.setForeground(new java.awt.Color(0, 0, 0));
         passwordJPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 passwordJPasswordFieldKeyReleased(evt);
             }
         });
-        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 190, 30));
+        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 190, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(80, 80, 82));
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("MANAGE ENTERPRISE ADMIN");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 723, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 723, 30));
 
-        backJButton1.setBackground(new java.awt.Color(255, 102, 0));
+        backJButton1.setBackground(new java.awt.Color(204, 204, 204));
         backJButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        backJButton1.setForeground(new java.awt.Color(51, 51, 51));
         backJButton1.setText("<< Back");
         backJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,46 +274,49 @@ private boolean cityPatternCorrect(String val3){
         });
         add(backJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
-        submitJButton1.setBackground(new java.awt.Color(255, 102, 0));
+        submitJButton1.setBackground(new java.awt.Color(204, 204, 204));
         submitJButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        submitJButton1.setForeground(new java.awt.Color(51, 51, 51));
         submitJButton1.setText("Submit");
         submitJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButton1ActionPerformed(evt);
             }
         });
-        add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 98, 42));
+        add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 98, 42));
 
         emailLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        emailLbl.setForeground(new java.awt.Color(181, 7, 7));
+        emailLbl.setForeground(new java.awt.Color(255, 51, 51));
         emailLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailLbl.setText("Valid Format - 'xx@xx.xx'");
-        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 190, 20));
+        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 190, 20));
 
         emailSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, 30, 30));
+        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 30, 30));
 
         passwordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        passwordLbl.setForeground(new java.awt.Color(181, 7, 7));
+        passwordLbl.setForeground(new java.awt.Color(255, 51, 51));
         passwordLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordLbl.setText("Sample format: Asdf@1");
-        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 190, 50));
+        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 190, 50));
 
         passwordSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 30, -1));
+        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 30, -1));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        cityLbl.setForeground(new java.awt.Color(181, 7, 7));
+        cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 190, 40));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 190, 40));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 30, -1));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 30, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageRequest.jpg"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 770));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
@@ -422,7 +444,8 @@ private boolean cityPatternCorrect(String val3){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

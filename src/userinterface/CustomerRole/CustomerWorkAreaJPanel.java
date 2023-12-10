@@ -12,7 +12,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.StoreWorkRequest;
+import Business.WorkQueue.DormInventoryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Color;

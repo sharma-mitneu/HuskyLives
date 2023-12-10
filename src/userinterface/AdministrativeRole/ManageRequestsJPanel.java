@@ -102,16 +102,20 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
         workRequestJTable = new javax.swing.JTable();
         backJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel1.setText("Organization:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 94, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
 
+        orgComboBox.setBackground(new java.awt.Color(204, 204, 204));
         orgComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        orgComboBox.setForeground(new java.awt.Color(0, 0, 0));
         orgComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         orgComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,9 +127,11 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
                 orgComboBoxPropertyChange(evt);
             }
         });
-        add(orgComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 86, 190, 30));
+        add(orgComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 190, 30));
 
+        employeeComboBox.setBackground(new java.awt.Color(204, 204, 204));
         employeeComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        employeeComboBox.setForeground(new java.awt.Color(0, 0, 0));
         employeeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(employeeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 345, 190, 30));
 
@@ -134,8 +140,9 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
         jLabel2.setText("Assign Selected Task to:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 353, 172, -1));
 
-        assignBtn.setBackground(new java.awt.Color(255, 102, 0));
+        assignBtn.setBackground(new java.awt.Color(204, 204, 204));
         assignBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        assignBtn.setForeground(new java.awt.Color(51, 51, 51));
         assignBtn.setText("Assign");
         assignBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +151,9 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
         });
         add(assignBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 417, 93, 42));
 
+        workRequestJTable.setBackground(new java.awt.Color(204, 204, 204));
         workRequestJTable.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        workRequestJTable.setForeground(new java.awt.Color(0, 0, 0));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -179,10 +188,11 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 170, 653, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 216, 653, 100));
 
-        backJButton.setBackground(new java.awt.Color(255, 102, 0));
+        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(51, 51, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,18 +201,27 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageRequest.jpg"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 720));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText("Manage Requests");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 220, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtnActionPerformed
@@ -302,10 +321,12 @@ public class ManageRequestsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton assignBtn;
     private javax.swing.JButton backJButton;
     private javax.swing.JComboBox<String> employeeComboBox;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox orgComboBox;
     private javax.swing.JTable workRequestJTable;

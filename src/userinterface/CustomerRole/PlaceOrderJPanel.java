@@ -10,14 +10,13 @@ import Business.EcoSystem;
 import Business.Enterprise.DietEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Items;
-import Business.Enterprise.StoreEnterprise;
+import Business.Enterprise.DormInventoryEnterprise;
 import Business.Network.Network;
 import Business.Organization.NutritionOrganization;
 import Business.Organization.Organization;
-import Business.Organization.StoreOrganization;
-import static Business.Role.Role.RoleType.StoreManager;
+import Business.Organization.InventoryOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.StoreWorkRequest;
+import Business.WorkQueue.DormInventoryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
@@ -26,6 +25,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import static Business.Role.Role.RoleType.DormInventoryManager;
 
 /**
  *
@@ -61,14 +61,14 @@ public class PlaceOrderJPanel extends javax.swing.JPanel {
         this.network = network;
         this.cusList = new ArrayList<>();
         this.histList = new ArrayList<>();
-         storeTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
+         dormInventoryTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
           histTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
            invoiceTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
             histItemTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        populateStoreItems();
+        populateDormInventoryItems();
     }
-private void populateStoreItems(){
-    DefaultTableModel dtm = (DefaultTableModel) storeTbl.getModel();
+private void populateDormInventoryItems(){
+    DefaultTableModel dtm = (DefaultTableModel) dormInventoryTbl.getModel();
         dtm.setRowCount(0);
         for(Network net : business.getNetworkList()){ 
             for(Enterprise e: net.getEnterpriseDirectory().getEnterpriseList()){
@@ -95,7 +95,7 @@ private void populateStoreItems(){
                                         row[0] = ord;
                                         row[1] = request.getRequestDate();
                                         row[2] = request;
-                                        row[3] = ((StoreWorkRequest)request).getTotalBill();
+                                        row[3] = ((DormInventoryWorkRequest)request).getTotalBill();
                                         dtm1.addRow(row);
                                }
                            }
@@ -127,7 +127,7 @@ private void populateStoreItems(){
         jLabel1 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        storeTbl = new javax.swing.JTable();
+        dormInventoryTbl = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -170,8 +170,8 @@ private void populateStoreItems(){
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 30));
 
-        storeTbl.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        storeTbl.setModel(new javax.swing.table.DefaultTableModel(
+        dormInventoryTbl.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        dormInventoryTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -187,18 +187,18 @@ private void populateStoreItems(){
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(storeTbl);
-        if (storeTbl.getColumnModel().getColumnCount() > 0) {
-            storeTbl.getColumnModel().getColumn(0).setResizable(false);
-            storeTbl.getColumnModel().getColumn(1).setResizable(false);
-            storeTbl.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(dormInventoryTbl);
+        if (dormInventoryTbl.getColumnModel().getColumnCount() > 0) {
+            dormInventoryTbl.getColumnModel().getColumn(0).setResizable(false);
+            dormInventoryTbl.getColumnModel().getColumn(1).setResizable(false);
+            dormInventoryTbl.getColumnModel().getColumn(2).setResizable(false);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 149, -1, 93));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Store Inventories");
+        jLabel7.setText("Dorm Inventories");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 452, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -373,7 +373,7 @@ private void populateStoreItems(){
     private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
         // TODO add your handling code here:
         if(invoiceTbl.getRowCount() > 0 && cartCount > 0){
-            StoreWorkRequest request = new StoreWorkRequest();
+            DormInventoryWorkRequest request = new DormInventoryWorkRequest();
             request.setCusList(cusList);
             request.setSender(userAccount);
             request.setStatus("Order Placed");
@@ -382,9 +382,9 @@ private void populateStoreItems(){
             Organization org = null;
         for(Network net: business.getNetworkList()){
             for(Enterprise enter : net.getEnterpriseDirectory().getEnterpriseList()){
-                if(enter instanceof StoreEnterprise){
+                if(enter instanceof DormInventoryEnterprise){
                     for (Organization organization : enter.getOrganizationDirectory().getOrganizationList()){
-                        if (organization instanceof StoreOrganization){
+                        if (organization instanceof InventoryOrganization){
                             org = organization;
                             break;
                         }
@@ -409,13 +409,13 @@ private void populateStoreItems(){
 
     private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
         // TODO add your handling code here:
-        int selectedRow = storeTbl.getSelectedRow();
+        int selectedRow = dormInventoryTbl.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
         else{
-            Items i = (Items)storeTbl.getValueAt(selectedRow,1);
+            Items i = (Items)dormInventoryTbl.getValueAt(selectedRow,1);
             cartCount++;
            cusList.add(i);
             this.total=populateTable();
@@ -450,7 +450,7 @@ private void populateStoreItems(){
         }
         else{
             WorkRequest i = (WorkRequest)histTbl.getValueAt(selectedRow,2);
-            histList = ((StoreWorkRequest)i).getCusList();
+            histList = ((DormInventoryWorkRequest)i).getCusList();
             DefaultTableModel dtm = (DefaultTableModel) histItemTbl.getModel();
                 dtm.setRowCount(0);
                 for(int d=0;d<histList.size();d++){
@@ -471,6 +471,7 @@ private void populateStoreItems(){
     private javax.swing.JButton backBtn;
     private javax.swing.JTextArea customerNotes;
     private javax.swing.JButton delCartBtn;
+    private javax.swing.JTable dormInventoryTbl;
     private javax.swing.JTable histItemTbl;
     private javax.swing.JTable histTbl;
     private javax.swing.JTable invoiceTbl;
@@ -491,12 +492,11 @@ private void populateStoreItems(){
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton placeOrderBtn;
-    private javax.swing.JTable storeTbl;
     private javax.swing.JTextField totBillTxt;
     // End of variables declaration//GEN-END:variables
 
     private void populateRequestTable(String name) {
-        DefaultTableModel dtm = (DefaultTableModel) storeTbl.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) dormInventoryTbl.getModel();
         dtm.setRowCount(0);
         for(Enterprise e:business.getEnterpriseDirectory().getEnterpriseList())
         {

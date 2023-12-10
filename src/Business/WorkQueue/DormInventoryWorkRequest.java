@@ -13,13 +13,13 @@ import java.util.Random;
  *
  * @author srira
  */
-public class StoreWorkRequest extends WorkRequest {
+public class DormInventoryWorkRequest extends WorkRequest {
     
     private ArrayList<Items> cusList;
     private String cusMessage;
     private int totalBill=0;
 
-    public StoreWorkRequest() {
+    public DormInventoryWorkRequest() {
         
     
     } 
