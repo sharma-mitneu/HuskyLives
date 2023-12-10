@@ -232,7 +232,7 @@ public class StudentAnalysisJPanel extends javax.swing.JPanel {
             dietStatusTbl.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 720, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 720, 130));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));

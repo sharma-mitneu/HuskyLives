@@ -38,7 +38,6 @@ public abstract class Organization {
         FitnessTraining("Fitness Training"),
         Physiotherapist("Physiotherapist"),
         GeneralPractitioner("General Practitioner"),
-        Orthopedic("Orthopedic Doctor"),
         DormInventory("Dorm Inventory"),
         Delivery("DeliveryMan"),
         Service("Service"),

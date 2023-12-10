@@ -11,13 +11,9 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DormInventoryWorkRequest;
 import Business.WorkQueue.MaintenanceWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
-import java.awt.CardLayout;
-import java.util.Date;
-import java.util.Objects;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -33,31 +29,27 @@ public class ServiceWorkerWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private EcoSystem business;
     private Enterprise enterprise;
-    
+
     public ServiceWorkerWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount account, EcoSystem business, Network network) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
         this.enterprise = enterprise;
         greetLbl.setText(account.getEmployee().getName() + "!!");
         delManTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        
-//        if(enterprise.getEnterpriseType().equals("Maintenance Unit")){
-//            processJButton.setText("Mark as completed");
-//        }
-      
-        
+
+
         populateTable();
     }
-    
-    public void populateTable(){
+
+    public void populateTable() {
         DefaultTableModel dtm = (DefaultTableModel) delManTbl.getModel();
         dtm.setRowCount(0);
-        for(Organization o : enterprise.getOrganizationDirectory().getOrganizationList()){
-            for(WorkRequest request: o.getWorkQueue().getWorkRequestList() ) {
-                if(request.getReceiver() != null && request.getReceiver().getEmployee().getName().equals(userAccount.getEmployee().getName())){
+        for (Organization o : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (WorkRequest request : o.getWorkQueue().getWorkRequestList()) {
+                if (request.getReceiver() != null && request.getReceiver().getEmployee().getName().equals(userAccount.getEmployee().getName())) {
                     Object row[] = new Object[4];
                     row[0] = request.getRequestID();
                     row[1] = request.getSender().getStudent().getName();
@@ -66,7 +58,7 @@ public class ServiceWorkerWorkAreaJPanel extends javax.swing.JPanel {
                     dtm.addRow(row);
                 }
             }
-        } 
+        }
     }
 
     /**
@@ -86,11 +78,15 @@ public class ServiceWorkerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         greetLbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        delManTbl.setBackground(new java.awt.Color(204, 204, 204));
         delManTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        delManTbl.setForeground(new java.awt.Color(51, 51, 51));
         delManTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,43 +112,54 @@ public class ServiceWorkerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(delManTbl);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 730, 96));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 730, 130));
 
-        processJButton.setBackground(new java.awt.Color(102, 153, 0));
+        processJButton.setBackground(new java.awt.Color(204, 204, 204));
         processJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        processJButton.setForeground(new java.awt.Color(51, 51, 51));
         processJButton.setText("Mark as Completed");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 270, 150, 50));
+        jPanel1.add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 150, 50));
 
+        refreshJButton.setBackground(new java.awt.Color(204, 204, 204));
         refreshJButton.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        refreshJButton.setForeground(new java.awt.Color(51, 51, 51));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 120, 30));
+        jPanel1.add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 120, 30));
 
-        jPanel3.setBackground(new java.awt.Color(102, 153, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Welcome,");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -40, 120, 140));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 120, 40));
 
         greetLbl.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         greetLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel3.add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -50, 320, 160));
+        jPanel3.add(greetLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 320, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 60));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/deliveryBg.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1230, 810));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText(" SERVICE REQUEST");
+        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 410, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -180,17 +187,17 @@ public class ServiceWorkerWorkAreaJPanel extends javax.swing.JPanel {
 
         int selectedRow = delManTbl.getSelectedRow();
 
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","Error",JOptionPane.ERROR_MESSAGE);
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         MaintenanceWorkRequest request = (MaintenanceWorkRequest) delManTbl.getValueAt(selectedRow, 2);
-        if(request.getStatus() == "Completed"){
-            JOptionPane.showMessageDialog(null, "The request has been already completed.","Error",JOptionPane.ERROR_MESSAGE);
+        if (request.getStatus() == "Completed") {
+            JOptionPane.showMessageDialog(null, "The request has been already completed.", "Error", JOptionPane.ERROR_MESSAGE);
             populateTable();
-        }else{
+        } else {
             request.setStatus("Completed");
-            JOptionPane.showMessageDialog(null, "The request has been completed successfully.","Success",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "The request has been completed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             populateTable();
         }
 
@@ -203,8 +210,10 @@ public class ServiceWorkerWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable delManTbl;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel greetLbl;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

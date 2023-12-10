@@ -7,14 +7,10 @@ package userinterface.StoreManager;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.Items;
 import Business.Enterprise.ServiceTypes;
-import Business.StudentRequestOrder;
 import Business.Organization.Organization;
-//import Business.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.MaintenanceWorkRequest;
-import Business.WorkQueue.StoreWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Business.utilities.tableHeaderColors;
 import java.awt.CardLayout;
@@ -31,25 +27,22 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount userAcc;
     private UserAccount account;
-    //private Organization organization;
     private Enterprise enterprise;
     private EcoSystem business;
 
     /**
      * Creates new form ManageOrderJPanel
      */
-
     ManageServiceJPanel(JPanel userProcessContainer, Organization organization, EcoSystem business, Enterprise enterprise, UserAccount account) {
-         initComponents();
-        
+        initComponents();
+
         this.userProcessContainer = userProcessContainer;
-       this.account=account;
-        //this.organization=organization;
-        this.enterprise=enterprise;
+        this.account = account;
+        this.enterprise = enterprise;
         orderMgtTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         itemListTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
-        this.business=business;
-        
+        this.business = business;
+
         populateTable();
     }
 
@@ -64,7 +57,6 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         orderMgtTbl = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         viewOrderBtn = new javax.swing.JButton();
         refreshBtn = new javax.swing.JButton();
@@ -75,12 +67,16 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         totBillTxt = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(238, 137, 19));
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        orderMgtTbl.setBackground(new java.awt.Color(204, 204, 204));
         orderMgtTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        orderMgtTbl.setForeground(new java.awt.Color(51, 51, 51));
         orderMgtTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -105,65 +101,66 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
             orderMgtTbl.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 125, 700, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 700, 91));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(80, 80, 82));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Maintenance Request Management");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 1200, 37));
-
-        backBtn.setBackground(new java.awt.Color(255, 102, 0));
+        backBtn.setBackground(new java.awt.Color(204, 204, 204));
         backBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        backBtn.setForeground(new java.awt.Color(51, 51, 51));
         backBtn.setText("< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, -1, -1));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        viewOrderBtn.setBackground(new java.awt.Color(255, 102, 0));
+        viewOrderBtn.setBackground(new java.awt.Color(204, 204, 204));
         viewOrderBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        viewOrderBtn.setForeground(new java.awt.Color(51, 51, 51));
         viewOrderBtn.setText("View Request");
         viewOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewOrderBtnActionPerformed(evt);
             }
         });
-        add(viewOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 234, -1, -1));
+        add(viewOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
 
-        refreshBtn.setBackground(new java.awt.Color(255, 102, 0));
+        refreshBtn.setBackground(new java.awt.Color(204, 204, 204));
         refreshBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        refreshBtn.setForeground(new java.awt.Color(51, 51, 51));
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshBtnActionPerformed(evt);
             }
         });
-        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 89, -1, -1));
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
 
-        placeOrderBtn.setBackground(new java.awt.Color(255, 102, 0));
+        placeOrderBtn.setBackground(new java.awt.Color(204, 204, 204));
         placeOrderBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        placeOrderBtn.setForeground(new java.awt.Color(51, 51, 51));
         placeOrderBtn.setText("Accept Request");
         placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 placeOrderBtnActionPerformed(evt);
             }
         });
-        add(placeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 234, -1, -1));
+        add(placeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
-        assignDelManBtn.setBackground(new java.awt.Color(255, 102, 0));
+        assignDelManBtn.setBackground(new java.awt.Color(204, 204, 204));
         assignDelManBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        assignDelManBtn.setForeground(new java.awt.Color(51, 51, 51));
         assignDelManBtn.setText("Assign Service Man");
         assignDelManBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignDelManBtnActionPerformed(evt);
             }
         });
-        add(assignDelManBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 234, -1, -1));
+        add(assignDelManBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, -1));
 
+        itemListTbl.setBackground(new java.awt.Color(204, 204, 204));
         itemListTbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        itemListTbl.setForeground(new java.awt.Color(51, 51, 51));
         itemListTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -186,46 +183,55 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
             itemListTbl.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 352, 478, 93));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 423, 478, 120));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Order Details");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 308, 452, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 452, -1));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Total Price:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 465, 108, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 560, 108, -1));
 
         totBillTxt.setEditable(false);
-        add(totBillTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 463, 193, -1));
+        totBillTxt.setBackground(new java.awt.Color(204, 204, 204));
+        totBillTxt.setForeground(new java.awt.Color(51, 51, 51));
+        add(totBillTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, 193, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/manageOrders.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundFoot.png"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 264, 52));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
+        enterpriseLabel.setText("Maintenance Request Management");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 440, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-         userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void viewOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOrderBtnActionPerformed
         // TODO add your handling code here:
-       int selectedRow = orderMgtTbl.getSelectedRow();
-       if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+        int selectedRow = orderMgtTbl.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-       /*StudentRequestOrder order1 = (StudentRequestOrder)orderMgtTbl.getValueAt(selectedRow, 0);*/
-       MaintenanceWorkRequest request = (MaintenanceWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
-       DefaultTableModel dtm = (DefaultTableModel) itemListTbl.getModel();
-       dtm.setRowCount(0);
-        
-        for(ServiceTypes s: request.getCusList()) {
+        MaintenanceWorkRequest request = (MaintenanceWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
+        DefaultTableModel dtm = (DefaultTableModel) itemListTbl.getModel();
+        dtm.setRowCount(0);
+
+        for (ServiceTypes s : request.getCusList()) {
             Object row[] = new Object[2];
             row[0] = s;
             row[1] = s.getPrice();
@@ -237,52 +243,52 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
     private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
         // TODO add your handling code here:
         int selectedRow = orderMgtTbl.getSelectedRow();
-        
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
-        MaintenanceWorkRequest request = (MaintenanceWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
-        if((request.getStatus().equals("Request pending"))){
-           JOptionPane.showMessageDialog(null, "Can't accept request until admin assigns you","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-           return ; 
+
+        MaintenanceWorkRequest request = (MaintenanceWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
+        if ((request.getStatus().equals("Request pending"))) {
+            JOptionPane.showMessageDialog(null, "Can't accept request until admin assigns you", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-        if((!request.getStatus().equals("Assigned"))){
-           JOptionPane.showMessageDialog(null, "Request already accepted","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-           return ; 
+        if ((!request.getStatus().equals("Assigned"))) {
+            JOptionPane.showMessageDialog(null, "Request already accepted", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-         
+
         request.setStatus("Accepted");
-         
-        JOptionPane.showMessageDialog(null, "Request accepted successfully.","Success",JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(null, "Request accepted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
     }//GEN-LAST:event_placeOrderBtnActionPerformed
 
     private void assignDelManBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDelManBtnActionPerformed
         // TODO add your handling code here:
         int selectedRow = orderMgtTbl.getSelectedRow();
-        
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
-        MaintenanceWorkRequest order1 = (MaintenanceWorkRequest)orderMgtTbl.getValueAt(selectedRow, 2);
-        if(order1.getStatus().equalsIgnoreCase("Completed")){
-            JOptionPane.showMessageDialog(null, "Request has been already completed.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-            return ; 
+
+        MaintenanceWorkRequest order1 = (MaintenanceWorkRequest) orderMgtTbl.getValueAt(selectedRow, 2);
+        if (order1.getStatus().equalsIgnoreCase("Completed")) {
+            JOptionPane.showMessageDialog(null, "Request has been already completed.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-        if(order1.getStatus().equalsIgnoreCase("Serviceman Assigned")){
-            JOptionPane.showMessageDialog(null, "Service man has already been assigned. ","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-            return ; 
+        if (order1.getStatus().equalsIgnoreCase("Serviceman Assigned")) {
+            JOptionPane.showMessageDialog(null, "Service man has already been assigned. ", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-        if(!order1.getStatus().equalsIgnoreCase("Accepted")){
-            JOptionPane.showMessageDialog(null, "Request is not accepted. Kindly accept the request first to proceed.","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-            return ; 
+        if (!order1.getStatus().equalsIgnoreCase("Accepted")) {
+            JOptionPane.showMessageDialog(null, "Request is not accepted. Kindly accept the request first to proceed.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-        
-        ServiceManAssignJPanel panel = new ServiceManAssignJPanel(userProcessContainer,business, enterprise, order1);
+
+        ServiceManAssignJPanel panel = new ServiceManAssignJPanel(userProcessContainer, business, enterprise, order1);
         userProcessContainer.add("AssignServiceManJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -290,17 +296,18 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
         // TODO add your handling code here:
-         populateTable();
+        populateTable();
     }//GEN-LAST:event_refreshBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignDelManBtn;
     private javax.swing.JButton backBtn;
+    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JTable itemListTbl;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -311,22 +318,21 @@ public class ManageServiceJPanel extends javax.swing.JPanel {
     private javax.swing.JButton viewOrderBtn;
     // End of variables declaration//GEN-END:variables
 
-
     private void populateTable() {
-         DefaultTableModel dtm = (DefaultTableModel) orderMgtTbl.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) orderMgtTbl.getModel();
         dtm.setRowCount(0);
-        
-         for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-           int orderID = request.getRequestID();
-            row[0] = orderID;
-            row[1] = request.getSender().getStudent().getName();
-            row[2] = request;
-            row[3] = request.getStatus();
-            
-            dtm.addRow(row);
-        }
+
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+                Object[] row = new Object[4];
+                int orderID = request.getRequestID();
+                row[0] = orderID;
+                row[1] = request.getSender().getStudent().getName();
+                row[2] = request;
+                row[3] = request.getStatus();
+
+                dtm.addRow(row);
+            }
         }
     }
 }

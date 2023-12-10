@@ -29,9 +29,6 @@ public class OrganizationDirectory {
         if (type.getValue().equals(Type.Nutrition.getValue())){
             organization = new NutritionOrganization();
             organizationList.add(organization);
-        }else if (type.getValue().equals(Type.Orthopedic.getValue())){
-            organization = new OrthopedicOrganization();
-            organizationList.add(organization);
         }else if (type.getValue().equals(Type.WeightTraining.getValue())){
             organization = new WeightTrainingOrganization();
             organizationList.add(organization);

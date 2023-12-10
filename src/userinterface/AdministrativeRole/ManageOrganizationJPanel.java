@@ -57,9 +57,9 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 if (type.getValue().equals(Type.Physiotherapist.getValue())) {
                     organizationJComboBox.addItem(type);
                 }
-                if (type.getValue().equals(Type.Orthopedic.getValue())) {
-                    organizationJComboBox.addItem(type);
-                }
+//                if (type.getValue().equals(Type.Orthopedic.getValue())) {
+//                    organizationJComboBox.addItem(type);
+//                }
 
             } else if (ent.equals("Dorm Inventory Unit")) {
                 if (type.getValue().equals(Type.DormInventory.getValue())) {
