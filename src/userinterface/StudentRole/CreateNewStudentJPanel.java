@@ -241,7 +241,7 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
         });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 190, 30));
 
-        submitBtn.setBackground(new java.awt.Color(204, 204, 204));
+        submitBtn.setBackground(new java.awt.Color(255, 51, 51));
         submitBtn.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         submitBtn.setForeground(new java.awt.Color(51, 51, 51));
         submitBtn.setText("Submit");
@@ -394,9 +394,9 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
         add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 190, 30));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setForeground(new java.awt.Color(255, 51, 51));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("State:");
+        jLabel12.setText("Campus");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 80, 30));
 
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N

@@ -101,7 +101,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/UserImg.png"))); // NOI18N
         LeftJPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 78, 250, 150));
 
-        loginJButton.setBackground(new java.awt.Color(204, 204, 204));
+        loginJButton.setBackground(new java.awt.Color(255, 51, 51));
         loginJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         loginJButton.setForeground(new java.awt.Color(51, 51, 51));
         loginJButton.setText("Log in");
@@ -112,7 +112,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         LeftJPanel.add(loginJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 409, 148, 49));
 
-        registerBtn.setBackground(new java.awt.Color(204, 204, 204));
+        registerBtn.setBackground(new java.awt.Color(255, 51, 51));
         registerBtn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         registerBtn.setForeground(new java.awt.Color(51, 51, 51));
         registerBtn.setText("Sign Up");

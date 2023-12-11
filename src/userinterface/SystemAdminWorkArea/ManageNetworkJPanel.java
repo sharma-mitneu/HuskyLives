@@ -88,10 +88,10 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Enter State Name:");
+        jLabel1.setText("Enter Campus Name:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 132, 20));
 
-        submitJButton.setBackground(new java.awt.Color(204, 204, 204));
+        submitJButton.setBackground(new java.awt.Color(255, 51, 51));
         submitJButton.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         submitJButton.setForeground(new java.awt.Color(51, 51, 51));
         submitJButton.setText("Submit");
