@@ -122,6 +122,7 @@ public class PhysioWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setForeground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblStudentList.setBackground(new java.awt.Color(204, 204, 204));
@@ -162,6 +163,7 @@ public class PhysioWorkAreaJPanel extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 640, -1, 40));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 107, 30));
@@ -173,6 +175,7 @@ public class PhysioWorkAreaJPanel extends javax.swing.JPanel {
         add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 190, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Age:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 90, 30));
@@ -183,6 +186,7 @@ public class PhysioWorkAreaJPanel extends javax.swing.JPanel {
         add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 190, 30));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Gender:");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 107, 40));
@@ -212,6 +216,7 @@ public class PhysioWorkAreaJPanel extends javax.swing.JPanel {
         add(radioFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, 72, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Height(in cms):");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 86, 30));
@@ -222,6 +227,7 @@ public class PhysioWorkAreaJPanel extends javax.swing.JPanel {
         add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, 190, 30));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Weight (in Kgs):");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, -1, 30));
@@ -257,6 +263,7 @@ public class PhysioWorkAreaJPanel extends javax.swing.JPanel {
         add(viewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 138, 45));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Message:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 100, -1));
