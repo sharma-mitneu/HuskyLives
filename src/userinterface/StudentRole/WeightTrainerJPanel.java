@@ -97,6 +97,7 @@ public class WeightTrainerJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Enter Your Message:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 170, 80));
 

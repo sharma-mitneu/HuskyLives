@@ -67,10 +67,9 @@ public class PlaceOrderJPanel extends javax.swing.JPanel {
         for (Network net : business.getNetworkList()) {
             for (Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Items i : e.getItemsList()) {
-                    Object row[] = new Object[3];
-                    row[0] = i.getItemType();
-                    row[1] = i;
-                    row[2] = i.getPrice();
+                    Object row[] = new Object[2];
+                    row[0] = i;
+                    row[1] = i.getPrice();
                     dtm.addRow(row);
                 }
             }
@@ -164,11 +163,11 @@ public class PlaceOrderJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Item Type", "Item", "Price"
+                "Item", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -179,7 +178,6 @@ public class PlaceOrderJPanel extends javax.swing.JPanel {
         if (dormInventoryTbl.getColumnModel().getColumnCount() > 0) {
             dormInventoryTbl.getColumnModel().getColumn(0).setResizable(false);
             dormInventoryTbl.getColumnModel().getColumn(1).setResizable(false);
-            dormInventoryTbl.getColumnModel().getColumn(2).setResizable(false);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, 93));
@@ -417,7 +415,7 @@ public class PlaceOrderJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         } else {
-            Items i = (Items) dormInventoryTbl.getValueAt(selectedRow, 1);
+            Items i = (Items) dormInventoryTbl.getValueAt(selectedRow, 0);
             cartCount++;
             cusList.add(i);
             this.total = populateTable();

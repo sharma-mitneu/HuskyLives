@@ -99,8 +99,8 @@ public class ManageStoreJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
-        enterpriseLabel.setText("Manage Store");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 410, 30));
+        enterpriseLabel.setText("Manage Services");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 460, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageInventoryBtnActionPerformed

@@ -49,8 +49,6 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
         menuTbl.getTableHeader().setDefaultRenderer(new tableHeaderColors());
         priceSuccessLbl.setVisible(false);
         this.userProcessContainer = userProcessContainer;
-        jLabel5.setVisible(false);
-        typeComboBox.setVisible(false);
         populateTable();
     }
 
@@ -84,8 +82,6 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
         priceLbl = new javax.swing.JLabel();
         priceSuccessLbl = new javax.swing.JLabel();
         price0lbl = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        typeComboBox = new javax.swing.JComboBox<>();
         priceLbl1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -199,7 +195,7 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
         priceLbl.setForeground(new java.awt.Color(255, 51, 51));
         priceLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceLbl.setText("Only Numbers Allowed");
-        add(priceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 160, 20));
+        add(priceLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 160, 20));
 
         priceSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
         add(priceSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 30, -1));
@@ -207,17 +203,7 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
         price0lbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         price0lbl.setForeground(new java.awt.Color(255, 51, 51));
         price0lbl.setText("Price Should be Greater than 0");
-        add(price0lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("Item Type:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 60, 30));
-
-        typeComboBox.setBackground(new java.awt.Color(204, 204, 204));
-        typeComboBox.setForeground(new java.awt.Color(51, 51, 51));
-        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Equipments", "Supplements" }));
-        add(typeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 150, 30));
+        add(price0lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 510, -1, -1));
 
         priceLbl1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         priceLbl1.setForeground(new java.awt.Color(255, 51, 51));
@@ -242,10 +228,9 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
 
         for (Items dormInventory : enterprise.getItemsList()) {
-            Object row[] = new Object[3];
+            Object row[] = new Object[2];
             row[0] = dormInventory;
-            row[1] = dormInventory.getItemType();
-            row[2] = dormInventory.getPrice();
+            row[1] = dormInventory.getPrice();
             dtm.addRow(row);
         }
     }
@@ -280,17 +265,14 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
             }
 
             String name = itemNameTxt.getText();
-            String type = (String) typeComboBox.getSelectedItem();
             int price = Integer.parseInt(priceTxt.getText());
             Items s = enterprise.createMenuItem();
             s.setItemName(name);
-            s.setItemType(type);
             s.setPrice(price);
             JOptionPane.showMessageDialog(null, "Item Added Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             populateTable();
             itemNameTxt.setText("");
             priceTxt.setText("");
-            typeComboBox.setSelectedIndex(0);
             itemSuccessLbl.setVisible(false);
             priceSuccessLbl.setVisible(false);
 
@@ -388,7 +370,6 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable menuTbl;
@@ -397,6 +378,5 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel priceLbl1;
     private javax.swing.JLabel priceSuccessLbl;
     private javax.swing.JTextField priceTxt;
-    private javax.swing.JComboBox<String> typeComboBox;
     // End of variables declaration//GEN-END:variables
 }
