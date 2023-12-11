@@ -1,13 +1,13 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/2lpnXVPO)
 
-# Multi-Party Communication Ecosystem
+# Husky Lives [Northeastern Housing Management System]
 
 ![image](https://github.com/aed5100/final-project-huskylives/assets/145163557/b817ebe3-2519-44cc-9430-22ce725abb04)
 
 
 ## Overview
 
-Welcome to the Multi-Party Communication Ecosystem project! This Java Swing application, integrated with DB4O for database operations, is designed to create a collaborative system supporting the well-being of students at Northeastern University and providing them homely dormitory housing experience.
+Welcome to the Northeastern Housing Management System project! This Java Swing application, integrated with DB4O for database operations, is designed to create a collaborative system supporting the well-being of students at Northeastern University and providing them homely dormitory housing experience.
 
 ## Table of Contents
 
