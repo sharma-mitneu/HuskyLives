@@ -219,7 +219,7 @@ public class ManageInventoryJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(255, 51, 51));
-        enterpriseLabel.setText("Dorm Inventory Inventory Management");
+        enterpriseLabel.setText("Dorm Inventory Management");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 490, 30));
     }// </editor-fold>//GEN-END:initComponents
 

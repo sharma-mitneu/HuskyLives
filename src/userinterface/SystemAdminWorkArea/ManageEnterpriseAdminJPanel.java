@@ -179,13 +179,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             enterpriseJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 205, 730, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 195, 730, 160));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Network :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 80, 30));
+        jLabel1.setText("Campus:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 80, 30));
 
         networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         networkJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -196,13 +196,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 190, 30));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Email ID:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 80, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 80, 30));
 
         usernameJTextField.setBackground(new java.awt.Color(204, 204, 204));
         usernameJTextField.setForeground(new java.awt.Color(51, 51, 51));
@@ -211,13 +211,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 usernameJTextFieldKeyReleased(evt);
             }
         });
-        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 190, 30));
+        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 190, 30));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Enterprise :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 90, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 90, 30));
 
         enterpriseJComboBox.setBackground(new java.awt.Color(204, 204, 204));
         enterpriseJComboBox.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -228,13 +228,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 enterpriseJComboBoxActionPerformed(evt);
             }
         });
-        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, 190, 30));
+        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 190, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Password :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 80, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 80, 30));
 
         nameJTextField.setBackground(new java.awt.Color(204, 204, 204));
         nameJTextField.setForeground(new java.awt.Color(51, 51, 51));
@@ -243,13 +243,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 nameJTextFieldKeyReleased(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 190, 30));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, 190, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Name:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 80, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 80, 30));
 
         passwordJPasswordField.setBackground(new java.awt.Color(204, 204, 204));
         passwordJPasswordField.setForeground(new java.awt.Color(51, 51, 51));
@@ -258,7 +258,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 passwordJPasswordFieldKeyReleased(evt);
             }
         });
-        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 190, 30));
+        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 190, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
@@ -286,34 +286,34 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 submitJButton1ActionPerformed(evt);
             }
         });
-        add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 600, 98, 42));
+        add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 640, 98, 42));
 
         emailLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         emailLbl.setForeground(new java.awt.Color(255, 51, 51));
         emailLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailLbl.setText("Valid Format - 'xx@xx.xx'");
-        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 190, 20));
+        add(emailLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 510, 190, 20));
 
         emailSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 30, 30));
+        add(emailSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 30, 30));
 
         passwordLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         passwordLbl.setForeground(new java.awt.Color(255, 51, 51));
         passwordLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordLbl.setText("Sample format: Asdf@1");
-        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 190, 50));
+        add(passwordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 190, 50));
 
         passwordSuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 30, -1));
+        add(passwordSuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 30, -1));
 
         cityLbl.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         cityLbl.setForeground(new java.awt.Color(255, 51, 51));
         cityLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityLbl.setText("Only Alphabets are allowed");
-        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, 190, 40));
+        add(cityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, 190, 40));
 
         citySuccessLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
-        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 30, -1));
+        add(citySuccessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, 30, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/backgroundLogo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, 100));

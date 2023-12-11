@@ -196,7 +196,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         passwordSuccessLbl = new javax.swing.JLabel();
         passwordLbl = new javax.swing.JLabel();
         updateBtn1 = new javax.swing.JButton();
-        btnAnalysis1 = new javax.swing.JButton();
         btnMaintainReq = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -286,16 +285,16 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
 
-        btnAnalysis.setBackground(new java.awt.Color(204, 204, 204));
+        btnAnalysis.setBackground(new java.awt.Color(255, 51, 51));
         btnAnalysis.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         btnAnalysis.setForeground(new java.awt.Color(51, 51, 51));
-        btnAnalysis.setText("View Analysis");
+        btnAnalysis.setText("Health Club");
         btnAnalysis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnalysisActionPerformed(evt);
             }
         });
-        add(btnAnalysis, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, 51));
+        add(btnAnalysis, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 110, 51));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
@@ -386,7 +385,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("State:");
+        jLabel12.setText("Campus:");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 110, -1));
 
         networkJComboBox.setBackground(new java.awt.Color(204, 204, 204));
@@ -516,25 +515,16 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(updateBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 106, 51));
 
-        btnAnalysis1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        btnAnalysis1.setText("View Analysis");
-        btnAnalysis1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnalysis1ActionPerformed(evt);
-            }
-        });
-        add(btnAnalysis1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, 51));
-
         btnMaintainReq.setBackground(new java.awt.Color(204, 204, 204));
         btnMaintainReq.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         btnMaintainReq.setForeground(new java.awt.Color(51, 51, 51));
-        btnMaintainReq.setText("Maintenence Request");
+        btnMaintainReq.setText("Dorm Maintenence");
         btnMaintainReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaintainReqActionPerformed(evt);
             }
         });
-        add(btnMaintainReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 170, 51));
+        add(btnMaintainReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, 160, 51));
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -565,13 +555,13 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         placeOrderBtn1.setBackground(new java.awt.Color(204, 204, 204));
         placeOrderBtn1.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         placeOrderBtn1.setForeground(new java.awt.Color(51, 51, 51));
-        placeOrderBtn1.setText("Place Order");
+        placeOrderBtn1.setText("Student Store");
         placeOrderBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 placeOrderBtn1ActionPerformed(evt);
             }
         });
-        add(placeOrderBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, 106, 51));
+        add(placeOrderBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 490, 110, 51));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
@@ -839,10 +829,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateBtn1ActionPerformed
 
-    private void btnAnalysis1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysis1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAnalysis1ActionPerformed
-
     private void btnMaintainReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainReqActionPerformed
         // TODO add your handling code here:
         RaiseRequestJPanel requestPanel = new RaiseRequestJPanel(userProcessContainer, student, system, userAccount, enterprise, network);
@@ -865,7 +851,6 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel addressSuccessLbl;
     private javax.swing.JLabel ageBandLbl;
     private javax.swing.JButton btnAnalysis;
-    private javax.swing.JButton btnAnalysis1;
     private javax.swing.JButton btnMaintainReq;
     private javax.swing.JLabel cityLbl;
     private javax.swing.JLabel citySuccessLbl;
