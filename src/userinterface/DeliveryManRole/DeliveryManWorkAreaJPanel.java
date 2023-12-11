@@ -87,6 +87,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         greetLbl = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         delManTbl.setBackground(new java.awt.Color(204, 204, 204));

@@ -81,6 +81,7 @@ public class DeliveryManAssignJPanel extends javax.swing.JPanel {
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Deliveryman:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 80, -1));
